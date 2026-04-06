@@ -7,13 +7,14 @@ interface ExpandableCardProps {
   children: React.ReactNode
   preview: React.ReactNode
   defaultExpanded?: boolean
+  className?: string
 }
 
-export function ExpandableCard({ children, preview, defaultExpanded = false }: ExpandableCardProps) {
+export function ExpandableCard({ children, preview, defaultExpanded = false, className }: ExpandableCardProps) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
 
   return (
-    <div className="border border-border bg-card hover:border-primary/50 transition-colors">
+    <div className={`border border-border bg-card hover:border-primary/50 transition-colors ${className || ""}`}>
       <div className="p-6 md:p-8">
         {preview}
         {isExpanded && (

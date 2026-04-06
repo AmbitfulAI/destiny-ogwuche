@@ -126,7 +126,7 @@ export function Gallery() {
   const startIdx = (currentPage - 1) * ITEMS_PER_PAGE
   const displayedImages = filteredImages.slice(startIdx, startIdx + ITEMS_PER_PAGE)
 
-  const handleCategoryChange = (category) => {
+  const handleCategoryChange = (category: string) => {
     setSelectedCategory(category)
     setCurrentPage(1)
   }
@@ -139,7 +139,7 @@ export function Gallery() {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1)
   }
 
-  const openLightbox = (index) => {
+  const openLightbox = (index: number) => {
     setLightboxIndex(index)
     setLightboxOpen(true)
   }
@@ -156,7 +156,7 @@ export function Gallery() {
     setLightboxIndex((lightboxIndex + 1) % filteredImages.length)
   }
 
-  const getCategoryCount = (category) => {
+  const getCategoryCount = (category: string) => {
     if (category === 'All') return galleryImages.length
     return galleryImages.filter((img) => img.category === category).length
   }
@@ -209,7 +209,7 @@ export function Gallery() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                   <div>
                     <p className="text-white font-medium text-sm">{image.alt}</p>
                     <p className="text-white/70 text-xs">{image.category}</p>

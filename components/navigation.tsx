@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react"
+import { ThemeToggle } from "./theme-toggle"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -145,22 +146,28 @@ export function Navigation() {
               </div>
             </div>
 
-            <Link 
-              href="/contact"
-              className="inline-flex items-center h-10 px-6 bg-primary text-primary-foreground text-[10px] font-bold tracking-[0.2em] uppercase rounded-full hover:bg-foreground hover:text-background transition-all"
-            >
-              Contact
-            </Link>
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+              <Link 
+                href="/contact"
+                className="inline-flex items-center h-10 px-6 bg-primary text-primary-foreground text-[10px] font-bold tracking-[0.2em] uppercase rounded-full hover:bg-foreground hover:text-background transition-all"
+              >
+                Contact
+              </Link>
+            </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden p-3 bg-secondary/50 rounded-xl text-foreground"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Mobile Actions */}
+          <div className="flex lg:hidden items-center gap-3">
+            <ThemeToggle />
+            <button 
+              className="p-3 bg-secondary/50 rounded-xl text-foreground"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

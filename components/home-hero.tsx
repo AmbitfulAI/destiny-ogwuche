@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Linkedin, Mail, MapPin, ArrowRight, MousePointer2 } from "lucide-react"
+import goldenGateSeminar from "@/lib/images/golden_gate_seminar.png"
 
 export function HomeHero() {
   return (
@@ -10,7 +11,7 @@ export function HomeHero() {
       {/* Background Cinematic Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/platform/20250820_131323.jpg.jpeg"
+          src={goldenGateSeminar}
           alt="Engineering Background"
           fill
           className="object-cover opacity-40 grayscale"

@@ -1,6 +1,16 @@
+import { StaticImageData } from "next/image"
+
+// Large Assets (Using string paths to bypass build-time decoding errors)
+const industrialSite = "/images/platform/industrial_infrastructure.jpg"
+
+// Standard Assets (Using direct imports for optimization)
+import innovationHub from "@/lib/images/innovation_hub.jpg"
+import goldenGateBridge from "@/lib/images/golden_gate_bridge.jpg"
+import leadershipMoment from "@/lib/images/leadership_moment.jpg"
+
 export interface GalleryImage {
   id: string
-  src: string
+  src: string | StaticImageData
   alt: string
   category: string
   date?: string
@@ -75,7 +85,7 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: 'sf-bloom-1',
-    src: '/images/platform/IMG-20250821-WA0202.jpg.jpeg',
+    src: innovationHub,
     alt: 'Innovation Ecosystems: San Francisco',
     category: 'Experience',
     date: 'Summer 2024',
@@ -83,7 +93,7 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: 'gg-bridge-1',
-    src: '/images/platform/WhatsApp Image 2026-04-06 at 16.12.11 (2).jpeg',
+    src: goldenGateBridge,
     alt: 'Bridging Global Tech Networks',
     category: 'Experience',
     date: 'Spring 2024',
@@ -91,7 +101,7 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: 'nl-windmill-1',
-    src: '/images/platform/20250820_131323.jpg.jpeg',
+    src: industrialSite,
     alt: 'Contextual Engineering: The Netherlands',
     category: 'Ventures',
     date: 'Spring 2024',
@@ -99,7 +109,7 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: 'prod-portrait-1',
-    src: '/images/platform/WhatsApp Image 2026-04-06 at 16.12.11.jpeg',
+    src: leadershipMoment,
     alt: 'Digital Leadership Identity',
     category: 'Awards',
     date: 'Spring 2024',

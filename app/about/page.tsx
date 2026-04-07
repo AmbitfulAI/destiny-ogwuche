@@ -4,6 +4,8 @@ import { PageHeader } from "@/components/page-header"
 import { Footer } from "@/components/footer"
 import { Thinking } from "@/components/thinking"
 import { Education } from "@/components/education"
+import professionalPortrait from "@/lib/images/professional_portrait.jpg"
+import goldenGateBridge from "@/lib/images/golden_gate_bridge.jpg"
 
 export default function AboutPage() {
   return (
@@ -23,7 +25,7 @@ export default function AboutPage() {
               <div className="lg:float-left lg:mr-16 lg:mb-10 w-full lg:w-[420px] mb-8">
                 <div className="relative aspect-3/4 bg-linear-to-br from-primary/10 to-accent/10 border border-border overflow-hidden">
                   <Image
-                    src="/images/platform/IMG_8488.JPG.jpeg"
+                    src={professionalPortrait}
                     alt="Destiny Innosuccess Ogwuche"
                     fill
                     className="object-cover"
@@ -66,7 +68,7 @@ export default function AboutPage() {
                   <div className="lg:float-right lg:ml-12 lg:mb-8 w-full lg:w-[600px] my-10 lg:my-0">
                     <div className="relative aspect-video bg-secondary rounded-2xl overflow-hidden shadow-xl ring-1 ring-border">
                       <Image
-                        src="/images/platform/WhatsApp Image 2026-04-06 at 16.12.11 (2).jpeg"
+                        src={goldenGateBridge}
                         alt="Destiny personal moment beyond the laboratory"
                         fill
                         className="object-cover"

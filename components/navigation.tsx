@@ -33,6 +33,7 @@ export function Navigation() {
 
   const mediaLinks = [
     { href: "/gallery", label: "Journal" },
+    { href: "/gallery/photos", label: "Photos" },
     { href: "/awards", label: "Awards" },
   ]
 

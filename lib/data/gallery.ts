@@ -1,6 +1,16 @@
+import { StaticImageData } from "next/image"
+
+// Large Assets (Using string paths to bypass build-time decoding errors)
+const industrialSite = "/images/platform/industrial_infrastructure.jpg"
+
+// Standard Assets (Using direct imports for optimization)
+import innovationHub from "@/lib/images/innovation_hub.jpg"
+import goldenGateBridge from "@/lib/images/golden_gate_bridge.jpg"
+import leadershipMoment from "@/lib/images/leadership_moment.jpg"
+
 export interface GalleryImage {
   id: string
-  src: string
+  src: string | StaticImageData
   alt: string
   category: string
   date?: string
@@ -72,6 +82,38 @@ export const galleryImages: GalleryImage[] = [
     category: 'Education',
     date: 'Winter 2022',
     description: 'Captured during a doctoral residency. This period marked a significant shift in my perspective, from a pure engineer to an innovation strategist.'
+  },
+  {
+    id: 'sf-bloom-1',
+    src: innovationHub,
+    alt: 'Innovation Ecosystems: San Francisco',
+    category: 'Experience',
+    date: 'Summer 2024',
+    description: 'Exploring the vibrant innovation culture in San Francisco. This environment serves as a constant inspiration for how technical talent and venture capital can create global impact.'
+  },
+  {
+    id: 'gg-bridge-1',
+    src: goldenGateBridge,
+    alt: 'Bridging Global Tech Networks',
+    category: 'Experience',
+    date: 'Spring 2024',
+    description: 'Collaborating with global peers at the Golden Gate Bridge. Networking at this scale is essential for understanding the international flow of deep tech innovation.'
+  },
+  {
+    id: 'nl-windmill-1',
+    src: industrialSite,
+    alt: 'Contextual Engineering: The Netherlands',
+    category: 'Ventures',
+    date: 'Spring 2024',
+    description: 'Connecting technical infrastructure with local context. My work in the Netherlands bridges the gap between European institutional strengths and emerging market agility.'
+  },
+  {
+    id: 'prod-portrait-1',
+    src: leadershipMoment,
+    alt: 'Digital Leadership Identity',
+    category: 'Awards',
+    date: 'Spring 2024',
+    description: 'A moment of reflection on the journey of building Ambitful AI. This role requires balancing the precision of an engineer with the vision of an entrepreneur.'
   },
 ]
 

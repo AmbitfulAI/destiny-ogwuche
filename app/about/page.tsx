@@ -21,15 +21,15 @@ export default function AboutPage() {
             <div className="lg:block">
               {/* Image Container - Floated on desktop */}
               <div className="lg:float-left lg:mr-16 lg:mb-10 w-full lg:w-[420px] mb-8">
-                <div className="relative aspect-[3/4] bg-gradient-to-br from-primary/10 to-accent/10 border border-border overflow-hidden">
+                <div className="relative aspect-3/4 bg-linear-to-br from-primary/10 to-accent/10 border border-border overflow-hidden">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/destiny-about-5Y2Kc8PbrWSe2an5h4YqHs24OaNcje.jpeg"
+                    src="/images/platform/IMG_8488.JPG.jpeg"
                     alt="Destiny Innosuccess Ogwuche"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <div className="h-2 bg-gradient-to-r from-primary to-accent mt-4" />
+                <div className="h-2 bg-linear-to-r from-primary to-accent mt-4" />
               </div>
 
               {/* Content Area */}
@@ -62,6 +62,18 @@ export default function AboutPage() {
                   <p>
                     Beyond the laboratory and the startup ecosystem, I am a deeply curious human being. When I unplug from my professional work, I can usually be found reading books, hiking, cycling, or getting lost in the timeless resonance of classical music. The central question that keeps me inspired every day is how my personal contributions can propel my environment toward a brighter future.
                   </p>
+
+                  <div className="lg:float-right lg:ml-12 lg:mb-8 w-full lg:w-[600px] my-10 lg:my-0">
+                    <div className="relative aspect-video bg-secondary rounded-2xl overflow-hidden shadow-xl ring-1 ring-border">
+                      <Image
+                        src="/images/platform/WhatsApp Image 2026-04-06 at 16.12.11 (2).jpeg"
+                        alt="Destiny personal moment beyond the laboratory"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mt-3 text-right">Beyond the laboratory</p>
+                  </div>
 
                   <p>
                     Bringing a rare combination of hands-on deep tech execution, venture ecosystem insight, and global exposure, I am deeply committed to building the infrastructure that enables talent to translate into impact at scale. I am always eager to connect with like-minded leaders across government, venture capital, and industry to collaborate and ignite the next breakthrough.

@@ -73,6 +73,38 @@ export const galleryImages: GalleryImage[] = [
     date: 'Winter 2022',
     description: 'Captured during a doctoral residency. This period marked a significant shift in my perspective, from a pure engineer to an innovation strategist.'
   },
+  {
+    id: 'sf-bloom-1',
+    src: '/images/platform/IMG-20250821-WA0202.jpg.jpeg',
+    alt: 'Innovation Ecosystems: San Francisco',
+    category: 'Experience',
+    date: 'Summer 2024',
+    description: 'Exploring the vibrant innovation culture in San Francisco. This environment serves as a constant inspiration for how technical talent and venture capital can create global impact.'
+  },
+  {
+    id: 'gg-bridge-1',
+    src: '/images/platform/WhatsApp Image 2026-04-06 at 16.12.11 (2).jpeg',
+    alt: 'Bridging Global Tech Networks',
+    category: 'Experience',
+    date: 'Spring 2024',
+    description: 'Collaborating with global peers at the Golden Gate Bridge. Networking at this scale is essential for understanding the international flow of deep tech innovation.'
+  },
+  {
+    id: 'nl-windmill-1',
+    src: '/images/platform/20250820_131323.jpg.jpeg',
+    alt: 'Contextual Engineering: The Netherlands',
+    category: 'Ventures',
+    date: 'Spring 2024',
+    description: 'Connecting technical infrastructure with local context. My work in the Netherlands bridges the gap between European institutional strengths and emerging market agility.'
+  },
+  {
+    id: 'prod-portrait-1',
+    src: '/images/platform/WhatsApp Image 2026-04-06 at 16.12.11.jpeg',
+    alt: 'Digital Leadership Identity',
+    category: 'Awards',
+    date: 'Spring 2024',
+    description: 'A moment of reflection on the journey of building Ambitful AI. This role requires balancing the precision of an engineer with the vision of an entrepreneur.'
+  },
 ]
 
 export const galleryCategories = ['All', 'Speaking', 'Ventures', 'Experience', 'Awards', 'Education']

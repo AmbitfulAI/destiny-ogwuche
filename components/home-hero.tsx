@@ -7,9 +7,21 @@ import { Linkedin, Mail, MapPin, ArrowRight, MousePointer2 } from "lucide-react"
 export function HomeHero() {
   return (
     <section className="min-h-screen flex flex-col justify-center relative bg-background overflow-hidden">
+      {/* Background Cinematic Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/platform/20250820_131323.jpg.jpeg"
+          alt="Engineering Background"
+          fill
+          className="object-cover opacity-40 grayscale"
+          priority
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-background/60 via-transparent to-background/60" />
+      </div>
+
       {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-24 pointer-events-none" />
-      <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-24 pointer-events-none z-1" />
+      <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none z-1" />
 
       <div className="container mx-auto px-6 lg:px-12 py-24 relative z-10 mt-16">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
@@ -77,29 +89,10 @@ export function HomeHero() {
             </div>
           </div>
 
-          {/* Large Integrated Hero Image */}
-          <div className="w-full lg:w-2/5 order-1 lg:order-2">
-            <div className="relative mx-auto lg:ml-auto w-full aspect-4/5 max-w-[450px]">
-              {/* Abstract Floating Frame */}
-              <div className="absolute -inset-4 border-2 border-primary/10 rounded-2xl animate-[pulse_6s_infinite] pointer-events-none" />
-              <div className="absolute inset-4 border border-accent/20 rounded-xl pointer-events-none z-20" />
-              <div className="relative aspect-4/5 bg-secondary overflow-hidden rounded-2xl group-hover:shadow-2xl transition-all duration-700">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/destiny-about-5Y2Kc8PbrWSe2an5h4YqHs24OaNcje.jpeg"
-                  alt="Destiny Ogwuche"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-background/20 to-transparent" />
-              </div>
-            </div>
 
-            {/* Vertical Accent Line */}
-            <div className="absolute -left-12 top-0 h-full w-px bg-linear-to-b from-primary/20 via-primary/5 to-transparent hidden xl:block" />
-          </div>
         </div>
       </div>
-      
+
       {/* Scroll Indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground/40 animate-bounce">
         <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Scroll</span>

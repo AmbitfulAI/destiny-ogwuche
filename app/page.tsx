@@ -3,6 +3,7 @@ import { HomeHero } from "@/components/home-hero"
 import { HomeStats } from "@/components/home-stats"
 import { PersonaCards } from "@/components/persona-cards"
 import { HomeHighlights } from "@/components/home-highlights"
+import { Featured } from "@/components/featured"
 import { Footer } from "@/components/footer"
 
 export default function HomePage() {
@@ -11,6 +12,7 @@ export default function HomePage() {
       <Navigation />
       <HomeHero />
       <HomeStats />
+      <Featured />
       <PersonaCards />
       <HomeHighlights />
       <Footer />

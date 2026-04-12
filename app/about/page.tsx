@@ -15,10 +15,12 @@ export default function AboutPage() {
         eyebrow="About Me"
         title="Nigerian-born. Netherlands-based."
         description="Builder, entrepreneur, and doctoral researcher working at the convergence of artificial intelligence, deep technology, and systems innovation."
+        imageSrc="/images/platform/background_about.jpeg"
       />
 
       <section className="py-16 bg-background">
-        <div className="container mx-auto px-6 lg:px-12">
+
+        <div className="container relative z-10 mx-auto px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             <div className="lg:block">
               {/* Image Container - Floated on desktop */}

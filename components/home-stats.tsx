@@ -14,19 +14,6 @@ export function HomeStats() {
           ))}
         </div>
 
-        {/* Featured In */}
-        <div className="border-t border-primary-foreground/20 pt-8">
-          <p className="text-center text-sm uppercase tracking-wider text-primary-foreground/70 mb-6">
-            As Featured In
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-3">
-            {featuredIn.map((feature, index) => (
-              <span key={index} className="text-primary-foreground/80 font-medium text-sm">
-                {feature}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   )

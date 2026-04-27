@@ -198,7 +198,7 @@ export default function ContactPage() {
                     </div>
                   </Link>
 
-                  <Link
+                  {/* <Link
                     href="tel:+31613716278"
                     className="flex items-start gap-4 p-4 bg-card border border-border hover:border-primary/50 transition-colors group"
                   >
@@ -211,7 +211,7 @@ export default function ContactPage() {
                         +31 6 13 71 62 78
                       </p>
                     </div>
-                  </Link>
+                  </Link> */}
 
                   <div className="flex items-start gap-4 p-4 bg-card border border-border">
                     <div className="w-12 h-12 flex items-center justify-center bg-accent/10 text-accent">
@@ -219,7 +219,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Location</p>
-                      <p className="font-medium text-foreground">Almere, Netherlands</p>
+                      <p className="font-medium text-foreground">Amsterdam, Netherlands</p>
                     </div>
                   </div>
 

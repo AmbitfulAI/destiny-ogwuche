@@ -65,7 +65,6 @@ export default function AboutPage() {
 
                   <p>
                     Beyond my professional and academic work, I am fundamentally driven by curiosity and a desire for continuous learning. I find inspiration in reading, exploring new environments through hiking and cycling, and immersing myself in the timeless resonance of classical music. These pursuits provide not only balance but also a broader perspective that informs my thinking and creativity. They serve as a reminder that innovation is not solely a technical endeavor, but also a human one, shaped by curiosity, reflection, and the constant search for meaning.
-
                     At the heart of everything I do lies a central question: how can my contributions meaningfully propel my environment toward a brighter and more sustainable future? This question informs my decisions, shapes my work, and drives my long-term vision. It is not enough to build technology; the goal is to build systems and infrastructures that enable talent to translate into impact at scale.
 
                     Bringing together a rare combination of hands-on deep-tech execution, venture ecosystem insight, and global exposure, I am deeply committed to advancing innovation in ways that are both impactful and enduring. I am particularly interested in collaborating with leaders across government, venture capital, academia, and industry who share a commitment to building the next generation of transformative technologies and ecosystems.

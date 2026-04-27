@@ -44,20 +44,20 @@ export function HomeHero() {
               </h1>
 
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl font-sans font-light">
-                Nigerian-born, Netherlands-based <span className="text-foreground font-medium underline decoration-primary/30 underline-offset-4">deep tech engineer</span> translating ambitious scientific concepts into industrial-scale products.
+                Nigerian-born, Netherlands-based <span className="text-foreground font-medium underline decoration-primary/30 underline-offset-4">....deep tech entrepreneur</span>....ambitious scientific concepts into scalable products.
               </p>
 
               <div className="flex flex-wrap items-center gap-8 text-sm font-semibold tracking-wider text-muted-foreground/80 pt-4">
                 <span className="flex items-center gap-2 group cursor-default">
                   <MapPin className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
-                  ALMERE, NL
+                  Amsterdam, NL
                 </span>
                 <Link
                   href="mailto:ogwuche.Innosuccess@gmail.com"
                   className="flex items-center gap-2 hover:text-primary transition-all hover:translate-x-1"
                 >
                   <Mail className="w-4 h-4" />
-                  EMAIL
+                  Email
                 </Link>
                 <Link
                   href="https://linkedin.com/in/destiny-ogwuche"
@@ -65,7 +65,7 @@ export function HomeHero() {
                   className="flex items-center gap-2 hover:text-primary transition-all hover:translate-x-1"
                 >
                   <Linkedin className="w-4 h-4" />
-                  LINKEDIN
+                  LinkedIn
                 </Link>
               </div>
 

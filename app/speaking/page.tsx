@@ -3,10 +3,11 @@
 import Link from "next/link"
 import { Mic, Users, ArrowRight, Video, Calendar, MapPin, Award, Zap, Globe, Cpu, TrendingUp } from "lucide-react"
 import { Navigation } from "@/components/navigation"
+import { PageHeader } from "@/components/page-header"
 import { Footer } from "@/components/footer"
-import { ExpandableCard } from "@/components/expandable-card"
 import { speakingEngagements } from "@/lib/data/speaking"
 import { boardRoles } from "@/lib/data/board-roles"
+import impactImg from "@/lib/images/impact.jpeg"
 
 export default function SpeakingPage() {
   const topics = [
@@ -33,34 +34,28 @@ export default function SpeakingPage() {
   return (
     <main className="min-h-screen bg-background text-foreground transition-colors duration-500">
       <Navigation />
-      
-      {/* Immersive Gallery Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute top-0 left-0 w-1/2 h-full bg-primary/5 skew-x-12 -translate-x-24 pointer-events-none" />
-        <div className="absolute bottom-0 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
-              <Mic className="w-3 h-3" />
-              Global Speaking & Advisory
-            </div>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.9] tracking-tight mb-8">
-              Sharing <span className="text-primary italic">Knowledge</span> & Shaping Impact
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl leading-relaxed">
-              Facilitating masterclasses, keynotes, and strategic dialogues on <span className="text-foreground font-medium underline decoration-primary/30 underline-offset-4">deep tech</span> and emerging market innovation.
-            </p>
-          </div>
-        </div>
-      </section>
+
+      <PageHeader
+        eyebrow="Global Speaking & Advisory"
+        title={
+          <>
+            Sharing <span className="text-primary italic">Knowledge</span> & Shaping Impact
+          </>
+        }
+        description={
+          <>
+            Facilitating masterclasses, keynotes, and strategic dialogues on <span className="text-foreground font-medium underline decoration-primary/30 underline-offset-4">deep tech</span> and emerging market innovation.
+          </>
+        }
+        imageSrc={impactImg}
+      />
 
       {/* Speaking Topics - High Impact Cards */}
       <section className="py-24 bg-secondary/30 relative">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-8">
             {topics.map((topic, index) => (
-              <div 
+              <div
                 key={index}
                 className="glass-panel p-10 rounded-3xl group hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
               >
@@ -81,13 +76,13 @@ export default function SpeakingPage() {
           </div>
 
           <div className="mt-16 text-center">
-             <Link
-                href="/contact"
-                className="inline-flex items-center gap-4 px-10 py-5 bg-primary text-primary-foreground text-xs font-bold tracking-[0.3em] uppercase rounded-full hover:bg-foreground transition-all group"
-              >
-                Inquire for Bookings
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-              </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-4 px-10 py-5 bg-primary text-primary-foreground text-xs font-bold tracking-[0.3em] uppercase rounded-full hover:bg-foreground transition-all group"
+            >
+              Inquire for Bookings
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>
@@ -99,7 +94,7 @@ export default function SpeakingPage() {
 
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-24">
-            
+
             {/* Timeline Column */}
             <div>
               <div className="flex items-center gap-4 mb-12">
@@ -108,13 +103,13 @@ export default function SpeakingPage() {
                 </div>
                 <h2 className="font-serif text-4xl font-medium">Past Engagements</h2>
               </div>
-              
+
               <div className="space-y-12 relative">
                 {speakingEngagements.map((engagement, index) => (
                   <div key={index} className="relative pl-10 group">
                     <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-primary/20 border border-primary/50 group-hover:bg-primary group-hover:scale-125 transition-all duration-500 z-10" />
                     <div className="absolute left-[5px] top-5 bottom-[-48px] w-px bg-primary/10 group-last:hidden" />
-                    
+
                     <div className="glass-panel p-6 rounded-2xl group-hover:border-primary/20 transition-all duration-500">
                       <div className="flex flex-wrap items-center justify-between gap-4 mb-3">
                         <h3 className="font-serif text-xl font-medium text-foreground">{engagement.title}</h3>
@@ -128,7 +123,7 @@ export default function SpeakingPage() {
                       </p>
                       <div className="flex items-center gap-2 text-primary text-[10px] font-bold uppercase tracking-widest opacity-60">
                         <MapPin className="w-3 h-3" />
-                         Global / Digital Facilitation
+                        Global / Digital Facilitation
                       </div>
                     </div>
                   </div>
@@ -154,7 +149,7 @@ export default function SpeakingPage() {
                     <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
                       <Users className="w-20 h-20 text-accent" />
                     </div>
-                    
+
                     <div className="relative z-10">
                       <div className="flex items-center gap-2 text-accent font-bold text-[10px] tracking-[0.3em] uppercase mb-2">
                         <Zap className="w-3 h-3 fill-current" />

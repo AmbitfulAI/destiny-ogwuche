@@ -16,6 +16,8 @@ const getIcon = (company: string) => {
   return <Briefcase className="w-5 h-5" />
 }
 
+// getImage helper removed
+
 export default function ExperiencePage() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0)
 
@@ -67,7 +69,7 @@ export default function ExperiencePage() {
 
                   {/* Right Column: Content Card */}
                   <div 
-                    className={`p-8 md:p-12 bg-card border border-border rounded-2xl transition-all duration-500 cursor-pointer ${
+                    className={`p-8 md:p-12 bg-card border border-border rounded-2xl transition-all duration-500 cursor-pointer overflow-hidden ${
                       expandedIndex === index ? 'shadow-2xl shadow-primary/5 border-primary/30 ring-1 ring-primary/5' : 'hover:border-primary/20'
                     }`}
                     onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
@@ -84,26 +86,30 @@ export default function ExperiencePage() {
                           <p className="text-lg text-primary font-medium tracking-tight">{exp.company}</p>
                         </div>
                       </div>
-                      <ChevronDown className={`w-6 h-6 text-muted-foreground/30 transition-transform duration-500 ${expandedIndex === index ? 'rotate-180 text-primary' : ''}`} />
+                      <ChevronDown className={`w-6 h-6 text-muted-foreground/30 transition-transform duration-500 shrink-0 ${expandedIndex === index ? 'rotate-180 text-primary' : ''}`} />
                     </div>
 
                     <div className={`grid transition-all duration-500 ease-in-out ${
                       expandedIndex === index ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0 pointer-events-none'
                     }`}>
                       <div className="overflow-hidden">
-                        <p className="text-lg text-muted-foreground leading-relaxed mb-8 font-sans font-light">
-                          {exp.description}
-                        </p>
-                        
-                        <div className="flex flex-wrap gap-2 pt-4">
-                          {exp.skills.map((skill, skillIndex) => (
-                            <span
-                              key={skillIndex}
-                              className="px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest bg-secondary text-foreground hover:bg-primary hover:text-primary-foreground transition-all border border-border rounded-lg"
-                            >
-                              {skill}
-                            </span>
-                          ))}
+                        <div className="flex flex-col gap-8">
+                          <div className="flex flex-col flex-1">
+                            <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-sans font-light">
+                              {exp.description}
+                            </p>
+                            
+                            <div className="flex flex-wrap gap-2 pt-2">
+                              {exp.skills.map((skill, skillIndex) => (
+                                <span
+                                  key={skillIndex}
+                                  className="px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest bg-secondary text-foreground hover:bg-primary hover:text-primary-foreground transition-all border border-border rounded-lg"
+                                >
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

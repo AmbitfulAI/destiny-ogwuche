@@ -7,6 +7,7 @@ const industrialSite = "/images/platform/industrial_infrastructure.jpg"
 import innovationHub from "@/lib/images/innovation_hub.jpg"
 import goldenGateBridge from "@/lib/images/golden_gate_bridge.jpg"
 import leadershipMoment from "@/lib/images/leadership_moment.jpg"
+import precisonEngineer from "@/lib/images/precison-engineer.jpeg"
 
 export interface GalleryImage {
   id: string
@@ -45,7 +46,7 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: 'venture-3',
-    src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/destiny-asml-TWMFuD2M31eDZVqVw6jzyPgQXabWTn.jpeg',
+    src: precisonEngineer,
     alt: 'Precision Engineering at ASML',
     category: 'Ventures',
     date: 'Winter 2023',

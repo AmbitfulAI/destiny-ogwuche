@@ -4,9 +4,11 @@ import { useState } from "react"
 import Link from "next/link"
 import { ExternalLink, FileText, BookOpen, Microscope, Zap, Share2 } from "lucide-react"
 import { Navigation } from "@/components/navigation"
+import { PageHeader } from "@/components/page-header"
 import { Footer } from "@/components/footer"
 import { ExpandableCard } from "@/components/expandable-card"
 import { publications } from "@/lib/data/publications"
+import asmlImg from "@/lib/images/asml.jpeg"
 
 export default function ResearchPage() {
   const [activeCategory, setActiveCategory] = useState("All")
@@ -29,26 +31,20 @@ export default function ResearchPage() {
     <main className="min-h-screen bg-background text-foreground transition-colors duration-500">
       <Navigation />
 
-      {/* Modern Statement Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-20 pointer-events-none" />
-        <div className="absolute top-1/2 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
-              <Microscope className="w-3 h-3" />
-              Academic & Industrial Insight
-            </div>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.9] tracking-tight mb-8">
-              Thought <span className="text-primary italic">Leadership</span> & Research
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl leading-relaxed">
-              Operating at the intersection of science and business to translate <span className="text-foreground font-medium underline decoration-primary/30 underline-offset-4">ambitious concepts</span> into industrial-scale impact.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Academic & Industrial Insight"
+        title={
+          <>
+            Thought <span className="text-primary italic">Leadership</span> & Research
+          </>
+        }
+        description={
+          <>
+            Operating at the intersection of science and business to translate <span className="text-foreground font-medium underline decoration-primary/30 underline-offset-4">ambitious concepts</span> into industrial-scale impact.
+          </>
+        }
+        imageSrc={asmlImg}
+      />
 
       {/* Featured Research Spotlight */}
       <section className="pb-20">

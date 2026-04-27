@@ -2,8 +2,20 @@ import Image from "next/image"
 
 export function About() {
   return (
-    <section id="about" className="py-24 bg-background">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section id="about" className="relative py-24 overflow-hidden">
+      {/* Background Image Setup */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/platform/background_about.jpeg"
+          alt="About Destiny Innosuccess Ogwuche"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-background/90 backdrop-blur-[2px]" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
             {/* Image Column */}

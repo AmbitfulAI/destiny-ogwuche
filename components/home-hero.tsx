@@ -60,7 +60,7 @@ export function HomeHero() {
                   Email
                 </Link>
                 <Link
-                  href="https://linkedin.com/in/destiny-ogwuche"
+                  href="https://www.linkedin.com/in/ogwuche-destiny-innosuccess"
                   target="_blank"
                   className="flex items-center gap-2 hover:text-primary transition-all hover:translate-x-1"
                 >

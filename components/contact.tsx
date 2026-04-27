@@ -2,7 +2,9 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle } from "lucide-react"
+import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle, Loader2 } from "lucide-react"
+import { sendEmail } from "@/app/actions/contact"
+import { toast } from "sonner"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -12,25 +14,33 @@ export function Contact() {
     subject: "",
     message: ""
   })
+  const [isPending, setIsPending] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsPending(true)
     
-    // Create mailto link with form data
-    const subject = encodeURIComponent(formData.subject || "Contact from Website")
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
-    )
-    
-    window.location.href = `mailto:ogwuche.Innosuccess@gmail.com?subject=${subject}&body=${body}`
-    setIsSubmitted(true)
-    
-    // Reset after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
-    }, 3000)
+    try {
+      const result = await sendEmail(formData)
+      
+      if (result.success) {
+        setIsSubmitted(true)
+        toast.success("Message sent successfully!")
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
+        
+        // Reset success view after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false)
+        }, 5000)
+      } else {
+        toast.error(result.error || "Something went wrong")
+      }
+    } catch (error) {
+      toast.error("An unexpected error occurred")
+    } finally {
+      setIsPending(false)
+    }
   }
 
   return (
@@ -148,10 +158,20 @@ export function Contact() {
 
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                    disabled={isPending}
+                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Send Message
-                    <Send className="w-4 h-4" />
+                    {isPending ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send className="w-4 h-4" />
+                      </>
+                    )}
                   </button>
                 </form>
               )}

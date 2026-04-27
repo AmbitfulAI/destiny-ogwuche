@@ -2,10 +2,12 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle } from "lucide-react"
+import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle, Loader2 } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { PageHeader } from "@/components/page-header"
 import { Footer } from "@/components/footer"
+import { sendEmail } from "@/app/actions/contact"
+import { toast } from "sonner"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -15,23 +17,32 @@ export default function ContactPage() {
     subject: "",
     message: ""
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
 
-    const subject = encodeURIComponent(formData.subject || "Contact from Website")
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
-    )
+    try {
+      const result = await sendEmail(formData)
 
-    window.location.href = `mailto:ogwuche.Innosuccess@gmail.com?subject=${subject}&body=${body}`
-    setIsSubmitted(true)
+      if (result.success) {
+        setIsSubmitted(true)
+        toast.success("Message sent successfully!")
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
 
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
-    }, 3000)
+        setTimeout(() => {
+          setIsSubmitted(false)
+        }, 5000)
+      } else {
+        toast.error(result.error || "Failed to send message. Please try again.")
+      }
+    } catch (error) {
+      toast.error("An unexpected error occurred. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -52,10 +63,10 @@ export default function ContactPage() {
                 <h2 className="font-serif text-2xl font-medium mb-6 text-foreground">Send a Message</h2>
 
                 {isSubmitted ? (
-                  <div className="flex flex-col items-center justify-center py-12">
+                  <div className="flex flex-col items-center justify-center py-12 text-center">
                     <CheckCircle className="w-16 h-16 text-primary mb-4" />
-                    <p className="text-xl font-medium text-foreground">Message Ready!</p>
-                    <p className="text-muted-foreground mt-2">Your email client should open shortly.</p>
+                    <p className="text-xl font-medium text-foreground">Message Sent!</p>
+                    <p className="text-muted-foreground mt-2">Thank you for reaching out. I&apos;ll get back to you as soon as possible.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
@@ -143,10 +154,20 @@ export default function ContactPage() {
 
                     <button
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                      disabled={isSubmitting}
+                      className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      Send Message
-                      <Send className="w-4 h-4" />
+                      {isSubmitting ? (
+                        <>
+                          Sending...
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send className="w-4 h-4" />
+                        </>
+                      )}
                     </button>
                   </form>
                 )}
@@ -177,7 +198,7 @@ export default function ContactPage() {
                     </div>
                   </Link>
 
-                  <Link
+                  {/* <Link
                     href="tel:+31613716278"
                     className="flex items-start gap-4 p-4 bg-card border border-border hover:border-primary/50 transition-colors group"
                   >
@@ -190,7 +211,7 @@ export default function ContactPage() {
                         +31 6 13 71 62 78
                       </p>
                     </div>
-                  </Link>
+                  </Link> */}
 
                   <div className="flex items-start gap-4 p-4 bg-card border border-border">
                     <div className="w-12 h-12 flex items-center justify-center bg-accent/10 text-accent">
@@ -198,7 +219,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Location</p>
-                      <p className="font-medium text-foreground">Almere, Netherlands</p>
+                      <p className="font-medium text-foreground">Amsterdam, Netherlands</p>
                     </div>
                   </div>
 

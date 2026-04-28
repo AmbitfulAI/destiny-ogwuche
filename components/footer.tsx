@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowUpRight, Linkedin, Github, Twitter, Mail } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   const socialLinks = [
@@ -34,8 +35,8 @@ export function Footer() {
             {/* Brand Column */}
             <div className="lg:col-span-1 border-r border-border/50 pr-8">
               <Link href="/" className="group flex items-center gap-2 mb-8">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
-                  <span className="font-serif text-xl font-bold">D</span>
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary transition-all duration-500">
+                  <Image src="/favicon.ico" alt="Destiny Logo" width={24} height={24} className="rounded-sm" />
                 </div>
                 <span className="font-serif text-xl font-medium text-foreground tracking-widest hidden sm:block">
                   OGWUCHE

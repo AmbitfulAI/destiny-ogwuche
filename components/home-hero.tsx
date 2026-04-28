@@ -14,7 +14,7 @@ export function HomeHero() {
           src={goldenGateSeminar}
           alt="Engineering Background"
           fill
-          className="object-cover opacity-40 grayscale"
+          className="object-cover object-right opacity-40 grayscale"
           priority
         />
         <div className="absolute inset-0 bg-linear-to-b from-background/60 via-transparent to-background/60" />

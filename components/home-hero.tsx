@@ -4,19 +4,33 @@ import Link from "next/link"
 import Image from "next/image"
 import { Linkedin, Mail, MapPin, ArrowRight, MousePointer2 } from "lucide-react"
 import goldenGateSeminar from "@/lib/images/golden_gate_seminar.png"
+import mobileBgImage from "@/lib/images/mobile_bg_image.jpeg"
 
 export function HomeHero() {
   return (
     <section className="min-h-screen flex flex-col justify-center relative bg-background overflow-hidden">
       {/* Background Cinematic Image */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src={goldenGateSeminar}
-          alt="Engineering Background"
-          fill
-          className="object-cover object-right opacity-40 grayscale"
-          priority
-        />
+        {/* Desktop Image */}
+        <div className="hidden md:block absolute inset-0">
+          <Image
+            src={goldenGateSeminar}
+            alt="Engineering Background"
+            fill
+            className="object-cover object-right opacity-40 grayscale"
+            priority
+          />
+        </div>
+        {/* Mobile Image */}
+        <div className="md:hidden absolute inset-0">
+          <Image
+            src={mobileBgImage}
+            alt="Engineering Background Mobile"
+            fill
+            className="object-cover object-center opacity-40 grayscale"
+            priority
+          />
+        </div>
         <div className="absolute inset-0 bg-linear-to-b from-background/60 via-transparent to-background/60" />
       </div>
 

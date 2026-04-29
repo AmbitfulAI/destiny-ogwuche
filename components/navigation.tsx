@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
-import Image from "next/image"
+
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -51,10 +51,7 @@ export function Navigation() {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
           <Link href="/" className="group flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary transition-all duration-500">
-              <Image src="/favicon.ico" alt="Destiny Logo" width={24} height={24} className="rounded-sm" />
-            </div>
-            <span className="font-serif text-xl font-medium text-foreground tracking-widest hidden sm:block group-hover:translate-x-1 transition-transform duration-500">
+            <span className="font-serif text-xl font-medium text-foreground tracking-widest group-hover:translate-x-1 transition-transform duration-500">
               OGWUCHE
             </span>
           </Link>

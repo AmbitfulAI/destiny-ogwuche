@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { ArrowUpRight, Linkedin, Github, Twitter, Mail } from "lucide-react"
-import Image from "next/image"
+
 
 export function Footer() {
   const socialLinks = [
@@ -26,19 +26,16 @@ export function Footer() {
     <footer className="pt-32 pb-16 bg-background border-t border-border relative overflow-hidden">
       {/* Subtle Background Accent */}
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/2 blur-[80px] rounded-full pointer-events-none" />
-      
+
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
-            
+
             {/* Brand Column */}
             <div className="lg:col-span-1 border-r border-border/50 pr-8">
               <Link href="/" className="group flex items-center gap-2 mb-8">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary transition-all duration-500">
-                  <Image src="/favicon.ico" alt="Destiny Logo" width={24} height={24} className="rounded-sm" />
-                </div>
-                <span className="font-serif text-xl font-medium text-foreground tracking-widest hidden sm:block">
+                <span className="font-serif text-xl font-medium text-foreground tracking-widest">
                   OGWUCHE
                 </span>
               </Link>
@@ -47,7 +44,7 @@ export function Footer() {
               </p>
               <div className="flex items-center gap-4">
                 {socialLinks.map((social) => (
-                  <Link 
+                  <Link
                     key={social.label}
                     href={social.href}
                     className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
@@ -93,7 +90,7 @@ export function Footer() {
               <p className="text-sm text-muted-foreground mb-8 font-sans font-light">
                 Available for panels, panels, technical diligence, and strategic board advisory.
               </p>
-              <Link 
+              <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:translate-x-2 transition-transform"
               >
@@ -108,8 +105,8 @@ export function Footer() {
               © {new Date().getFullYear()} Destiny Innosuccess Ogwuche. All rights reserved.
             </p>
             <div className="flex gap-8">
-               <span className="text-[10px] font-bold text-muted-foreground/30 uppercase tracking-widest">Amsterdam, NL</span>
-               <Link href="/privacy" className="text-[10px] font-bold text-muted-foreground/30 hover:text-foreground uppercase tracking-widest transition-colors">Privacy Policy</Link>
+              <span className="text-[10px] font-bold text-muted-foreground/30 uppercase tracking-widest">Amsterdam, NL</span>
+              <Link href="/privacy" className="text-[10px] font-bold text-muted-foreground/30 hover:text-foreground uppercase tracking-widest transition-colors">Privacy Policy</Link>
             </div>
           </div>
 

@@ -2,14 +2,15 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Linkedin, Mail, MapPin, ArrowRight, MousePointer2 } from "lucide-react"
+import { Linkedin, Mail, MapPin, ArrowRight, } from "lucide-react"
 import goldenGateSeminar from "@/lib/images/golden_gate_seminar.png"
+import professionalPortrait from "@/lib/images/professional_portrait.jpg"
 
 export function HomeHero() {
   return (
     <section className="min-h-screen flex flex-col justify-center relative bg-background overflow-hidden">
       {/* Background Cinematic Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="hidden md:block absolute inset-0 z-0">
         <div className="absolute inset-0">
           <Image
             src={goldenGateSeminar}
@@ -93,6 +94,17 @@ export function HomeHero() {
           </div>
 
 
+          <div className="w-full md:hidden order-1 flex justify-center mb-10">
+            <div className="relative w-full max-w-[380px] aspect-square rounded-3xl overflow-hidden border-4 border-background shadow-2xl">
+              <Image
+                src={professionalPortrait}
+                alt="Destiny Innosuccess Ogwuche"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
         </div>
       </div>
 

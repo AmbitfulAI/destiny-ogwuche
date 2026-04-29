@@ -1,19 +1,19 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: '--font-inter'
 });
 
-const playfair = Playfair_Display({ 
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: '--font-playfair'
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://destinyogwuche.com'),
   title: 'Destiny Innosuccess Ogwuche | Deep Tech Engineer, Entrepreneur & Venture Capital Fellow',
   description: 'Nigerian-born, Netherlands-based deep tech engineer, entrepreneur, venture capital fellow and doctoral researcher. Operating at the intersection of science, business and impact.',
   keywords: ['Deep Tech', 'Entrepreneur', 'Venture Capital', 'MedTech', 'AI', 'Africa Innovation', 'Netherlands', 'Ambitful AI'],
@@ -36,6 +36,28 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
+  openGraph: {
+    title: 'Destiny Innosuccess Ogwuche | Deep Tech Engineer, Entrepreneur & Venture Capital Fellow',
+    description: 'Nigerian-born, Netherlands-based deep tech engineer, entrepreneur, venture capital fellow and doctoral researcher.',
+    url: 'https://destinyogwuche.com',
+    siteName: 'Destiny Ogwuche',
+    images: [
+      {
+        url: '/apple-icon.png',
+        width: 180,
+        height: 180,
+        alt: 'Destiny Ogwuche Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Destiny Innosuccess Ogwuche | Deep Tech Engineer, Entrepreneur & Venture Capital Fellow',
+    description: 'Nigerian-born, Netherlands-based deep tech engineer, entrepreneur, venture capital fellow and doctoral researcher.',
+    images: ['/apple-icon.png'],
+  },
 }
 
 import { ThemeProvider } from "@/components/theme-provider"
@@ -57,7 +79,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster position="top-right" richColors />
-          <Analytics />
+
         </ThemeProvider>
       </body>
     </html>

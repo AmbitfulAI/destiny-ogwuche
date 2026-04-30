@@ -224,7 +224,7 @@ export default function ContactPage() {
                   </div>
 
                   <Link
-                    href="https://linkedin.com/in/destiny-ogwuche"
+                    href="https://www.linkedin.com/in/ogwuche-destiny-innosuccess"
                     target="_blank"
                     className="flex items-start gap-4 p-4 bg-card border border-border hover:border-primary/50 transition-colors group"
                   >

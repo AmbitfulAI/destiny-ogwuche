@@ -2,21 +2,32 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Linkedin, Mail, MapPin, ArrowRight, } from "lucide-react"
+import { Linkedin, Mail, MapPin, ArrowRight, MousePointer2 } from "lucide-react"
 import goldenGateSeminar from "@/lib/images/golden_gate_seminar.png"
-import professionalPortrait from "@/lib/images/professional_portrait.jpg"
+import mobileBgImage from "@/lib/images/mobile_bg_image.jpeg"
 
 export function HomeHero() {
   return (
     <section className="min-h-screen flex flex-col justify-center relative bg-background overflow-hidden">
       {/* Background Cinematic Image */}
-      <div className="hidden md:block absolute inset-0 z-0">
-        <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
+        {/* Desktop Image */}
+        <div className="hidden md:block absolute inset-0">
           <Image
             src={goldenGateSeminar}
             alt="Engineering Background"
             fill
             className="object-cover object-right opacity-40 grayscale"
+            priority
+          />
+        </div>
+        {/* Mobile Image */}
+        <div className="md:hidden absolute inset-0">
+          <Image
+            src={mobileBgImage}
+            alt="Engineering Background Mobile"
+            fill
+            className="object-cover object-center opacity-40 grayscale"
             priority
           />
         </div>
@@ -27,11 +38,11 @@ export function HomeHero() {
       <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-24 pointer-events-none z-1" />
       <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none z-1" />
 
-      <div className="container mx-auto px-6 lg:px-12 py-24 relative z-10 mt-16">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
+      <div className="container mx-auto px-6 lg:px-12 py-16 relative z-10 mt-8">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
           {/* Text Content - Statement Typography */}
           <div className="w-full lg:w-3/5 order-2 lg:order-1">
-            <div className="space-y-8">
+            <div className="space-y-12">
               <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-bold uppercase tracking-[0.2em]">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -40,17 +51,17 @@ export function HomeHero() {
                 Deep Tech &bull; Entrepreneur &bull; VC Fellow
               </div>
 
-              <h1 className="font-serif text-6xl md:text-8xl lg:text-[100px] font-medium text-foreground leading-[0.95] tracking-tight">
+              <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-medium text-foreground leading-[1.1] tracking-tight">
                 Destiny<br />
                 <span className="text-primary italic">Innosuccess</span><br />
                 Ogwuche
               </h1>
 
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl font-sans font-light">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl font-sans font-light">
                 Nigerian-born, Netherlands-based <span className="text-foreground font-medium underline decoration-primary/30 underline-offset-4">deep tech entrepreneur</span> and researcher dedicated to translating ambitious scientific concepts into scalable products.
               </p>
 
-              <div className="flex flex-wrap items-center gap-8 text-sm font-semibold tracking-wider text-muted-foreground/80 pt-4">
+              <div className="flex flex-wrap items-center gap-8 text-sm font-semibold tracking-wider text-muted-foreground/80 pt-6">
                 <span className="flex items-center gap-2 group cursor-default">
                   <MapPin className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
                   Amsterdam, NL
@@ -72,10 +83,10 @@ export function HomeHero() {
                 </Link>
               </div>
 
-              <div className="flex flex-wrap gap-6 pt-6">
+              <div className="flex flex-wrap gap-6 pt-10">
                 <Link
                   href="/about"
-                  className="group relative inline-flex items-center gap-3 px-10 py-5 bg-foreground text-background font-bold tracking-widest uppercase text-xs hover:bg-primary transition-colors overflow-hidden"
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background font-bold tracking-widest uppercase text-[10px] hover:bg-primary transition-colors overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     Inquire More
@@ -85,7 +96,7 @@ export function HomeHero() {
                 <Link
                   href="https://ambitful.ai"
                   target="_blank"
-                  className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-primary text-primary font-bold tracking-widest uppercase text-xs hover:bg-primary hover:text-primary-foreground transition-all"
+                  className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-primary text-primary font-bold tracking-widest uppercase text-[10px] hover:bg-primary hover:text-primary-foreground transition-all"
                 >
                   Ambitful.ai
                 </Link>
@@ -94,17 +105,6 @@ export function HomeHero() {
           </div>
 
 
-          <div className="w-full md:hidden order-1 flex justify-center mb-10">
-            <div className="relative w-full max-w-[380px] aspect-square rounded-3xl overflow-hidden border-4 border-background shadow-2xl">
-              <Image
-                src={professionalPortrait}
-                alt="Destiny Innosuccess Ogwuche"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
         </div>
       </div>
 

@@ -66,7 +66,7 @@ export function Featured() {
         <div className="text-[0.72rem] font-bold tracking-[3px] uppercase text-white/35 text-center mb-9">
           As Featured In
         </div>
-        
+
         <Carousel
           opts={{
             align: "start",
@@ -74,10 +74,10 @@ export function Featured() {
           }}
           className="w-full"
         >
-          <CarouselContent className="-ml-5">
+          <CarouselContent className="-ml-4 md:-ml-6">
             {features.map((feature, index) => (
-              <CarouselItem key={index} className="pl-5 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                <div 
+              <CarouselItem key={index} className="pl-4 md:pl-6 basis-[88%] md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                <div
                   className="bg-linear-to-br from-[#0a1e3d] to-[#0d2347] border border-blue-400/20 rounded-xl p-[22px] flex flex-col gap-2.5 transition-colors duration-200 hover:border-blue-400/45 group h-full"
                 >
                   <div className="text-[0.9rem] font-extrabold text-white tracking-[0.3px]">
@@ -87,7 +87,7 @@ export function Featured() {
                     {feature.summary}
                   </div>
                   {feature.link !== "#" ? (
-                    <Link 
+                    <Link
                       href={feature.link}
                       target="_blank"
                       className="inline-flex items-center text-[0.78rem] font-bold text-blue-400 tracking-[0.3px] mt-1 hover:text-white transition-colors"

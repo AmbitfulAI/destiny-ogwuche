@@ -234,8 +234,7 @@ export default function ContactPage() {
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">LinkedIn</p>
                       <p className="font-medium text-foreground group-hover:text-primary transition-colors">
-                        destiny-ogwuche
-                      </p>
+                        Destiny I. Ogwuche</p>
                     </div>
                   </Link>
                 </div>

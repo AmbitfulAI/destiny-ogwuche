@@ -35,6 +35,29 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
+  openGraph: {
+    title: 'Destiny Innosuccess Ogwuche | Deep Tech Engineer, Entrepreneur & Venture Capital Fellow',
+    description: 'Nigerian-born, Netherlands-based deep tech engineer, entrepreneur, venture capital fellow and doctoral researcher. Operating at the intersection of science, business and impact.',
+    url: 'https://destinyogwuche.com',
+    siteName: 'Destiny Innosuccess Ogwuche',
+    images: [
+      {
+        url: '/images/platform/professional_portrait.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Destiny Innosuccess Ogwuche - Professional Portrait',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Destiny Innosuccess Ogwuche | Deep Tech Engineer, Entrepreneur & Venture Capital Fellow',
+    description: 'Nigerian-born, Netherlands-based deep tech engineer, entrepreneur, venture capital fellow and doctoral researcher.',
+    images: ['/images/platform/professional_portrait.jpg'],
+  },
+
 }
 
 import { ThemeProvider } from "@/components/theme-provider"

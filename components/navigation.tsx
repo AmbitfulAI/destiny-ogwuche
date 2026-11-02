@@ -64,7 +64,7 @@ function Dropdown({ group, pathname }: { group: NavGroup; pathname: string }) {
         type="button"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className={`flex items-center gap-1 py-2 text-[0.95rem] transition-colors hover:text-foreground ${active ? "text-foreground" : "text-muted-foreground"}`}
+        className={`flex items-center gap-1 py-2 text-[0.95rem] transition-colors hover:text-foreground ${active ? "text-foreground" : "text-muted-foreground"} group-data-[hero=true]/nav:text-[#C9D3CC] group-data-[hero=true]/nav:hover:text-[#F1EFE6]`}
       >
         {group.label}
         <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} aria-hidden="true" />
@@ -92,23 +92,36 @@ function Dropdown({ group, pathname }: { group: NavGroup; pathname: string }) {
 export function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [overHero, setOverHero] = useState(false)
   const pathname = usePathname()
 
+  // On the homepage the bar sits transparently on the green hero, and turns solid once you scroll past it.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8)
+      const hero = document.querySelector("[data-hero-section]")
+      setOverHero(Boolean(hero && hero.getBoundingClientRect().bottom > 72))
+    }
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+    window.addEventListener("resize", onScroll)
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
+    }
+  }, [pathname])
+
+  const onHero = overHero && !menuOpen
 
   useEffect(() => setMenuOpen(false), [pathname])
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 bg-background/90 backdrop-blur-md transition-[border-color] duration-300 border-b ${scrolled || menuOpen ? "border-border" : "border-transparent"}`}
+      data-hero={onHero ? "true" : "false"}
+      className={`group/nav fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${onHero ? "border-transparent bg-transparent" : `bg-background/95 backdrop-blur-md ${scrolled || menuOpen ? "border-border" : "border-transparent"}`}`}
     >
       <nav className={`${container} flex h-[72px] items-center justify-between`} aria-label="Main">
-        <Link href="/" className="font-serif text-[1.4rem] leading-none tracking-[-0.01em] text-foreground">
+        <Link href="/" className="font-serif text-[1.4rem] leading-none tracking-[-0.01em] text-foreground group-data-[hero=true]/nav:text-[#F1EFE6]">
           Destiny Ogwuche
         </Link>
 
@@ -118,7 +131,7 @@ export function Navigation() {
               key={link.href}
               href={link.href}
               aria-current={isActive(pathname, link.href) ? "page" : undefined}
-              className={`py-2 text-[0.95rem] transition-colors hover:text-foreground ${isActive(pathname, link.href) ? "text-foreground" : "text-muted-foreground"}`}
+              className={`py-2 text-[0.95rem] transition-colors hover:text-foreground ${isActive(pathname, link.href) ? "text-foreground" : "text-muted-foreground"} group-data-[hero=true]/nav:text-[#C9D3CC] group-data-[hero=true]/nav:hover:text-[#F1EFE6]`}
             >
               {link.label}
             </Link>
@@ -130,7 +143,7 @@ export function Navigation() {
             <ThemeToggle />
             <Link
               href="/contact"
-              className="inline-flex h-10 items-center rounded-sm bg-primary px-5 text-[0.9rem] font-medium text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+              className="inline-flex h-10 items-center rounded-sm bg-primary px-5 text-[0.9rem] font-medium text-primary-foreground transition-colors hover:bg-foreground hover:text-background group-data-[hero=true]/nav:bg-[#F1EFE6] group-data-[hero=true]/nav:text-[#0B2E23] group-data-[hero=true]/nav:hover:bg-white"
             >
               Contact
             </Link>
@@ -141,7 +154,7 @@ export function Navigation() {
           <ThemeToggle />
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center text-foreground"
+            className="flex h-10 w-10 items-center justify-center text-foreground group-data-[hero=true]/nav:text-[#F1EFE6]"
             onClick={() => setMenuOpen((o) => !o)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"

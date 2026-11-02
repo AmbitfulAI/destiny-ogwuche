@@ -8,13 +8,13 @@ const studiedAt = ["Golden Gate University", "University of Glasgow", "Federal U
 // The portrait's own green background continues into the section, so the photo has no edge.
 export function HomeHero() {
   return (
-    <section className="relative overflow-hidden bg-[#0B2E23] text-[#F1EFE6]" aria-labelledby="hero-name">
+    <section data-hero-section className="relative overflow-hidden bg-[#0B2E23] text-[#F1EFE6]" aria-labelledby="hero-name">
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_75%_35%,#123F31_0%,#0B2E23_55%,#062019_100%)]"
         aria-hidden="true"
       />
-      <div className={`${container} relative grid pt-[72px] lg:grid-cols-12 lg:gap-10`}>
-        <div className="relative order-1 -mx-6 h-[min(68vh,560px)] md:-mx-10 lg:order-2 lg:col-span-5 lg:mx-0 lg:h-auto lg:min-h-[720px]">
+      <div className={`${container} relative grid lg:grid-cols-12 lg:gap-10`}>
+        <div className="relative order-1 -mx-6 h-[min(68vh,560px)] md:-mx-10 lg:order-2 lg:col-span-5 lg:mx-0 lg:h-auto lg:min-h-[800px]">
           <Image
             src={portrait}
             alt="Destiny Ogwuche"
@@ -26,7 +26,7 @@ export function HomeHero() {
           />
         </div>
 
-        <div className="relative order-2 -mt-24 pb-16 lg:order-1 lg:col-span-7 lg:mt-0 lg:flex lg:flex-col lg:justify-center lg:py-28">
+        <div className="relative order-2 -mt-24 pb-16 lg:order-1 lg:col-span-7 lg:mt-0 lg:flex lg:flex-col lg:justify-center lg:pt-36 lg:pb-24">
           <p className="settle text-[0.95rem] text-[#C9D3CC]">Deep tech engineer, founder and author</p>
           <h1 id="hero-name" className="settle settle-delay-1 mt-4 font-serif text-[3.4rem] leading-[0.95] tracking-[-0.025em] sm:text-7xl lg:text-[6.5rem]">
             Destiny Ogwuche

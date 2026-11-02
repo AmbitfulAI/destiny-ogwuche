@@ -5,7 +5,7 @@ import { ActionLink, container } from "./site/action-link"
 const work = [
   {
     title: "Engineering",
-    body: "Ten years making hard technology work: wafer alignment on extreme ultraviolet lithography systems at ASML, verification and validation of the world's first autonomous blood-drawing robot at Vitestro, acoustic sensing at Nortek and carbon capture testing at Skytree.",
+    body: "Making hard technology work in production: wafer alignment on extreme ultraviolet lithography systems at ASML, verification and validation of the world's first autonomous blood-drawing robot at Vitestro, acoustic sensing at Nortek and carbon capture testing at Skytree.",
     link: { href: "/experience", label: "Experience" },
   },
   {

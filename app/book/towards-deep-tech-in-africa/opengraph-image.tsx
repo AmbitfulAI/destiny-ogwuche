@@ -1,4 +1,6 @@
-import { renderOg, localImage, ogSize, ogContentType } from "@/lib/og"
+import fs from "node:fs"
+import path from "node:path"
+import { renderOg, dataUri, ogSize, ogContentType } from "@/lib/og"
 import { book } from "@/lib/book/content"
 
 export const size = ogSize
@@ -10,7 +12,7 @@ export default async function Image() {
     eyebrow: `A book by Destiny Ogwuche, ${book.launchLabel.replace("Coming", "coming")}`,
     title: book.title,
     subtitle: book.subtitle,
-    image: localImage("public/images/book/cover.jpg"),
+    image: dataUri(fs.readFileSync(path.join(process.cwd(), "public", "images", "book", "cover.jpg"))),
     imageWidth: 420,
   })
 }

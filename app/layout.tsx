@@ -1,20 +1,14 @@
 import type { Metadata } from 'next'
-import { IBM_Plex_Sans, Newsreader } from 'next/font/google'
+import { Newsreader } from 'next/font/google'
 import './globals.css'
 
-// Newsreader: an editorial serif for headings. IBM Plex Sans: a sans with engineering roots for text.
+// Newsreader: an editorial serif for headings. IBM Plex Sans (self-hosted in public/fonts, see globals.css):
+// a sans with engineering roots for text.
 const newsreader = Newsreader({
   subsets: ['latin'],
   variable: '--font-newsreader',
   axes: ['opsz'],
   style: ['normal', 'italic'],
-  display: 'swap',
-})
-
-const plex = IBM_Plex_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-plex',
   display: 'swap',
 })
 
@@ -59,7 +53,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${newsreader.variable} ${plex.variable} font-sans antialiased`}>
+      <head>
+        <link rel="preload" href="/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+      </head>
+      <body className={`${newsreader.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { JsonLd } from "@/components/json-ld"
+import { ActionLink, container } from "@/components/site/action-link"
 import { SignupForm } from "@/components/book/signup-form"
 import { author, book } from "@/lib/book/content"
 import { ideas } from "@/lib/book/ideas"
@@ -59,239 +60,235 @@ export default function BookPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative pt-40 pb-24 border-b border-border overflow-hidden">
-        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-          <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            <div className="lg:col-span-7 order-2 lg:order-1">
-              <p className="text-[0.95rem] text-accent mb-6">The book, {book.launchLabel.replace("Coming", "coming")}</p>
-              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-6">
-                {book.title}
-              </h1>
-              <p className="font-serif italic text-2xl md:text-3xl text-muted-foreground mb-8">{book.subtitle}</p>
-              <p className="text-[0.95rem] text-foreground mb-8">
-                By {author.coverName}
-              </p>
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl font-light mb-10">{book.pitch}</p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="#sample"
-                  className="group inline-flex h-12 items-center gap-2 rounded-sm bg-primary px-6 text-[0.95rem] font-medium text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
-                >
-                  Read the opening free
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" aria-hidden="true" />
-                </Link>
-                {book.preorderLinks.map((link) => (
-                  <Link
-                    key={link.url}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener"
-                    className="inline-flex h-12 items-center gap-2 rounded-sm border border-foreground/25 px-6 text-[0.95rem] font-medium text-foreground transition-colors hover:border-foreground"
-                  >
-                    Pre-order: {link.label}
-                    <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-                  </Link>
-                ))}
-              </div>
+      <section data-hero-section className="relative overflow-hidden bg-[#0B2E23] text-[#F1EFE6]" aria-labelledby="book-title">
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_72%_45%,#134232_0%,#0B2E23_55%,#062019_100%)]"
+          aria-hidden="true"
+        />
+        <div className={`${container} relative grid items-center gap-14 pt-36 pb-20 md:pt-44 md:pb-28 lg:grid-cols-12`}>
+          <div className="lg:col-span-7">
+            <p className="settle text-[0.95rem] text-[#E2B35A]">The book, {book.launchLabel.replace("Coming", "coming")}</p>
+            <h1 id="book-title" className="settle settle-delay-1 mt-5 font-serif text-[3.2rem] leading-[0.98] tracking-[-0.02em] md:text-7xl lg:text-[5.5rem]">
+              {book.title}
+            </h1>
+            <p className="settle settle-delay-1 mt-5 font-serif text-2xl italic leading-snug text-[#C9D3CC] md:text-[2rem]">{book.subtitle}</p>
+            <p className="settle settle-delay-2 mt-8 text-[0.95rem] text-[#C9D3CC]">By {author.coverName}</p>
+            <p className="settle settle-delay-2 mt-6 max-w-[36rem] text-lg leading-relaxed text-[#F1EFE6]/90">{book.pitch}</p>
+            <div className="settle settle-delay-3 mt-10 flex flex-wrap gap-3">
+              <ActionLink href="#sample" variant="solid-on-dark">
+                Read the opening free
+              </ActionLink>
+              {book.preorderLinks.map((link) => (
+                <ActionLink key={link.url} href={link.url} target="_blank" rel="noopener" variant="outline-on-dark">
+                  Pre-order: {link.label}
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </ActionLink>
+              ))}
+              {book.preorderLinks.length === 0 && (
+                <ActionLink href="/ideas" variant="outline-on-dark">
+                  Ideas from the book
+                </ActionLink>
+              )}
             </div>
-            <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center">
-              <div className="w-64 md:w-80 shadow-[0_30px_60px_-24px_rgba(11,46,35,0.55)]">
-                <Image
-                  src={book.coverPath}
-                  alt={`Cover of ${book.fullTitle} by ${author.coverName}`}
-                  width={1200}
-                  height={1800}
-                  priority
-                  className="w-full h-auto"
-                />
-              </div>
+          </div>
+          <div className="flex justify-center lg:col-span-5 lg:justify-end">
+            <div className="w-60 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.75)] ring-1 ring-white/10 md:w-80">
+              <Image
+                src={book.coverPath}
+                alt={`Cover of ${book.fullTitle} by ${author.coverName}`}
+                width={1200}
+                height={1800}
+                priority
+                sizes="(min-width: 768px) 320px, 240px"
+                className="h-auto w-full"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Description */}
-      <section className="py-24">
-        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-          <div className="max-w-3xl mx-auto">
-            <p className="text-[0.95rem] text-accent mb-4">About the book</p>
-            <h2 className="font-serif text-3xl md:text-4xl mb-10 leading-tight">
-              The gap is real. The constraint has moved.
-            </h2>
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-              {book.longDescription.map((paragraph) => (
-                <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-              ))}
-            </div>
+      {/* About the book */}
+      <section className="py-24 md:py-32" aria-labelledby="about-book-title">
+        <div className={`${container} grid gap-10 md:grid-cols-12`}>
+          <h2 id="about-book-title" className="font-serif text-4xl leading-[1.1] md:col-span-4 md:text-5xl">
+            The gap is real. The constraint has moved.
+          </h2>
+          <div className="max-w-[68ch] space-y-6 md:col-span-8 md:col-start-6">
+            {book.longDescription.map((paragraph, i) => (
+              <p
+                key={paragraph.slice(0, 32)}
+                className={i === 0 ? "font-serif text-2xl leading-snug text-foreground" : "text-lg leading-[1.75] text-muted-foreground"}
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Numbers */}
-      <section className="py-20 bg-secondary/40 border-y border-border">
-        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
-              <div>
-                <p className="text-[0.95rem] text-accent mb-4">From the study</p>
-                <h2 className="font-serif text-3xl md:text-4xl">Nigeria and the Netherlands, 2020 to 2025</h2>
+      <section className="border-y border-border bg-secondary/50 py-20 md:py-28" aria-labelledby="numbers-title">
+        <div className={container}>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <h2 id="numbers-title" className="max-w-2xl font-serif text-4xl leading-[1.1] md:text-5xl">
+              Nigeria and the Netherlands, 2020 to 2025
+            </h2>
+            <ActionLink href="/book/deep-tech-numbers" variant="text">
+              All the numbers
+            </ActionLink>
+          </div>
+          <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-0 md:divide-x md:divide-border">
+            {headlineFigures.map((figure, i) => (
+              <div key={figure.id} className={`md:px-10 ${i === 0 ? "md:pl-0" : ""} ${i === headlineFigures.length - 1 ? "md:pr-0" : ""}`}>
+                <p className="font-serif text-[1.65rem] leading-snug text-foreground">{figure.headline}</p>
+                <p className="mt-4 leading-relaxed text-muted-foreground">{figure.detail}</p>
               </div>
-              <Link href="/book/deep-tech-numbers" className="inline-flex items-center gap-2 text-[0.95rem] text-foreground underline decoration-foreground/30 underline-offset-[0.3em] hover:decoration-foreground">
-                All the numbers <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </Link>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {headlineFigures.map((figure) => (
-                <div key={figure.id} className="p-8 border border-border bg-card">
-                  <p className="font-serif text-2xl text-foreground leading-snug mb-4">{figure.headline}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{figure.detail}</p>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Contents */}
-      <section className="py-24">
-        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-          <div className="max-w-6xl mx-auto">
-            <p className="text-[0.95rem] text-accent mb-4">Contents</p>
-            <h2 className="font-serif text-3xl md:text-4xl mb-12">Three parts, fifteen chapters</h2>
-            <div className="grid lg:grid-cols-3 gap-8">
-              {book.parts.map((part, partIndex) => (
-                <div key={part.name} className="p-8 border border-border bg-card">
-                  <h3 className="font-serif text-2xl mb-3">{part.name}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">{part.summary}</p>
-                  <ol className="space-y-3">
-                    {part.chapters.map((chapter, i) => (
-                      <li key={chapter} className="flex gap-4 text-foreground">
-                        <span className="font-serif text-accent w-6 shrink-0">{chapterStart[partIndex] + i}</span>
-                        <span>{chapter}</span>
-                      </li>
-                    ))}
-                  </ol>
+      <section className="py-24 md:py-32" aria-labelledby="contents-title">
+        <div className={container}>
+          <h2 id="contents-title" className="font-serif text-4xl leading-[1.1] md:text-5xl">
+            Three parts, fifteen chapters
+          </h2>
+          <div className="mt-14 divide-y divide-border border-y border-border">
+            {book.parts.map((part, partIndex) => (
+              <div key={part.name} className="grid gap-6 py-12 md:grid-cols-12 md:gap-10">
+                <div className="md:col-span-4">
+                  <h3 className="font-serif text-2xl leading-snug">{part.name}</h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{part.summary}</p>
                 </div>
-              ))}
-            </div>
+                <ol className="space-y-4 md:col-span-7 md:col-start-6">
+                  {part.chapters.map((chapter, i) => (
+                    <li key={chapter} className="grid grid-cols-[2.5rem_1fr] items-baseline text-lg">
+                      <span className="font-serif text-accent">{chapterStart[partIndex] + i}</span>
+                      <span className="text-foreground/90">{chapter}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Ideas */}
-      <section className="py-24 bg-secondary/40 border-y border-border">
-        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
-              <div className="max-w-2xl">
-                <p className="text-[0.95rem] text-accent mb-4">The ideas</p>
-                <h2 className="font-serif text-3xl md:text-4xl mb-4">A vocabulary for building the ground</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  The book names the mechanisms that decide whether hard technology can grow in a place. Each has its own page.
-                </p>
-              </div>
-              <Link href="/ideas" className="inline-flex items-center gap-2 text-[0.95rem] text-foreground underline decoration-foreground/30 underline-offset-[0.3em] hover:decoration-foreground">
-                All ideas <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </Link>
-            </div>
-            <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {ideas.map((idea) => (
-                <li key={idea.slug}>
-                  <Link
-                    href={`/ideas/${idea.slug}`}
-                    className="group block h-full p-6 border border-border bg-card hover:border-foreground/40 transition-colors"
-                  >
-                    <h3 className="font-serif text-xl mb-2 group-hover:text-accent transition-colors">{idea.term}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{idea.definition}</p>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+      <section className="bg-[#0B2E23] py-24 text-[#F1EFE6] md:py-32" aria-labelledby="ideas-title">
+        <div className={`${container} grid gap-12 md:grid-cols-12`}>
+          <div className="md:col-span-4">
+            <h2 id="ideas-title" className="font-serif text-4xl leading-[1.1] md:text-5xl">
+              A vocabulary for building the ground
+            </h2>
+            <p className="mt-5 max-w-sm leading-relaxed text-[#C9D3CC]">
+              The book names the mechanisms that decide whether hard technology can grow in a place. Each one has its own page, with a definition you can cite.
+            </p>
+            <ActionLink href="/ideas" variant="outline-on-dark" className="mt-8">
+              All {ideas.length} ideas
+            </ActionLink>
           </div>
+          <ul className="grid gap-x-10 border-t border-[#F1EFE6]/12 sm:grid-cols-2 md:col-span-8 md:col-start-5">
+            {ideas.map((idea) => (
+              <li key={idea.slug} className="border-b border-[#F1EFE6]/12">
+                <Link href={`/ideas/${idea.slug}`} className="group block py-5">
+                  <span className="font-serif text-xl text-[#F1EFE6] transition-colors group-hover:text-[#E2B35A]">{idea.term}</span>
+                  <span className="mt-1 line-clamp-2 block text-[0.95rem] leading-relaxed text-[#C9D3CC]">{idea.definition}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* Audiences */}
-      <section className="py-24">
-        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-          <div className="max-w-6xl mx-auto">
-            <p className="text-[0.95rem] text-accent mb-4">Who it is for</p>
-            <h2 className="font-serif text-3xl md:text-4xl mb-12">For the people who build, fund and govern</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {book.audiences.map((audience) => (
-                <div key={audience.who} className="p-6 border-t border-foreground/80">
-                  <h3 className="font-serif text-xl mb-3">{audience.who}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{audience.what}</p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-12 text-muted-foreground">
-              Readers of <em>The Prosperity Paradox</em>, <em>The Entrepreneurial State</em> and <em>How Asia Works</em> will feel at home.{" "}
-              <Link href="/reading-list" className="text-foreground underline decoration-foreground/30 underline-offset-[0.25em] hover:decoration-foreground">
-                See how it compares
-              </Link>
-              .
-            </p>
+      <section className="py-24 md:py-32" aria-labelledby="readers-title">
+        <div className={container}>
+          <h2 id="readers-title" className="max-w-2xl font-serif text-4xl leading-[1.1] md:text-5xl">
+            For the people who build, fund and govern
+          </h2>
+          <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {book.audiences.map((audience) => (
+              <div key={audience.who} className="border-t border-foreground/70 pt-6">
+                <h3 className="font-serif text-2xl">{audience.who}</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{audience.what}</p>
+              </div>
+            ))}
           </div>
+          <p className="mt-14 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Readers of <em>The Prosperity Paradox</em>, <em>The Entrepreneurial State</em> and <em>How Asia Works</em> will feel at home.{" "}
+            <Link href="/reading-list" className="text-link">
+              See how it compares
+            </Link>
+            .
+          </p>
         </div>
       </section>
 
       {/* Sample signup */}
-      <section id="sample" className="py-24 bg-secondary/40 border-y border-border scroll-mt-24">
-        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-          <div className="max-w-3xl mx-auto">
-            <p className="text-[0.95rem] text-accent mb-4">Free sample</p>
-            <h2 className="font-serif text-3xl md:text-4xl mb-4">Read the opening before anyone else</h2>
-            <p className="text-muted-foreground leading-relaxed mb-10">
+      <section id="sample" className="scroll-mt-24 border-y border-border bg-secondary/50 py-24 md:py-32" aria-labelledby="sample-title">
+        <div className={`${container} grid gap-12 md:grid-cols-12`}>
+          <div className="md:col-span-5">
+            <h2 id="sample-title" className="font-serif text-4xl leading-[1.1] md:text-5xl">
+              Read the opening before anyone else
+            </h2>
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
               Get the Preface, where a laboratory key changes a boy&apos;s life in Otukpo, and &ldquo;A Note on Words&rdquo;, which defines deep tech in one plain sentence and gives you a three-question test for it. You will also hear first when pre-orders open.
             </p>
+          </div>
+          <div className="md:col-span-6 md:col-start-7">
             <SignupForm source="book-page" />
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-24">
-        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-          <div className="max-w-3xl mx-auto">
-            <p className="text-[0.95rem] text-accent mb-4">Questions</p>
-            <h2 className="font-serif text-3xl md:text-4xl mb-10">Frequently asked</h2>
-            <div className="divide-y divide-border border-y border-border">
-              {book.faq.map((item) => (
-                <details key={item.q} className="group py-6">
-                  <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-6 font-serif text-xl text-foreground">
-                    {item.q}
-                    <span className="text-accent text-2xl leading-none group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
-                  </summary>
-                  <p className="mt-4 text-muted-foreground leading-relaxed">{item.a}</p>
-                </details>
-              ))}
-            </div>
+      <section className="py-24 md:py-32" aria-labelledby="faq-title">
+        <div className={`${container} grid gap-10 md:grid-cols-12`}>
+          <h2 id="faq-title" className="font-serif text-4xl leading-[1.1] md:col-span-4 md:text-5xl">
+            Questions readers ask
+          </h2>
+          <div className="divide-y divide-border border-y border-border md:col-span-8 md:col-start-5">
+            {book.faq.map((item) => (
+              <details key={item.q} className="group py-6">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-xl text-foreground [&::-webkit-details-marker]:hidden">
+                  {item.q}
+                  <span className="text-2xl leading-none text-accent transition-transform group-open:rotate-45" aria-hidden="true">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-4 max-w-[68ch] leading-relaxed text-muted-foreground">{item.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Author */}
-      <section className="py-24 bg-secondary/40 border-t border-border">
-        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-12 gap-10 items-start">
-            <div className="md:col-span-4">
-              <div className="relative aspect-3/4 overflow-hidden border border-border">
-                <Image src={professionalPortrait} alt={author.name} fill className="object-cover" />
-              </div>
+      <section className="border-t border-border bg-secondary/50 py-24 md:py-32" aria-labelledby="author-title">
+        <div className={`${container} grid items-center gap-12 md:grid-cols-12`}>
+          <div className="md:col-span-4">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-[340px] overflow-hidden bg-secondary">
+              <Image src={professionalPortrait} alt={author.name} fill sizes="340px" className="object-cover" />
             </div>
-            <div className="md:col-span-8">
-              <p className="text-[0.95rem] text-accent mb-4">About the author</p>
-              <h2 className="font-serif text-3xl md:text-4xl mb-6">{author.name}</h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">{author.bio150}</p>
-              <div className="flex flex-wrap gap-6 text-[0.95rem]">
-                <Link href="/about" className="inline-flex items-center gap-2 text-foreground underline decoration-foreground/30 underline-offset-[0.3em] hover:decoration-foreground">
-                  Full biography <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                </Link>
-                <Link href="/press" className="inline-flex items-center gap-2 text-foreground underline decoration-foreground/30 underline-offset-[0.3em] hover:decoration-foreground">
-                  Press and interviews <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                </Link>
-              </div>
+          </div>
+          <div className="md:col-span-7 md:col-start-6">
+            <p className="text-[0.95rem] text-accent">About the author</p>
+            <h2 id="author-title" className="mt-4 font-serif text-4xl leading-[1.1] md:text-5xl">
+              {author.name}
+            </h2>
+            <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-muted-foreground">{author.bio150}</p>
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+              <ActionLink href="/about" variant="text">
+                Full biography
+              </ActionLink>
+              <ActionLink href="/press" variant="text">
+                Press and interviews
+              </ActionLink>
+              <ActionLink href="/book-a-call" variant="text">
+                Book a call
+              </ActionLink>
             </div>
           </div>
         </div>

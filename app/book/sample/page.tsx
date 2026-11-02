@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import { container } from "@/components/site/action-link"
 import { SignupForm } from "@/components/book/signup-form"
 import { author, book } from "@/lib/book/content"
 
@@ -15,17 +16,17 @@ export default function SamplePage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Navigation />
-      <section className="pt-40 pb-24">
-        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-          <div className="max-w-5xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <section className="pt-36 pb-24 md:pt-44 md:pb-32">
+        <div className={container}>
+          <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4 flex justify-center">
               <div className="w-56 md:w-64 shadow-[0_30px_60px_-24px_rgba(11,46,35,0.55)]">
-                <Image src={book.coverPath} alt={`Cover of ${book.fullTitle}`} width={1200} height={1800} priority className="w-full h-auto" />
+                <Image src={book.coverPath} alt={`Cover of ${book.fullTitle}`} width={1200} height={1800} priority sizes="256px" className="h-auto w-full" />
               </div>
             </div>
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-7 lg:col-start-6">
               <p className="text-[0.95rem] text-accent mb-4">Free sample, {book.launchLabel.replace("Coming", "coming")}</p>
-              <h1 className="font-serif text-4xl md:text-6xl leading-[1.1] mb-6">Read the opening of {book.title}</h1>
+              <h1 className="mb-6 font-serif text-[2.6rem] leading-[1.05] md:text-6xl">Read the opening of {book.title}</h1>
               <div className="space-y-4 text-lg text-muted-foreground leading-relaxed mb-10">
                 <p>
                   The Preface tells how a laboratory key, handed to a curious boy in Otukpo, decided more than talent ever did, and why the book is about building those keys on purpose.

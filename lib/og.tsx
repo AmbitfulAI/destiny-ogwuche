@@ -1,5 +1,3 @@
-import fs from "node:fs"
-import path from "node:path"
 import { ImageResponse } from "next/og"
 
 // Link-preview images (LinkedIn, WhatsApp, X, Slack) in the site's green and gold.
@@ -22,8 +20,8 @@ async function loadNewsreader(text: string): Promise<ArrayBuffer | null> {
   }
 }
 
-export function localImage(relativePath: string, mime = "image/jpeg"): string {
-  const data = fs.readFileSync(path.join(process.cwd(), relativePath))
+// Callers read their image with a fixed path, so the build only bundles that one file.
+export function dataUri(data: { toString(encoding: "base64"): string }, mime = "image/jpeg"): string {
   return `data:${mime};base64,${data.toString("base64")}`
 }
 

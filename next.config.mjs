@@ -4,7 +4,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    // Serve resized, modern-format images instead of the original multi-megabyte files.
+    formats: ['image/avif', 'image/webp'],
   },
   async redirects() {
     return [

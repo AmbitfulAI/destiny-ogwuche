@@ -1,16 +1,22 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { IBM_Plex_Sans, Newsreader } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: '--font-inter'
-});
+// Newsreader: an editorial serif for headings. IBM Plex Sans: a sans with engineering roots for text.
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  variable: '--font-newsreader',
+  axes: ['opsz'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+})
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: '--font-playfair'
-});
+const plex = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-plex',
+  display: 'swap',
+})
 
 const SITE_TITLE = 'Destiny Ogwuche | Deep Tech Engineer and Author of Towards Deep Tech in Africa'
 const SITE_DESCRIPTION = 'Destiny Ogwuche (Destiny Innosuccess Ogwuche) is a Nigerian-born, Netherlands-based deep tech engineer, founder of Ambitful AI and author of Towards Deep Tech in Africa: Building the Ground We Stand On.'
@@ -83,7 +89,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased transition-colors duration-300`}>
+      <body className={`${newsreader.variable} ${plex.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -3,90 +3,103 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+  Design tokens: "precision and ground".
+  Forest comes from the background of the professional portrait, gold from the
+  light in the book cover. Paper is a cool off-white, ink a blue-black.
+*/
 :root {
-  /* Surface & Ink - Light Theme (Default) */
-  --background: oklch(0.99 0.005 90);
-  --foreground: oklch(0.18 0.02 210);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 210);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 210);
-  
-  /* Brand Colors */
-  --primary: oklch(0.52 0.12 210); /* Deep Tech Blue-Teal */
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.96 0.01 210);
-  --secondary-foreground: oklch(0.18 0.02 210);
-  --muted: oklch(0.94 0.01 210);
-  --muted-foreground: oklch(0.48 0.02 210);
-  --accent: oklch(0.68 0.15 45); /* Warm Innovation Terracotta */
-  --accent-foreground: oklch(1 0 0);
-  
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(1 0 0);
-  
-  --border: oklch(0.88 0.01 210);
-  --input: oklch(0.92 0.01 210);
-  --ring: oklch(0.52 0.12 210);
-  
-  /* System Radii */
-  --radius: 0.6rem;
-  
-  /* Sidebar */
-  --sidebar: oklch(0.99 0.005 90);
-  --sidebar-foreground: oklch(0.18 0.02 210);
-  --sidebar-primary: oklch(0.52 0.12 210);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.96 0.01 210);
-  --sidebar-accent-foreground: oklch(0.18 0.02 210);
-  --sidebar-border: oklch(0.88 0.01 210);
-  --sidebar-ring: oklch(0.52 0.12 210);
+  --paper: #F4F5F1;
+  --ink: #10181F;
+  --stone: #555F67;
+  --forest: #0B2E23;
+  --forest-deep: #062019;
+  --gold: #C99A3E;
+  --gold-ink: #8A6219;
+  --line: #D9DCD4;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #FAFAF7;
+  --card-foreground: var(--ink);
+  --popover: #FAFAF7;
+  --popover-foreground: var(--ink);
+
+  --primary: #0E3A2C;
+  --primary-foreground: #F4F5F1;
+  --secondary: #E9EBE5;
+  --secondary-foreground: var(--ink);
+  --muted: #ECEEE8;
+  --muted-foreground: var(--stone);
+  --accent: var(--gold-ink);
+  --accent-foreground: #F4F5F1;
+
+  --destructive: #A3341F;
+  --destructive-foreground: #FFFFFF;
+
+  --border: var(--line);
+  --input: #CDD1C8;
+  --ring: #0E3A2C;
+
+  --radius: 0.25rem;
+
+  --chart-1: #0E3A2C;
+  --chart-2: #C99A3E;
+  --chart-3: #3D6B8C;
+  --chart-4: #8FA89A;
+  --chart-5: #A3341F;
+
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: #0E3A2C;
+  --sidebar-primary-foreground: #F4F5F1;
+  --sidebar-accent: #E9EBE5;
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--line);
+  --sidebar-ring: #0E3A2C;
 }
 
 .dark {
-  --background: oklch(0.12 0.015 210); /* Deep Tech Midnight */
-  --foreground: oklch(0.98 0.01 210);
-  --card: oklch(0.15 0.02 210);
-  --card-foreground: oklch(0.98 0.01 210);
-  --popover: oklch(0.14 0.02 210);
-  --popover-foreground: oklch(0.98 0.01 210);
-  
-  --primary: oklch(0.72 0.12 210); /* Brighter Teal for Dark Mode */
-  --primary-foreground: oklch(0.12 0.015 210);
-  --secondary: oklch(0.24 0.03 210);
-  --secondary-foreground: oklch(0.98 0.01 210);
-  --muted: oklch(0.22 0.02 210);
-  --muted-foreground: oklch(0.65 0.02 210);
-  --accent: oklch(0.74 0.14 45); /* Warm Copper/Terracotta for Dark Mode */
-  --accent-foreground: oklch(0.12 0.015 210);
-  
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(1 0 0);
-  
-  --border: oklch(0.28 0.03 210);
-  --input: oklch(0.26 0.03 210);
-  --ring: oklch(0.72 0.12 210);
-  
-  --chart-1: oklch(0.52 0.12 210);
-  --chart-2: oklch(0.74 0.14 45);
-  --chart-3: oklch(0.45 0.18 240);
-  --chart-4: oklch(0.85 0.12 90);
-  --chart-5: oklch(0.65 0.2 30);
-  
-  --sidebar: oklch(0.11 0.02 210);
-  --sidebar-foreground: oklch(0.98 0.01 210);
-  --sidebar-primary: oklch(0.72 0.12 210);
-  --sidebar-primary-foreground: oklch(0.12 0.015 210);
-  --sidebar-accent: oklch(0.24 0.03 210);
-  --sidebar-accent-foreground: oklch(0.98 0.01 210);
-  --sidebar-border: oklch(0.28 0.03 210);
-  --sidebar-ring: oklch(0.72 0.12 210);
+  --background: #0B1512;
+  --foreground: #E9ECE6;
+  --card: #101D18;
+  --card-foreground: #E9ECE6;
+  --popover: #101D18;
+  --popover-foreground: #E9ECE6;
+
+  --primary: #D7AA55;
+  --primary-foreground: #0B1512;
+  --secondary: #16241F;
+  --secondary-foreground: #E9ECE6;
+  --muted: #16241F;
+  --muted-foreground: #9BA7A0;
+  --accent: #D7AA55;
+  --accent-foreground: #0B1512;
+
+  --border: #22312B;
+  --input: #2A3B34;
+  --ring: #D7AA55;
+
+  --chart-1: #D7AA55;
+  --chart-2: #8FA89A;
+  --chart-3: #7FA6C4;
+  --chart-4: #4F7A68;
+  --chart-5: #E07A5F;
+
+  --sidebar: #0B1512;
+  --sidebar-foreground: #E9ECE6;
+  --sidebar-primary: #D7AA55;
+  --sidebar-primary-foreground: #0B1512;
+  --sidebar-accent: #16241F;
+  --sidebar-accent-foreground: #E9ECE6;
+  --sidebar-border: #22312B;
+  --sidebar-ring: #D7AA55;
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
-  --font-serif: var(--font-playfair), 'Playfair Display', Georgia, serif;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: var(--font-plex), 'IBM Plex Sans', system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), 'Newsreader', Georgia, serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -111,9 +124,14 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-gold: var(--gold);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
   --radius-xl: calc(var(--radius) + 4px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
@@ -129,30 +147,86 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: 'ss01' 1, 'ss02' 1, 'cv01' 1, 'cv11' 1;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-tight;
+    @apply font-serif;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--gold) 35%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
   }
 }
 
+/* A link that reads as a link in running text. */
+.text-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  transition: text-decoration-color 150ms ease;
+}
+.text-link:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Kept for older pages that still use it. */
 .glass-panel {
-  @apply bg-background/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)];
+  @apply bg-card border border-border;
 }
 
 .text-balance {
   text-wrap: balance;
 }
 
-/* Custom Scrollbar for a premium look */
-::-webkit-scrollbar {
-  width: 10px;
+/* Hero portrait: fades into the green so the photo has no visible edge. */
+.portrait-fade {
+  -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent);
+  mask-image: linear-gradient(to bottom, #000 68%, transparent);
 }
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
+@media (min-width: 1024px) {
+  .portrait-fade {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 18%, #000 84%, transparent), linear-gradient(to bottom, #000 80%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent, #000 18%, #000 84%, transparent), linear-gradient(to bottom, #000 80%, transparent);
+    mask-composite: intersect;
+  }
 }
-::-webkit-scrollbar-thumb {
-  @apply bg-muted/50 rounded-full border-4 border-solid border-background hover:bg-muted transition-colors;
+
+/* The one orchestrated motion: the hero settles in on first load. */
+@keyframes settle {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.settle {
+  animation: settle 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.settle-delay-1 { animation-delay: 120ms; }
+.settle-delay-2 { animation-delay: 240ms; }
+.settle-delay-3 { animation-delay: 360ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

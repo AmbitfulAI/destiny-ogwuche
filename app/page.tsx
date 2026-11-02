@@ -1,9 +1,7 @@
 import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { HomeHero } from "@/components/home-hero"
-import { HomeStats } from "@/components/home-stats"
-import { PersonaCards } from "@/components/persona-cards"
-import { HomeHighlights } from "@/components/home-highlights"
+import { HomeWork, HomeIdeas, HomeContact } from "@/components/home-sections"
 import { Featured } from "@/components/featured"
 import { Footer } from "@/components/footer"
 import { BookFeature } from "@/components/book/book-feature"
@@ -18,10 +16,10 @@ export default function HomePage() {
       <Navigation />
       <HomeHero />
       <BookFeature />
-      <HomeStats />
+      <HomeWork />
+      <HomeIdeas />
       <Featured />
-      <PersonaCards />
-      <HomeHighlights />
+      <HomeContact />
       <Footer />
     </main>
   )

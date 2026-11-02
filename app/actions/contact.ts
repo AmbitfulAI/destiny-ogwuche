@@ -2,6 +2,9 @@
 
 import { transporter, mailOptions } from "@/lib/nodemailer"
 
+const escapeHtml = (value: string) =>
+  value.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string)
+
 export async function sendEmail(formData: {
   name: string
   email: string
@@ -23,13 +26,13 @@ export async function sendEmail(formData: {
       `,
       html: `
         <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${formData.name}</p>
-        <p><strong>Email:</strong> ${formData.email}</p>
-        <p><strong>Phone:</strong> ${formData.phone}</p>
-        <p><strong>Subject:</strong> ${formData.subject}</p>
+        <p><strong>Name:</strong> ${escapeHtml(formData.name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(formData.email)}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(formData.phone)}</p>
+        <p><strong>Subject:</strong> ${escapeHtml(formData.subject)}</p>
         <br/>
         <p><strong>Message:</strong></p>
-        <p>${formData.message.replace(/\n/g, '<br/>')}</p>
+        <p>${escapeHtml(formData.message).replace(/\n/g, '<br/>')}</p>
       `,
       replyTo: formData.email,
     })

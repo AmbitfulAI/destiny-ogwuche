@@ -5,22 +5,22 @@ export function Thinking() {
     {
       icon: Globe,
       title: "Africa Champion",
-      description: "I consistently advocate for deeptech investment in Nigeria and Africa. I use data — WIPO's Global Innovation Index, ecosystem reports — to back bold claims. \"I am not just pointing at the map. I am staking a claim.\""
+      description: "I make the case for deep tech investment in Nigeria and across Africa, and I back it with data, from WIPO's Global Innovation Index to the ecosystem figures in my own doctoral research. I am not just pointing at the map. I am staking a claim."
     },
     {
       icon: BookOpen,
-      title: "Storyteller First",
-      description: "Every piece I write begins with a personal story — a rejection, a dream deferred, a mentor's words from 2015. I earn trust before I share insights. Always."
+      title: "People Before Numbers",
+      description: "I start with people: a rejection, a dream deferred, a mentor who said yes. The founders and engineers behind the statistics are the reason the statistics matter."
     },
     {
       icon: BarChart3,
       title: "Evidence-Based",
-      description: "I reference MIT ecosystem models, Kepner-Tregoe analysis and Metcalfe's Law. I bring doctoral-level rigour to accessible writing. I do not guess. I analyse."
+      description: "I work from models and measurement: the MIT iEcosystem framework, Kepner-Tregoe problem analysis, verification data from the lab. I would rather test a claim than repeat it."
     },
     {
       icon: Heart,
-      title: "Genuinely Human",
-      description: "I use humour naturally. \"Okay I made that up haha.\" I never take myself too seriously even while discussing venture capital ethics or the future of AI."
+      title: "Serious Work, Light Touch",
+      description: "I take the work seriously and myself less so. Venture capital ethics and the future of AI are better discussed with a sense of humour."
     },
     {
       icon: Users,
@@ -30,7 +30,7 @@ export function Thinking() {
     {
       icon: Zap,
       title: "Urgent Optimist",
-      description: "\"The future is tired of waiting for us.\" I see massive systemic problems as massive opportunities. I do not just observe the gap. I build bridges across it."
+      description: "The future is tired of waiting for us. I see big systemic problems as big opportunities, and I would rather build a bridge across a gap than describe it."
     }
   ]
 
@@ -39,11 +39,11 @@ export function Thinking() {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-4xl mx-auto">
           <p className="text-primary font-medium tracking-wide uppercase text-sm mb-4">
-            How I Think and Communicate
+            Principles
           </p>
           
           <h2 className="font-serif text-4xl md:text-5xl font-medium text-foreground mb-16">
-            My Approach
+            How I Work
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

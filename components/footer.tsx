@@ -1,19 +1,21 @@
 import Link from "next/link"
-import { ArrowUpRight, Linkedin, Github, Twitter, Mail } from "lucide-react"
+import { ArrowUpRight, Linkedin } from "lucide-react"
 import Image from "next/image"
 
 export function Footer() {
   const socialLinks = [
-    { label: "LinkedIn", href: "https://linkedin.com/in/destiny-ogwuche", icon: <Linkedin className="w-4 h-4" /> },
-    { label: "Twitter", href: "#", icon: <Twitter className="w-4 h-4" /> },
-    { label: "Portfolio", href: "https://tellit.io", icon: <ArrowUpRight className="w-4 h-4" /> },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/ogwuche-destiny-innosuccess/", icon: <Linkedin className="w-4 h-4" /> },
+    { label: "Ambitful AI", href: "https://ambitful.ai", icon: <ArrowUpRight className="w-4 h-4" /> },
   ]
 
   const navLinks = [
-    { label: "The Journal", href: "/gallery" },
-    { label: "Experience", href: "/experience" },
-    { label: "Impact", href: "/ventures" },
+    { label: "The Book", href: "/book/towards-deep-tech-in-africa" },
+    { label: "Ideas", href: "/ideas" },
+    { label: "Reading List", href: "/reading-list" },
     { label: "About", href: "/about" },
+    { label: "Experience", href: "/experience" },
+    { label: "The Journal", href: "/journal" },
+    { label: "Press", href: "/press" },
   ]
 
   const impactLinks = [
@@ -50,6 +52,8 @@ export function Footer() {
                   <Link 
                     key={social.label}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener"
                     className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
                     aria-label={social.label}
                   >
@@ -91,13 +95,19 @@ export function Footer() {
             <div className="bg-secondary/30 p-10 rounded-3xl border border-transparent hover:border-primary/20 transition-all duration-500">
               <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground mb-6">Engagement</h4>
               <p className="text-sm text-muted-foreground mb-8 font-sans font-light">
-                Available for panels, panels, technical diligence, and strategic board advisory.
+                Available for talks, panels, podcasts, technical diligence and strategic board advisory.
               </p>
               <Link 
                 href="/contact"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:translate-x-2 transition-transform"
               >
                 Send a Message <ArrowUpRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/book/sample"
+                className="mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:translate-x-2 transition-transform"
+              >
+                Read the book&apos;s opening free <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
 

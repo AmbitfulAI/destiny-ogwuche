@@ -3,6 +3,7 @@ import { Navigation } from "@/components/navigation"
 import { PageHeader } from "@/components/page-header"
 import { Footer } from "@/components/footer"
 import { container } from "@/components/site/action-link"
+import { FullStory } from "@/components/site/full-story"
 import { ventures, innovations } from "@/lib/data/ventures"
 
 export default function VenturesPage() {
@@ -36,7 +37,7 @@ export default function VenturesPage() {
                     </a>
                   )}
                 </div>
-                <p className="max-w-[68ch] leading-[1.75] text-muted-foreground md:col-span-8">{venture.description}</p>
+                <FullStory summary={venture.summary} story={venture.description} className="md:col-span-8" />
               </li>
             ))}
           </ol>
@@ -53,7 +54,7 @@ export default function VenturesPage() {
               <article key={item.name} className="border-t border-border pt-6">
                 <h3 className="font-serif text-2xl leading-snug">{item.name}</h3>
                 <p className="mt-1 text-sm text-accent">{item.subtitle}</p>
-                <p className="mt-4 leading-relaxed text-muted-foreground">{item.description}</p>
+                <FullStory summary={item.summary} story={item.description} size="base" className="mt-4" />
               </article>
             ))}
           </div>

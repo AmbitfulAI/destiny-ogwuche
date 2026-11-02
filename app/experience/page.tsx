@@ -2,6 +2,7 @@ import { Navigation } from "@/components/navigation"
 import { PageHeader } from "@/components/page-header"
 import { Footer } from "@/components/footer"
 import { container } from "@/components/site/action-link"
+import { FullStory } from "@/components/site/full-story"
 import { experiences } from "@/lib/data/experience"
 
 export default function ExperiencePage() {
@@ -28,7 +29,7 @@ export default function ExperiencePage() {
                   <div className="md:col-span-9 lg:col-span-8">
                     <h2 className="font-serif text-3xl leading-tight">{company}</h2>
                     <p className="mt-1 text-lg text-foreground/80">{exp.role}</p>
-                    <p className="mt-6 max-w-[68ch] leading-[1.75] text-muted-foreground">{exp.description}</p>
+                    <FullStory summary={exp.summary} story={exp.description} className="mt-6" />
                     <ul className="mt-6 flex flex-wrap gap-2" aria-label="Areas">
                       {exp.skills.map((skill) => (
                         <li key={skill} className="rounded-sm border border-border px-3 py-1 text-sm text-foreground/75">

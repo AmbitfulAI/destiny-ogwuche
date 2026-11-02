@@ -53,7 +53,7 @@ export default function ReadingListPage() {
             {readingList.map((item) => (
               <li key={item.title} className="grid gap-6 py-12 md:grid-cols-12 md:gap-10">
                 <div className="md:col-span-4">
-                  <h2 className="font-serif text-3xl leading-tight">
+                  <h2 className="font-serif text-[2.15rem] leading-tight">
                     <em>{item.title}</em>
                   </h2>
                   <p className="mt-2 text-muted-foreground">{item.authors}</p>
@@ -74,19 +74,19 @@ export default function ReadingListPage() {
         </div>
       </section>
 
-      <section className="bg-[#0B2E23] py-20 text-[#F1EFE6] md:py-28" aria-labelledby="book-band-title">
+      <section className="bg-ink-raised py-20 text-ivory md:py-28" aria-labelledby="book-band-title">
         <div className={`${container} grid items-center gap-12 md:grid-cols-12`}>
           <Link href={book.path} className="mx-auto block w-44 shadow-[0_30px_60px_-24px_rgba(0,0,0,0.7)] ring-1 ring-white/10 md:col-span-3 md:mx-0 md:w-full md:max-w-[220px]">
             <Image src={book.coverPath} alt={`Cover of ${book.fullTitle}`} width={1200} height={1800} sizes="220px" className="h-auto w-full" />
           </Link>
           <div className="md:col-span-8 md:col-start-5">
-            <p className="text-[0.95rem] text-[#E2B35A]">
+            <p className="text-[0.95rem] text-champagne">
               {author.coverName}, {book.launchLabel.replace("Coming", "coming")}
             </p>
-            <h2 id="book-band-title" className="mt-4 font-serif text-4xl leading-[1.1] md:text-5xl">
+            <h2 id="book-band-title" className="mt-4 font-serif text-[2.6rem] leading-[1.1] md:text-[3.5rem]">
               <em>{book.title}</em>
             </h2>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#C9D3CC]">{book.pitch}</p>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-mist">{book.pitch}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <ActionLink href={book.path} variant="solid-on-dark">
                 About the book

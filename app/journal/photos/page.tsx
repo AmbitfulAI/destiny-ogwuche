@@ -85,7 +85,7 @@ export default function PhotosPage() {
 
           {filteredPhotos.length === 0 && (
             <div className="text-center py-20 bg-secondary/20 border border-dashed border-border">
-              <p className="text-muted-foreground font-serif text-xl italic">No photos found in this category yet.</p>
+              <p className="text-muted-foreground font-serif text-[1.4rem] italic">No photos found in this category yet.</p>
             </div>
           )}
         </div>
@@ -140,7 +140,7 @@ export default function PhotosPage() {
               <span className="mb-2 block text-sm text-accent">
                 {filteredPhotos[lightboxIndex].category}
               </span>
-              <h3 className="font-serif text-3xl md:text-5xl text-foreground mb-2">
+              <h3 className="font-serif text-[2.15rem] md:text-[3.5rem] text-foreground mb-2">
                 {filteredPhotos[lightboxIndex].alt}
               </h3>
               <p className="text-sm text-muted-foreground">

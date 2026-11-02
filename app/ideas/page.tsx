@@ -43,7 +43,7 @@ export default function IdeasPage() {
                 <li key={idea.slug}>
                   <Link href={`/ideas/${idea.slug}`} className="group grid gap-4 py-8 md:grid-cols-12 md:gap-8">
                     <div className="md:col-span-11">
-                      <h2 className="font-serif text-2xl mb-2 group-hover:text-accent transition-colors">{idea.term}</h2>
+                      <h2 className="font-serif text-[1.75rem] mb-2 group-hover:text-accent transition-colors">{idea.term}</h2>
                       <p className="text-muted-foreground leading-relaxed">{idea.definition}</p>
                       <p className="mt-3 text-sm text-accent">{idea.chapter}</p>
                     </div>

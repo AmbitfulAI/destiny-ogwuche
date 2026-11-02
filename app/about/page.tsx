@@ -44,25 +44,31 @@ export default function AboutPage() {
     <main className="min-h-screen bg-background text-foreground">
       <Navigation />
 
-      <header className="border-b border-border pt-36 pb-16 md:pt-44 md:pb-24">
-        <div className={`${container} grid items-end gap-12 lg:grid-cols-12`}>
+      <header className="relative overflow-hidden border-b border-hairline pt-40 pb-20 md:pt-52 md:pb-28">
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_10%,#1C1F24_0%,#0B0D10_60%)]"
+          aria-hidden="true"
+        />
+        <div className={`${container} relative grid items-end gap-14 lg:grid-cols-12`}>
           <div className="lg:col-span-7">
-            <p className="mb-5 text-[0.95rem] text-accent">About</p>
-            <h1 className="font-serif text-[2.75rem] leading-[1.02] md:text-7xl">Engineer, founder and author</h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              Nigerian-born and based in the Netherlands. I build hard technology, back the people who build it, and study why it grows in some places and not in others.
+            <p className="eyebrow mb-6">About</p>
+            <h1 className="font-serif text-[3.2rem] leading-[0.98] md:text-[5.5rem]">Founder, engineer and author</h1>
+            <p className="mt-8 max-w-2xl text-[1.15rem] leading-[1.75] text-mist md:text-[1.25rem]">
+              Nigerian-born and based in the Netherlands. I build companies around hard technology, I have done the engineering inside some of the most demanding companies in Europe, and I study why deep tech grows in some places and not in others.
             </p>
           </div>
           <div className="lg:col-span-4 lg:col-start-9">
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden bg-secondary lg:max-w-none">
-              <Image
-                src="/images/platform/engineering_space.jpg"
-                alt="Destiny Ogwuche"
-                fill
-                priority
-                sizes="(min-width: 1024px) 380px, 90vw"
-                className="object-cover"
-              />
+            <div className="frame-offset mx-auto w-full max-w-sm lg:max-w-none">
+              <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink-panel">
+                <Image
+                  src="/images/platform/engineering_space.jpg"
+                  alt="Destiny Ogwuche"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 380px, 90vw"
+                  className="object-cover grayscale"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -70,17 +76,17 @@ export default function AboutPage() {
 
       <section className="py-20 md:py-28">
         <div className={`${container} grid gap-16 lg:grid-cols-12`}>
-          <article className="lg:col-span-7 max-w-[68ch] space-y-6 text-[1.075rem] leading-[1.75] text-foreground/85">
-            <p className="font-serif text-2xl leading-snug text-foreground md:text-[1.75rem]">
+          <article className="lg:col-span-7 max-w-[68ch] space-y-6 text-[1.075rem] leading-[1.8] text-mist">
+            <p className="font-serif text-[1.75rem] leading-snug text-ivory md:text-[2.1rem]">
               I am a builder, an entrepreneur and a doctoral researcher working where artificial intelligence, deep technology and systems innovation meet. For over a decade my mission has stayed the same: take ambitious technical concepts, interrogate their assumptions, and turn them into products that survive the real world.
             </p>
 
-            <h2 className="pt-8 font-serif text-3xl text-foreground">The engineering</h2>
+            <h2 className="pt-10 font-serif text-[2.25rem] text-ivory">The engineering</h2>
             <p>
               My engineering career spans semiconductors, ocean sensing, clean energy and medical robotics. At ASML I worked as a systems engineer on extreme ultraviolet lithography systems, doing metrology and wafer alignment to nanometre accuracy. At Skytree, a spinout of the European Space Agency, I helped validate its core carbon capture technology. At Vitestro I led the verification and validation of the world&apos;s first autonomous robotic phlebotomy device, a clinical system that draws blood with precision and reliability.
             </p>
 
-            <h2 className="pt-8 font-serif text-3xl text-foreground">The research and the book</h2>
+            <h2 className="pt-10 font-serif text-[2.25rem] text-ivory">The research and the book</h2>
             <p>
               Alongside industry, I am pursuing a Doctorate in Business Administration at Golden Gate University in San Francisco. Using the MIT iEcosystem framework, my research compares deep tech ecosystems in Nigeria and the Netherlands, exploring how capital, policy, universities and industry interact to turn scientific breakthroughs into scalable companies.
             </p>
@@ -95,7 +101,7 @@ export default function AboutPage() {
               The work is driven by a belief that innovation only matters when it measurably advances industries, communities and economies. As an innovation strategist I have partnered with Hope Amplified, Meyana Bioenergy and the Lagos and Plateau State Governments on strategies that move ideas beyond theory and into execution.
             </p>
 
-            <h2 className="pt-8 font-serif text-3xl text-foreground">Why I built Ambitful AI</h2>
+            <h2 className="pt-10 font-serif text-[2.25rem] text-ivory">Why I built Ambitful AI</h2>
             <p>
               Working for global deep tech companies, winning places in competitive fellowships and helping organisations secure grant funding, I kept seeing the same thing. Brilliant people missed life-changing opportunities because finding and winning them takes insider knowledge, elite networks and hundreds of hours of preparation.
             </p>
@@ -107,7 +113,7 @@ export default function AboutPage() {
               , an opportunity intelligence platform that helps ambitious people discover opportunities and position themselves to win on a global stage, whatever connections they were born with.
             </p>
 
-            <h2 className="pt-8 font-serif text-3xl text-foreground">Beyond work</h2>
+            <h2 className="pt-10 font-serif text-[2.25rem] text-ivory">Beyond work</h2>
             <p>
               I am driven by curiosity and continuous learning. I find inspiration in reading, in hiking and cycling through new places, and in classical music. They remind me that innovation is not only a technical endeavour but a human one, shaped by curiosity, reflection and the search for meaning.
             </p>
@@ -118,12 +124,12 @@ export default function AboutPage() {
 
           <aside className="lg:col-span-4 lg:col-start-9">
             <div className="lg:sticky lg:top-28">
-              <h2 className="font-sans text-sm font-medium tracking-normal text-foreground">At a glance</h2>
-              <dl className="mt-4 divide-y divide-border border-y border-border">
+              <p className="eyebrow">At a glance</p>
+              <dl className="mt-6 divide-y divide-hairline border-y border-hairline">
                 {facts.map((fact) => (
                   <div key={fact.label} className="py-4">
-                    <dt className="text-sm text-muted-foreground">{fact.label}</dt>
-                    <dd className="mt-1 leading-relaxed text-foreground">{fact.value}</dd>
+                    <dt className="text-[0.8rem] font-semibold tracking-[0.03em] text-smoke">{fact.label}</dt>
+                    <dd className="mt-1.5 leading-relaxed text-ivory">{fact.value}</dd>
                   </div>
                 ))}
               </dl>
@@ -132,23 +138,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-border py-20 md:py-28" aria-label="What drives the work">
-        <div className={`${container} grid gap-12 md:grid-cols-3`}>
-          {drives.map((d) => (
-            <div key={d.title}>
-              <h2 className="font-serif text-2xl">{d.title}</h2>
-              <p className="mt-3 leading-relaxed text-muted-foreground">{d.text}</p>
+      <section className="border-t border-hairline bg-ink-raised py-20 md:py-28" aria-label="What drives the work">
+        <div className={`${container} grid gap-12 md:grid-cols-3 md:gap-0 md:divide-x md:divide-hairline`}>
+          {drives.map((d, i) => (
+            <div key={d.title} className={`md:px-10 ${i === 0 ? "md:pl-0" : ""} ${i === drives.length - 1 ? "md:pr-0" : ""}`}>
+              <h2 className="font-serif text-[2rem] text-ivory">{d.title}</h2>
+              <p className="mt-4 leading-[1.8] text-mist">{d.text}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="bg-[#0B2E23] py-24 text-[#F1EFE6] md:py-32">
+      <section className="border-t border-hairline py-28 text-ivory md:py-36">
         <figure className={`${container} max-w-4xl`}>
-          <blockquote className="space-y-6 font-serif text-3xl leading-snug md:text-[2.6rem]">
+          <blockquote className="space-y-6 font-serif text-[2.2rem] italic leading-snug md:text-[3.1rem]">
             <p>&ldquo;I want to be a crayon, colouring people&apos;s lives, satisfied daily with the joy of looking around and knowing I contributed my two cents towards helping someone achieve their dream.&rdquo;</p>
           </blockquote>
-          <figcaption className="mt-8 text-[#C9D3CC]">Destiny Ogwuche</figcaption>
+          <figcaption className="eyebrow mt-10">Destiny Ogwuche</figcaption>
         </figure>
       </section>
 

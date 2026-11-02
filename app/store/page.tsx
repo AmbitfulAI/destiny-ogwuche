@@ -50,7 +50,7 @@ export default function StorePage() {
           )}
           {groups.map((group) => (
             <div key={group.type} className="grid gap-10 md:grid-cols-12">
-              <h2 className="font-serif text-3xl md:col-span-3">{groupTitles[group.type]}</h2>
+              <h2 className="font-serif text-[2.15rem] md:col-span-3">{groupTitles[group.type]}</h2>
               <ul className="md:col-span-9 divide-y divide-border border-y border-border">
                 {group.items.map((item) => (
                   <li key={item.slug} className="grid gap-6 py-10 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-10">
@@ -61,7 +61,7 @@ export default function StorePage() {
                         </div>
                       )}
                       <div>
-                        <h3 className="font-serif text-2xl leading-snug">{item.title}</h3>
+                        <h3 className="font-serif text-[1.75rem] leading-snug">{item.title}</h3>
                         <p className="mt-2 max-w-[60ch] leading-relaxed text-muted-foreground">{item.summary}</p>
                         {item.body && (
                           <details className="group mt-3">
@@ -75,7 +75,7 @@ export default function StorePage() {
                       </div>
                     </div>
                     <div className="flex flex-col items-start gap-3 sm:items-end sm:text-right">
-                      <p className="font-serif text-2xl">{item.price || "Price on request"}</p>
+                      <p className="font-serif text-[1.75rem]">{item.price || "Price on request"}</p>
                       {item.status === "Coming soon" && <p className="text-sm text-accent">Coming soon</p>}
                       {item.ctaUrl &&
                         (isExternal(item.ctaUrl) ? (
@@ -109,7 +109,7 @@ export default function StorePage() {
       <section className="border-t border-border bg-secondary/50 py-16 md:py-24" aria-labelledby="store-updates">
         <div className={`${container} grid gap-10 md:grid-cols-12`}>
           <div className="md:col-span-5">
-            <h2 id="store-updates" className="font-serif text-3xl md:text-4xl">Hear when new material is ready</h2>
+            <h2 id="store-updates" className="font-serif text-[2.15rem] md:text-[2.6rem]">Hear when new material is ready</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               Courses, videos and materials are on the way. Join the list for first access and the free opening of the book.
             </p>

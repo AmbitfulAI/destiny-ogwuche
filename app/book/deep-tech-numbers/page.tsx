@@ -20,7 +20,7 @@ function FigureList({ id, title, note, figures: list }: { id: string; title: str
   return (
     <section className="mb-20 grid gap-8 md:grid-cols-12 md:gap-10" aria-labelledby={id}>
       <div className="md:col-span-4">
-        <h2 id={id} className="font-serif text-3xl leading-tight md:text-4xl">
+        <h2 id={id} className="font-serif text-[2.15rem] leading-tight md:text-[2.6rem]">
           {title}
         </h2>
         {note && <p className="mt-4 max-w-xs leading-relaxed text-muted-foreground">{note}</p>}
@@ -28,7 +28,7 @@ function FigureList({ id, title, note, figures: list }: { id: string; title: str
       <ul className="divide-y divide-border border-y border-border md:col-span-8">
         {list.map((figure) => (
           <li key={figure.id} id={figure.id} className="scroll-mt-28 py-8">
-            <h3 className="font-serif text-2xl leading-snug">{figure.headline}</h3>
+            <h3 className="font-serif text-[1.75rem] leading-snug">{figure.headline}</h3>
             <p className="mt-3 max-w-[68ch] leading-relaxed text-muted-foreground">{figure.detail}</p>
           </li>
         ))}
@@ -71,7 +71,7 @@ export default function NumbersPage() {
           />
 
           <section className="grid gap-8 border-t border-border pt-16 md:grid-cols-12 md:gap-10" aria-labelledby="method-title">
-            <h2 id="method-title" className="font-serif text-3xl leading-tight md:col-span-4 md:text-4xl">
+            <h2 id="method-title" className="font-serif text-[2.15rem] leading-tight md:col-span-4 md:text-[2.6rem]">
               How the study worked
             </h2>
             <div className="max-w-[68ch] space-y-5 text-lg leading-relaxed text-muted-foreground md:col-span-8">

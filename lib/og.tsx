@@ -1,15 +1,15 @@
 import { ImageResponse } from "next/og"
 
-// Link-preview images (LinkedIn, WhatsApp, X, Slack) in the site's green and gold.
+// Link-preview images (LinkedIn, WhatsApp, X, Slack) in the site's ink and champagne.
 
 export const ogSize = { width: 1200, height: 630 }
 export const ogContentType = "image/png"
 
-// Newsreader from Google Fonts, subset to the characters used. Falls back to a default serif if unreachable.
-async function loadNewsreader(text: string): Promise<ArrayBuffer | null> {
+// Cormorant Garamond from Google Fonts, subset to the characters used. Falls back to a default serif if unreachable.
+async function loadDisplayFont(text: string): Promise<ArrayBuffer | null> {
   try {
     const css = await (
-      await fetch(`https://fonts.googleapis.com/css2?family=Newsreader:wght@400&text=${encodeURIComponent(text)}`)
+      await fetch(`https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&text=${encodeURIComponent(text)}`)
     ).text()
     const url = css.match(/src: url\((.+?)\) format\('(opentype|truetype)'\)/)?.[1]
     if (!url) return null
@@ -42,9 +42,9 @@ export async function renderOg({
 }) {
   const footer = "destinyogwuche.com"
   const sub = subtitle ? clip(subtitle, 150) : undefined
-  const font = await loadNewsreader(`${eyebrow}${title}${sub ?? ""}${footer}…`)
+  const font = await loadDisplayFont(`${eyebrow}${title}${sub ?? ""}${footer}…`)
   const textWidth = image ? 1200 - imageWidth : 1200
-  const titleSize = title.length > 70 ? 54 : title.length > 40 ? 64 : 80
+  const titleSize = title.length > 70 ? 60 : title.length > 40 ? 72 : 92
 
   return new ImageResponse(
     (
@@ -54,9 +54,9 @@ export async function renderOg({
           height: "100%",
           display: "flex",
           position: "relative",
-          background: "linear-gradient(135deg, #0F3A2D 0%, #0B2E23 55%, #062019 100%)",
-          color: "#F1EFE6",
-          fontFamily: font ? "Newsreader" : "serif",
+          background: "radial-gradient(ellipse at 75% 40%, #1E2126 0%, #111419 45%, #0B0D10 80%)",
+          color: "#EEE9DF",
+          fontFamily: font ? "Cormorant Garamond" : "serif",
         }}
       >
         <div
@@ -70,12 +70,15 @@ export async function renderOg({
           }}
         >
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 26, color: "#E2B35A" }}>{eyebrow}</div>
+            <div style={{ display: "flex", alignItems: "center", fontSize: 26, color: "#D2B583" }}>
+              <div style={{ width: 40, height: 1, background: "#D2B583", marginRight: 16 }} />
+              {eyebrow}
+            </div>
             <div style={{ fontSize: titleSize, lineHeight: 1.05, marginTop: 26, letterSpacing: -1 }}>{title}</div>
-            {sub && <div style={{ fontSize: 30, lineHeight: 1.35, marginTop: 26, color: "#C9D3CC" }}>{sub}</div>}
+            {sub && <div style={{ fontSize: 32, lineHeight: 1.3, marginTop: 26, color: "#A7ADB5" }}>{sub}</div>}
           </div>
-          <div style={{ display: "flex", alignItems: "center", fontSize: 24, color: "#C9D3CC" }}>
-            <div style={{ width: 44, height: 2, background: "#C99A3E", marginRight: 18 }} />
+          <div style={{ display: "flex", alignItems: "center", fontSize: 24, color: "#A7ADB5" }}>
+            <div style={{ width: 44, height: 1, background: "#D2B583", marginRight: 18 }} />
             <div>{footer}</div>
           </div>
         </div>
@@ -90,13 +93,13 @@ export async function renderOg({
                 top: 0,
                 width: 140,
                 height: 630,
-                background: "linear-gradient(to right, #0B2E23, rgba(11,46,35,0))",
+                background: "linear-gradient(to right, #0F1216, rgba(15,18,22,0))",
               }}
             />
           </div>
         )}
       </div>
     ),
-    { ...ogSize, fonts: font ? [{ name: "Newsreader", data: font, style: "normal", weight: 400 }] : [] },
+    { ...ogSize, fonts: font ? [{ name: "Cormorant Garamond", data: font, style: "normal", weight: 500 }] : [] },
   )
 }

@@ -60,26 +60,26 @@ export default function BookPage() {
       <Navigation />
 
       {/* Hero */}
-      <section data-hero-section className="relative overflow-hidden bg-[#0B2E23] text-[#F1EFE6]" aria-labelledby="book-title">
+      <section className="relative overflow-hidden bg-ink text-ivory" aria-labelledby="book-title">
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_72%_45%,#134232_0%,#0B2E23_55%,#062019_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_72%_45%,#1E2126_0%,#14171B_40%,#0B0D10_75%)]"
           aria-hidden="true"
         />
         <div className={`${container} relative grid items-center gap-14 pt-36 pb-20 md:pt-44 md:pb-28 lg:grid-cols-12`}>
           <div className="lg:col-span-7">
-            <p className="settle text-[0.95rem] text-[#E2B35A]">The book, {book.launchLabel.replace("Coming", "coming")}</p>
-            <h1 id="book-title" className="settle settle-delay-1 mt-5 font-serif text-[3.2rem] leading-[0.98] tracking-[-0.02em] md:text-7xl lg:text-[5.5rem]">
+            <p className="settle eyebrow">The book, {book.launchLabel.replace("Coming", "coming")}</p>
+            <h1 id="book-title" className="settle settle-delay-1 mt-7 font-serif text-[3.6rem] leading-[0.94] tracking-[-0.015em] md:text-[5rem] lg:text-[6.25rem]">
               {book.title}
             </h1>
-            <p className="settle settle-delay-1 mt-5 font-serif text-2xl italic leading-snug text-[#C9D3CC] md:text-[2rem]">{book.subtitle}</p>
-            <p className="settle settle-delay-2 mt-8 text-[0.95rem] text-[#C9D3CC]">By {author.coverName}</p>
-            <p className="settle settle-delay-2 mt-6 max-w-[36rem] text-lg leading-relaxed text-[#F1EFE6]/90">{book.pitch}</p>
+            <p className="settle settle-delay-1 mt-5 font-serif text-[1.85rem] italic leading-snug text-mist md:text-[2.4rem]">{book.subtitle}</p>
+            <p className="settle settle-delay-2 mt-8 text-[0.95rem] text-mist">By {author.coverName}</p>
+            <p className="settle settle-delay-2 mt-6 max-w-[36rem] text-lg leading-relaxed text-ivory/90">{book.pitch}</p>
             <div className="settle settle-delay-3 mt-10 flex flex-wrap gap-3">
               <ActionLink href="#sample" variant="solid-on-dark">
                 Read the opening free
               </ActionLink>
               {book.preorderLinks.map((link) => (
-                <ActionLink key={link.url} href={link.url} target="_blank" rel="noopener" variant="outline-on-dark">
+                <ActionLink key={link.url} href={link.url} target="_blank" rel="noopener" variant="outline-on-dark" arrow={false}>
                   Pre-order: {link.label}
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </ActionLink>
@@ -92,7 +92,8 @@ export default function BookPage() {
             </div>
           </div>
           <div className="flex justify-center lg:col-span-5 lg:justify-end">
-            <div className="w-60 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.75)] ring-1 ring-white/10 md:w-80">
+            <div className="frame-offset w-60 md:w-80">
+              <div className="relative shadow-[0_40px_80px_-30px_rgba(0,0,0,0.85)]">
               <Image
                 src={book.coverPath}
                 alt={`Cover of ${book.fullTitle} by ${author.coverName}`}
@@ -101,7 +102,8 @@ export default function BookPage() {
                 priority
                 sizes="(min-width: 768px) 320px, 240px"
                 className="h-auto w-full"
-              />
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -110,14 +112,14 @@ export default function BookPage() {
       {/* About the book */}
       <section className="py-24 md:py-32" aria-labelledby="about-book-title">
         <div className={`${container} grid gap-10 md:grid-cols-12`}>
-          <h2 id="about-book-title" className="font-serif text-4xl leading-[1.1] md:col-span-4 md:text-5xl">
+          <h2 id="about-book-title" className="font-serif text-[2.6rem] leading-[1.1] md:col-span-4 md:text-[3.5rem]">
             The gap is real. The constraint has moved.
           </h2>
           <div className="max-w-[68ch] space-y-6 md:col-span-7 md:col-start-6">
             {book.longDescription.map((paragraph, i) => (
               <p
                 key={paragraph.slice(0, 32)}
-                className={i === 0 ? "font-serif text-2xl leading-snug text-foreground" : "text-lg leading-[1.75] text-muted-foreground"}
+                className={i === 0 ? "font-serif text-[1.75rem] leading-snug text-foreground" : "text-lg leading-[1.75] text-muted-foreground"}
               >
                 {paragraph}
               </p>
@@ -130,7 +132,7 @@ export default function BookPage() {
       <section className="border-y border-border bg-secondary/50 py-20 md:py-28" aria-labelledby="numbers-title">
         <div className={container}>
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 id="numbers-title" className="max-w-2xl font-serif text-4xl leading-[1.1] md:text-5xl">
+            <h2 id="numbers-title" className="max-w-2xl font-serif text-[2.6rem] leading-[1.1] md:text-[3.5rem]">
               Nigeria and the Netherlands, 2020 to 2025
             </h2>
             <ActionLink href="/book/deep-tech-numbers" variant="text">
@@ -151,14 +153,14 @@ export default function BookPage() {
       {/* Contents */}
       <section className="py-24 md:py-32" aria-labelledby="contents-title">
         <div className={container}>
-          <h2 id="contents-title" className="font-serif text-4xl leading-[1.1] md:text-5xl">
+          <h2 id="contents-title" className="font-serif text-[2.6rem] leading-[1.1] md:text-[3.5rem]">
             Three parts, fifteen chapters
           </h2>
           <div className="mt-14 divide-y divide-border border-y border-border">
             {book.parts.map((part, partIndex) => (
               <div key={part.name} className="grid gap-6 py-12 md:grid-cols-12 md:gap-10">
                 <div className="md:col-span-4">
-                  <h3 className="font-serif text-2xl leading-snug">{part.name}</h3>
+                  <h3 className="font-serif text-[1.75rem] leading-snug">{part.name}</h3>
                   <p className="mt-3 leading-relaxed text-muted-foreground">{part.summary}</p>
                 </div>
                 <ol className="space-y-4 md:col-span-7 md:col-start-6">
@@ -176,25 +178,25 @@ export default function BookPage() {
       </section>
 
       {/* Ideas */}
-      <section className="bg-[#0B2E23] py-24 text-[#F1EFE6] md:py-32" aria-labelledby="ideas-title">
+      <section className="bg-ink-raised py-24 text-ivory md:py-32" aria-labelledby="ideas-title">
         <div className={`${container} grid gap-12 md:grid-cols-12`}>
           <div className="md:sticky md:top-28 md:col-span-4 md:self-start">
-            <h2 id="ideas-title" className="font-serif text-4xl leading-[1.1] md:text-5xl">
+            <h2 id="ideas-title" className="font-serif text-[2.6rem] leading-[1.1] md:text-[3.5rem]">
               A vocabulary for building the ground
             </h2>
-            <p className="mt-5 max-w-sm leading-relaxed text-[#C9D3CC]">
+            <p className="mt-5 max-w-sm leading-relaxed text-mist">
               The book names the mechanisms that decide whether hard technology can grow in a place. Each one has its own page, with a definition you can cite.
             </p>
             <ActionLink href="/ideas" variant="outline-on-dark" className="mt-8">
               All {ideas.length} ideas
             </ActionLink>
           </div>
-          <ul className="grid gap-x-10 border-t border-[#F1EFE6]/12 sm:grid-cols-2 md:col-span-8 md:col-start-5">
+          <ul className="grid gap-x-10 border-t border-hairline sm:grid-cols-2 md:col-span-8 md:col-start-5">
             {ideas.map((idea) => (
-              <li key={idea.slug} className="border-b border-[#F1EFE6]/12">
+              <li key={idea.slug} className="border-b border-hairline">
                 <Link href={`/ideas/${idea.slug}`} className="group block py-5">
-                  <span className="font-serif text-xl text-[#F1EFE6] transition-colors group-hover:text-[#E2B35A]">{idea.term}</span>
-                  <span className="mt-1 line-clamp-2 text-[0.95rem] leading-relaxed text-[#C9D3CC]">{idea.definition}</span>
+                  <span className="font-serif text-[1.4rem] text-ivory transition-colors group-hover:text-champagne">{idea.term}</span>
+                  <span className="mt-1 line-clamp-2 text-[0.95rem] leading-relaxed text-mist">{idea.definition}</span>
                 </Link>
               </li>
             ))}
@@ -205,13 +207,13 @@ export default function BookPage() {
       {/* Audiences */}
       <section className="py-24 md:py-32" aria-labelledby="readers-title">
         <div className={container}>
-          <h2 id="readers-title" className="max-w-2xl font-serif text-4xl leading-[1.1] md:text-5xl">
+          <h2 id="readers-title" className="max-w-2xl font-serif text-[2.6rem] leading-[1.1] md:text-[3.5rem]">
             For the people who build, fund and govern
           </h2>
           <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {book.audiences.map((audience) => (
               <div key={audience.who} className="border-t border-foreground/70 pt-6">
-                <h3 className="font-serif text-2xl">{audience.who}</h3>
+                <h3 className="font-serif text-[1.75rem]">{audience.who}</h3>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{audience.what}</p>
               </div>
             ))}
@@ -230,7 +232,7 @@ export default function BookPage() {
       <section id="sample" className="scroll-mt-24 border-y border-border bg-secondary/50 py-24 md:py-32" aria-labelledby="sample-title">
         <div className={`${container} grid gap-12 md:grid-cols-12`}>
           <div className="md:col-span-5">
-            <h2 id="sample-title" className="font-serif text-4xl leading-[1.1] md:text-5xl">
+            <h2 id="sample-title" className="font-serif text-[2.6rem] leading-[1.1] md:text-[3.5rem]">
               Read the opening before anyone else
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
@@ -246,13 +248,13 @@ export default function BookPage() {
       {/* FAQ */}
       <section className="py-24 md:py-32" aria-labelledby="faq-title">
         <div className={`${container} grid gap-10 md:grid-cols-12`}>
-          <h2 id="faq-title" className="font-serif text-4xl leading-[1.1] md:col-span-4 md:text-5xl">
+          <h2 id="faq-title" className="font-serif text-[2.6rem] leading-[1.1] md:col-span-4 md:text-[3.5rem]">
             Questions readers ask
           </h2>
           <div className="divide-y divide-border border-y border-border md:col-span-8 md:col-start-5">
             {book.faq.map((item) => (
               <details key={item.q} className="group py-6">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-xl text-foreground [&::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-[1.4rem] text-foreground [&::-webkit-details-marker]:hidden">
                   {item.q}
                   <span className="text-2xl leading-none text-accent transition-transform group-open:rotate-45" aria-hidden="true">
                     +
@@ -274,8 +276,8 @@ export default function BookPage() {
             </div>
           </div>
           <div className="md:col-span-7 md:col-start-6">
-            <p className="text-[0.95rem] text-accent">About the author</p>
-            <h2 id="author-title" className="mt-4 font-serif text-4xl leading-[1.1] md:text-5xl">
+            <p className="eyebrow">About the author</p>
+            <h2 id="author-title" className="mt-4 font-serif text-[2.6rem] leading-[1.1] md:text-[3.5rem]">
               {author.name}
             </h2>
             <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-muted-foreground">{author.bio150}</p>

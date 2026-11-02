@@ -21,11 +21,11 @@ export default function ResearchPage() {
       <section className="py-16 md:py-24" aria-labelledby="doctoral-title">
         <div className={`${container} grid gap-12 md:grid-cols-12`}>
           <div className="md:col-span-4">
-            <p className="text-[0.95rem] text-accent">Doctoral research</p>
+            <p className="eyebrow">Doctoral research</p>
             <p className="mt-2 text-sm text-muted-foreground">{doctoral.citation.split("|").map((s) => s.trim()).join(", ")}</p>
           </div>
           <div className="md:col-span-8">
-            <h2 id="doctoral-title" className="font-serif text-3xl leading-tight md:text-4xl">
+            <h2 id="doctoral-title" className="font-serif text-[2.15rem] leading-tight md:text-[2.6rem]">
               {doctoral.title}
             </h2>
             <p className="mt-6 max-w-[68ch] leading-[1.75] text-muted-foreground">{doctoral.description}</p>
@@ -52,13 +52,13 @@ export default function ResearchPage() {
 
       <section className="border-t border-border py-16 md:py-24" aria-labelledby="publications-title">
         <div className={`${container} grid gap-12 md:grid-cols-12`}>
-          <h2 id="publications-title" className="font-serif text-4xl leading-[1.1] md:col-span-4 md:text-5xl">
+          <h2 id="publications-title" className="font-serif text-[2.6rem] leading-[1.1] md:col-span-4 md:text-[3.5rem]">
             Publications and articles
           </h2>
           <ol className="md:col-span-8 divide-y divide-border border-y border-border">
             {others.map((pub) => (
               <li key={pub.title} className="py-10">
-                <h3 className="font-serif text-2xl leading-snug">{pub.title}</h3>
+                <h3 className="font-serif text-[1.75rem] leading-snug">{pub.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{pub.citation.split("|").map((s) => s.trim()).join(", ")}</p>
                 <p className="mt-4 max-w-[68ch] leading-relaxed text-foreground/80">{pub.description}</p>
                 {pub.link && (

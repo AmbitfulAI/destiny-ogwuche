@@ -34,13 +34,13 @@ export default function BookACallPage() {
       {sessions.length > 0 && (
         <section className="py-16 md:py-20" aria-labelledby="sessions-title">
           <div className={`${container} grid gap-10 md:grid-cols-12`}>
-            <h2 id="sessions-title" className="font-serif text-3xl md:col-span-3 md:text-4xl">
+            <h2 id="sessions-title" className="font-serif text-[2.15rem] md:col-span-3 md:text-[2.6rem]">
               Ways to meet
             </h2>
             <ul className="md:col-span-9 grid gap-x-10 gap-y-8 sm:grid-cols-2">
               {sessions.map((s) => (
                 <li key={s.title} className="border-t border-border pt-6">
-                  <h3 className="font-serif text-2xl leading-snug">{s.title}</h3>
+                  <h3 className="font-serif text-[1.75rem] leading-snug">{s.title}</h3>
                   {(s.duration || s.price) && (
                     <p className="mt-1 text-sm text-accent">{[s.duration, s.price].filter(Boolean).join(", ")}</p>
                   )}
@@ -54,7 +54,7 @@ export default function BookACallPage() {
 
       <section className="border-t border-border py-16 md:py-24" aria-labelledby="schedule-title">
         <div className={container}>
-          <h2 id="schedule-title" className="font-serif text-3xl md:text-4xl">
+          <h2 id="schedule-title" className="font-serif text-[2.15rem] md:text-[2.6rem]">
             {canEmbed ? "Choose a time" : "Request a time"}
           </h2>
           {canEmbed ? (

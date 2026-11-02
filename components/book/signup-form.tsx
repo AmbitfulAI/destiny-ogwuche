@@ -36,7 +36,7 @@ export function SignupForm({ source = "book-page", compact = false }: { source?:
       <div className="flex items-start gap-4 p-6 border border-primary/30 bg-primary/5" role="status">
         <Check className="w-6 h-6 text-primary shrink-0 mt-0.5" aria-hidden="true" />
         <div>
-          <p className="font-serif text-xl text-foreground mb-1">You are on the list.</p>
+          <p className="font-serif text-[1.4rem] text-foreground mb-1">You are on the list.</p>
           <p className="text-muted-foreground text-sm leading-relaxed">
             Thank you. The free sample, the Preface and &ldquo;A Note on Words&rdquo;, will arrive by email, along with the launch date and pre-order links.
           </p>

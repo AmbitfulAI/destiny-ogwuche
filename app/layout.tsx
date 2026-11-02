@@ -1,19 +1,16 @@
-import type { Metadata } from 'next'
-import { Newsreader } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
-// Newsreader: an editorial serif for headings. IBM Plex Sans (self-hosted in public/fonts, see globals.css):
-// a sans with engineering roots for text.
-const newsreader = Newsreader({
-  subsets: ['latin'],
-  variable: '--font-newsreader',
-  axes: ['opsz'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-})
+// Fonts are self-hosted from public/fonts and declared in globals.css:
+// Cormorant Garamond for display, Manrope for text.
 
-const SITE_TITLE = 'Destiny Ogwuche | Deep Tech Engineer and Author of Towards Deep Tech in Africa'
-const SITE_DESCRIPTION = 'Destiny Ogwuche (Destiny Innosuccess Ogwuche) is a Nigerian-born, Netherlands-based deep tech engineer, founder of Ambitful AI and author of Towards Deep Tech in Africa: Building the Ground We Stand On.'
+const SITE_TITLE = 'Destiny Ogwuche | Deep Tech Founder, Engineer and Author'
+const SITE_DESCRIPTION = 'Destiny Ogwuche (Destiny Innosuccess Ogwuche) is a Nigerian-born, Netherlands-based deep tech founder and engineer. Founder of Ambitful AI, engineer at ASML and Vitestro, and author of Towards Deep Tech in Africa: Building the Ground We Stand On.'
+
+export const viewport: Viewport = {
+  themeColor: '#0B0D10',
+  colorScheme: 'dark',
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.destinyogwuche.com'),
@@ -52,15 +49,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </head>
-      <body className={`${newsreader.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          forcedTheme="dark"
+          defaultTheme="dark"
           disableTransitionOnChange
         >
           <JsonLd data={[personSchema(), websiteSchema()]} />

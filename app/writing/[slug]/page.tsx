@@ -84,7 +84,7 @@ export default async function PostPage({ params }: Props) {
             <Link href="/writing" className="inline-flex items-center gap-2 text-[0.95rem] text-muted-foreground hover:text-foreground">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" /> All writing
             </Link>
-            <h1 className="mt-10 font-serif text-[2.6rem] leading-[1.08] md:text-6xl">{post.title}</h1>
+            <h1 className="mt-10 font-serif text-[2.6rem] leading-[1.08] md:text-[4.25rem]">{post.title}</h1>
             <p className="mt-6 text-xl leading-relaxed text-muted-foreground">{post.summary}</p>
             <div className="mt-8 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 border-t border-border pt-5 text-sm text-muted-foreground">
               <p>
@@ -111,7 +111,7 @@ export default async function PostPage({ params }: Props) {
           <div className="prose-article mx-auto mt-12 max-w-[44rem]" dangerouslySetInnerHTML={{ __html: renderMarkdown(post.body ?? "") }} />
 
           <div className="mx-auto mt-20 max-w-[44rem] border-t border-border pt-10">
-            <h2 className="font-serif text-2xl">Get the next essay by email</h2>
+            <h2 className="font-serif text-[1.75rem]">Get the next essay by email</h2>
             <p className="mt-2 text-muted-foreground">Plus the free opening of my book, Towards Deep Tech in Africa.</p>
             <div className="mt-6">
               <SignupForm source={`post-${post.slug}`} compact />
@@ -119,7 +119,7 @@ export default async function PostPage({ params }: Props) {
             {older && (
               <Link href={`/writing/${older.slug}`} className="group mt-14 block border-t border-border pt-8">
                 <span className="text-sm text-muted-foreground">Previous essay</span>
-                <span className="mt-1 block font-serif text-2xl transition-colors group-hover:text-accent">{older.title}</span>
+                <span className="mt-1 block font-serif text-[1.75rem] transition-colors group-hover:text-accent">{older.title}</span>
               </Link>
             )}
           </div>

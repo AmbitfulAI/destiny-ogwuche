@@ -90,7 +90,7 @@ export default function GalleryPage() {
                   <div className="w-full lg:w-1/2 space-y-6">
                     <p className="text-[0.95rem] text-accent">{image.date}</p>
                     
-                    <h2 className="font-serif text-3xl leading-tight md:text-4xl">
+                    <h2 className="font-serif text-[2.15rem] leading-tight md:text-[2.6rem]">
                       {image.alt}
                     </h2>
 
@@ -159,7 +159,7 @@ export default function GalleryPage() {
             </div>
 
             <div className="py-8 text-center space-y-2">
-              <h3 className="font-serif text-2xl text-foreground">{filteredImages[lightboxIndex].alt}</h3>
+              <h3 className="font-serif text-[1.75rem] text-foreground">{filteredImages[lightboxIndex].alt}</h3>
               <p className="text-muted-foreground">{filteredImages[lightboxIndex].date}, {filteredImages[lightboxIndex].category}</p>
             </div>
           </div>

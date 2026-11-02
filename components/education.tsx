@@ -5,7 +5,7 @@ export function Education() {
   return (
     <section id="education" className="border-t border-border py-24 md:py-32" aria-labelledby="education-title">
       <div className={`${container} grid gap-12 md:grid-cols-12`}>
-        <h2 id="education-title" className="font-serif text-4xl leading-[1.1] md:col-span-4 md:text-5xl">
+        <h2 id="education-title" className="font-serif text-[2.6rem] leading-[1.1] md:col-span-4 md:text-[3.5rem]">
           Education
         </h2>
         <ol className="md:col-span-8 divide-y divide-border border-y border-border">
@@ -13,9 +13,9 @@ export function Education() {
             const [school, place] = edu.institution.split("|").map((s) => s.trim())
             return (
               <li key={edu.degree} className="grid gap-4 py-10 sm:grid-cols-[5rem_1fr]">
-                <p className="font-serif text-xl text-accent">{edu.year}</p>
+                <p className="font-serif text-[1.4rem] text-accent">{edu.year}</p>
                 <div>
-                  <h3 className="font-serif text-2xl leading-snug">{edu.degree}</h3>
+                  <h3 className="font-serif text-[1.75rem] leading-snug">{edu.degree}</h3>
                   <p className="mt-1 text-muted-foreground">
                     {school}
                     {place ? `, ${place}` : ""}

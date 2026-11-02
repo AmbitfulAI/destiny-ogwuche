@@ -37,13 +37,13 @@ export function Thinking() {
   return (
     <section id="thinking" className="border-t border-border py-24 md:py-32" aria-labelledby="thinking-title">
       <div className={`${container} grid gap-12 md:grid-cols-12`}>
-        <h2 id="thinking-title" className="font-serif text-4xl leading-[1.1] md:col-span-4 md:text-5xl">
+        <h2 id="thinking-title" className="font-serif text-[2.6rem] leading-[1.1] md:col-span-4 md:text-[3.5rem]">
           How I work
         </h2>
         <dl className="grid gap-x-12 gap-y-10 sm:grid-cols-2 md:col-span-8">
           {principles.map((p) => (
             <div key={p.title} className="border-t border-border pt-6">
-              <dt className="font-serif text-2xl">{p.title}</dt>
+              <dt className="font-serif text-[1.75rem]">{p.title}</dt>
               <dd className="mt-3 leading-relaxed text-muted-foreground">{p.description}</dd>
             </div>
           ))}

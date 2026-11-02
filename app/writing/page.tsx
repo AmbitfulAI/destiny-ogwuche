@@ -65,7 +65,7 @@ export default function WritingPage() {
                       <p className="text-sm text-muted-foreground">
                         <time dateTime={post.date}>{formatDate(post.date)}</time>, {readingMinutes(post)} min read
                       </p>
-                      <h2 className="mt-3 font-serif text-3xl leading-tight transition-colors group-hover:text-accent">{post.title}</h2>
+                      <h2 className="mt-3 font-serif text-[2.15rem] leading-tight transition-colors group-hover:text-accent">{post.title}</h2>
                       <p className="mt-3 max-w-[64ch] leading-relaxed text-muted-foreground">{post.summary}</p>
                     </Link>
                   </li>
@@ -75,7 +75,7 @@ export default function WritingPage() {
           </div>
           <aside className="lg:col-span-4">
             <div className="border-t border-border pt-6 lg:sticky lg:top-28">
-              <h2 className="font-serif text-2xl">Get new essays by email</h2>
+              <h2 className="font-serif text-[1.75rem]">Get new essays by email</h2>
               <p className="mt-3 leading-relaxed text-muted-foreground">
                 Occasional essays, plus the free opening of the book. No spam, and you can unsubscribe at any time.
               </p>

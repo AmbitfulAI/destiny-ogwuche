@@ -94,7 +94,7 @@ export default function ContactPage() {
             {isSubmitted ? (
               <div className="border border-border bg-card p-10" role="status">
                 <Check className="h-8 w-8 text-primary" aria-hidden="true" />
-                <h2 className="mt-4 font-serif text-3xl">Message sent</h2>
+                <h2 className="mt-4 font-serif text-[2.15rem]">Message sent</h2>
                 <p className="mt-3 leading-relaxed text-muted-foreground">Thank you for writing. I will reply as soon as I can.</p>
                 <button type="button" onClick={() => setIsSubmitted(false)} className="text-link mt-6 text-foreground">
                   Send another message

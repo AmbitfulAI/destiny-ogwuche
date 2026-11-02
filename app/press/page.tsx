@@ -38,7 +38,7 @@ const topics = [
 function Row({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
     <section className="grid gap-8 py-16 md:grid-cols-12 md:gap-10 md:py-20" aria-labelledby={id}>
-      <h2 id={id} className="font-serif text-3xl leading-tight md:col-span-4 md:text-4xl">
+      <h2 id={id} className="font-serif text-[2.15rem] leading-tight md:col-span-4 md:text-[2.6rem]">
         {title}
       </h2>
       <div className="md:col-span-8">{children}</div>
@@ -59,7 +59,7 @@ export default function PressPage() {
 
       <div className={`${container} divide-y divide-border`}>
         <Row id="brief-title" title="The book in brief">
-          <p className="font-serif text-2xl leading-snug">{book.pitch}</p>
+          <p className="font-serif text-[1.75rem] leading-snug">{book.pitch}</p>
           <p className="mt-6 max-w-[68ch] text-lg leading-relaxed text-muted-foreground">{book.description}</p>
           <ul className="mt-8 divide-y divide-border border-y border-border">
             {[...pressFacts, book.launchLabel].map((fact) => (
@@ -102,7 +102,7 @@ export default function PressPage() {
             </figure>
             <figure>
               <div className="relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-secondary">
-                <div className="relative h-[82%] aspect-[2/3] shadow-[0_24px_48px_-20px_rgba(11,46,35,0.55)]">
+                <div className="relative h-[82%] aspect-[2/3] shadow-[0_24px_48px_-20px_rgba(0,0,0,0.7)]">
                   <Image src={book.coverPath} alt={`Cover of ${book.fullTitle}`} fill sizes="240px" className="object-cover" />
                 </div>
               </div>
@@ -132,7 +132,7 @@ export default function PressPage() {
             {topics.map((topic) => (
               <li key={topic.slug}>
                 <Link href={`/ideas/${topic.slug}`} className="group flex items-center justify-between gap-6 py-5">
-                  <span className="font-serif text-xl transition-colors group-hover:text-accent">{topic.title}</span>
+                  <span className="font-serif text-[1.4rem] transition-colors group-hover:text-accent">{topic.title}</span>
                   <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-accent" aria-hidden="true" />
                 </Link>
               </li>
@@ -141,13 +141,13 @@ export default function PressPage() {
         </Row>
       </div>
 
-      <section className="bg-[#0B2E23] py-20 text-[#F1EFE6] md:py-28" aria-labelledby="requests-title">
+      <section className="bg-ink-raised py-20 text-ivory md:py-28" aria-labelledby="requests-title">
         <div className={`${container} grid gap-10 md:grid-cols-12 md:items-end`}>
           <div className="md:col-span-8">
-            <h2 id="requests-title" className="font-serif text-4xl leading-[1.1] md:text-5xl">
+            <h2 id="requests-title" className="font-serif text-[2.6rem] leading-[1.1] md:text-[3.5rem]">
               Interview and speaking requests
             </h2>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#C9D3CC]">
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-mist">
               I am happy to join podcasts, panels and interviews in English, in person or remotely.
             </p>
           </div>

@@ -61,25 +61,26 @@ export function Featured() {
   ];
 
   return (
-    <section className="border-t border-border py-24 md:py-32" aria-labelledby="featured-title">
+    <section className="border-t border-hairline py-24 md:py-32" aria-labelledby="featured-title">
       <div className={container}>
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-4">
-            <h2 id="featured-title" className="font-serif text-4xl leading-[1.1] md:text-5xl">
+            <p className="eyebrow">Press and stage</p>
+            <h2 id="featured-title" className="mt-6 font-serif text-[2.75rem] font-medium leading-[1.05] md:text-[3.5rem]">
               In the press and on stage
             </h2>
           </div>
           <ul className="md:col-span-8 grid gap-x-10 sm:grid-cols-2">
             {features.map((feature) => (
-              <li key={feature.outlet + feature.summary.slice(0, 12)} className="border-t border-border py-6">
-                <h3 className="font-sans text-base font-medium tracking-normal text-foreground">{feature.outlet}</h3>
-                <p className="mt-2 text-[0.95rem] leading-relaxed text-muted-foreground">{feature.summary}</p>
+              <li key={feature.outlet + feature.summary.slice(0, 12)} className="border-t border-hairline py-7">
+                <h3 className="font-serif text-[1.45rem] font-medium leading-tight text-ivory">{feature.outlet}</h3>
+                <p className="mt-3 text-[0.95rem] leading-[1.75] text-mist">{feature.summary}</p>
                 {feature.link !== "#" && (
                   <a
                     href={feature.link}
                     target="_blank"
                     rel="noopener"
-                    className="mt-3 inline-flex items-center gap-1 text-[0.95rem] text-foreground underline decoration-foreground/30 underline-offset-[0.3em] hover:decoration-foreground"
+                    className="mt-4 inline-flex items-center gap-1 text-[0.875rem] font-semibold text-champagne transition-colors hover:text-champagne-bright"
                   >
                     {feature.linkText}
                     <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />

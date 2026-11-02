@@ -19,9 +19,9 @@ export default function AwardsPage() {
 
       <section className="py-16 md:py-24" aria-labelledby="featured-award">
         <div className={`${container} grid gap-12 md:grid-cols-12`}>
-          <p className="font-serif text-2xl text-accent md:col-span-4">{featured.year}</p>
+          <p className="font-serif text-[1.75rem] text-accent md:col-span-4">{featured.year}</p>
           <div className="md:col-span-8">
-            <h2 id="featured-award" className="font-serif text-3xl leading-tight md:text-4xl">
+            <h2 id="featured-award" className="font-serif text-[2.15rem] leading-tight md:text-[2.6rem]">
               {featured.title}
             </h2>
             <p className="mt-6 max-w-[68ch] leading-[1.75] text-muted-foreground">{featured.description}</p>
@@ -31,7 +31,7 @@ export default function AwardsPage() {
 
       <section className="border-t border-border py-16 md:py-24" aria-labelledby="all-awards">
         <div className={`${container} grid gap-12 md:grid-cols-12`}>
-          <h2 id="all-awards" className="font-serif text-4xl leading-[1.1] md:col-span-4 md:text-5xl">
+          <h2 id="all-awards" className="font-serif text-[2.6rem] leading-[1.1] md:col-span-4 md:text-[3.5rem]">
             Earlier recognition
           </h2>
           <ol className="md:col-span-8 divide-y divide-border border-y border-border">
@@ -40,7 +40,7 @@ export default function AwardsPage() {
                 <details className="group py-6">
                   <summary className="grid cursor-pointer list-none grid-cols-[4rem_1fr_auto] items-baseline gap-4 [&::-webkit-details-marker]:hidden">
                     <span className="text-[0.95rem] text-accent">{award.year}</span>
-                    <span className="font-serif text-xl leading-snug">{award.title}</span>
+                    <span className="font-serif text-[1.4rem] leading-snug">{award.title}</span>
                     <Plus className="h-4 w-4 self-center text-muted-foreground transition-transform duration-200 group-open:rotate-45" aria-hidden="true" />
                   </summary>
                   <p className="mt-4 max-w-[64ch] pl-20 leading-relaxed text-muted-foreground">{award.description}</p>

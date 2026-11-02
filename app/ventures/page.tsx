@@ -22,7 +22,7 @@ export default function VenturesPage() {
             {ventures.map((venture) => (
               <li key={venture.name} className="grid gap-6 py-14 md:grid-cols-12 md:gap-10">
                 <div className="md:col-span-4">
-                  <h2 className="font-serif text-4xl leading-tight">{venture.name}</h2>
+                  <h2 className="font-serif text-[2.6rem] leading-tight">{venture.name}</h2>
                   <p className="mt-2 text-foreground/80">{venture.role}</p>
                   {venture.link && (
                     <a
@@ -46,13 +46,13 @@ export default function VenturesPage() {
 
       <section className="border-t border-border bg-secondary/50 py-20 md:py-28" aria-labelledby="projects-title">
         <div className={`${container} grid gap-12 md:grid-cols-12`}>
-          <h2 id="projects-title" className="font-serif text-4xl leading-[1.1] md:col-span-4 md:text-5xl">
+          <h2 id="projects-title" className="font-serif text-[2.6rem] leading-[1.1] md:col-span-4 md:text-[3.5rem]">
             Earlier projects
           </h2>
           <div className="grid gap-x-12 gap-y-12 sm:grid-cols-2 md:col-span-8">
             {innovations.map((item) => (
               <article key={item.name} className="border-t border-border pt-6">
-                <h3 className="font-serif text-2xl leading-snug">{item.name}</h3>
+                <h3 className="font-serif text-[1.75rem] leading-snug">{item.name}</h3>
                 <p className="mt-1 text-sm text-accent">{item.subtitle}</p>
                 <FullStory summary={item.summary} story={item.description} size="base" className="mt-4" />
               </article>

@@ -23,11 +23,11 @@ export default function ExperiencePage() {
               return (
                 <li key={exp.role + exp.company} className="grid gap-6 py-12 md:grid-cols-12 md:gap-10">
                   <div className="md:col-span-3">
-                    <p className="font-serif text-xl text-accent">{exp.period}</p>
+                    <p className="font-serif text-[1.4rem] text-accent">{exp.period}</p>
                     {place && <p className="mt-1 text-sm text-muted-foreground">{place}</p>}
                   </div>
                   <div className="md:col-span-9 lg:col-span-8">
-                    <h2 className="font-serif text-3xl leading-tight">{company}</h2>
+                    <h2 className="font-serif text-[2.15rem] leading-tight">{company}</h2>
                     <p className="mt-1 text-lg text-foreground/80">{exp.role}</p>
                     <FullStory summary={exp.summary} story={exp.description} className="mt-6" />
                     <ul className="mt-6 flex flex-wrap gap-2" aria-label="Areas">

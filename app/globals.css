@@ -168,6 +168,8 @@
   }
   html {
     -webkit-text-size-adjust: 100%;
+    /* Anchor links land below the fixed navigation bar. */
+    scroll-padding-top: 6rem;
   }
   body {
     @apply bg-background text-foreground;

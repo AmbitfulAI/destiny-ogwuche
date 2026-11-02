@@ -113,7 +113,7 @@ export default function BookPage() {
           <h2 id="about-book-title" className="font-serif text-4xl leading-[1.1] md:col-span-4 md:text-5xl">
             The gap is real. The constraint has moved.
           </h2>
-          <div className="max-w-[68ch] space-y-6 md:col-span-8 md:col-start-6">
+          <div className="max-w-[68ch] space-y-6 md:col-span-7 md:col-start-6">
             {book.longDescription.map((paragraph, i) => (
               <p
                 key={paragraph.slice(0, 32)}
@@ -178,7 +178,7 @@ export default function BookPage() {
       {/* Ideas */}
       <section className="bg-[#0B2E23] py-24 text-[#F1EFE6] md:py-32" aria-labelledby="ideas-title">
         <div className={`${container} grid gap-12 md:grid-cols-12`}>
-          <div className="md:col-span-4">
+          <div className="md:sticky md:top-28 md:col-span-4 md:self-start">
             <h2 id="ideas-title" className="font-serif text-4xl leading-[1.1] md:text-5xl">
               A vocabulary for building the ground
             </h2>
@@ -194,7 +194,7 @@ export default function BookPage() {
               <li key={idea.slug} className="border-b border-[#F1EFE6]/12">
                 <Link href={`/ideas/${idea.slug}`} className="group block py-5">
                   <span className="font-serif text-xl text-[#F1EFE6] transition-colors group-hover:text-[#E2B35A]">{idea.term}</span>
-                  <span className="mt-1 line-clamp-2 block text-[0.95rem] leading-relaxed text-[#C9D3CC]">{idea.definition}</span>
+                  <span className="mt-1 line-clamp-2 text-[0.95rem] leading-relaxed text-[#C9D3CC]">{idea.definition}</span>
                 </Link>
               </li>
             ))}

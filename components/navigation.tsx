@@ -101,11 +101,15 @@ function Dropdown({ group, pathname }: { group: NavGroup; pathname: string }) {
   )
 }
 
+// Pages whose first section is the dark green hero (marked with data-hero-section).
+const heroPages = ["/", "/book/towards-deep-tech-in-africa"]
+
 export function Navigation() {
+  const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [overHero, setOverHero] = useState(false)
-  const pathname = usePathname()
+  // Start transparent on pages that open with a green hero, so the bar does not flash solid on load.
+  const [overHero, setOverHero] = useState(heroPages.includes(pathname))
 
   // On the homepage the bar sits transparently on the green hero, and turns solid once you scroll past it.
   useEffect(() => {

@@ -86,10 +86,20 @@ export default async function PostPage({ params }: Props) {
             </Link>
             <h1 className="mt-10 font-serif text-[2.6rem] leading-[1.08] md:text-6xl">{post.title}</h1>
             <p className="mt-6 text-xl leading-relaxed text-muted-foreground">{post.summary}</p>
-            <p className="mt-8 border-t border-border pt-5 text-sm text-muted-foreground">
-              {author.name}, <time dateTime={post.date}>{formatDate(post.date)}</time>, {readingMinutes(post)} min read
-              {post.tags?.length ? `. ${post.tags.join(", ")}` : ""}
-            </p>
+            <div className="mt-8 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 border-t border-border pt-5 text-sm text-muted-foreground">
+              <p>
+                By {author.name} on <time dateTime={post.date}>{formatDate(post.date)}</time>. A {readingMinutes(post)} minute read.
+              </p>
+              {post.tags?.length ? (
+                <ul className="flex flex-wrap gap-2" aria-label="Topics">
+                  {post.tags.map((tag) => (
+                    <li key={tag} className="rounded-sm border border-border px-2.5 py-0.5 text-[0.8rem] text-foreground/75">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
           </div>
 
           {post.cover && (

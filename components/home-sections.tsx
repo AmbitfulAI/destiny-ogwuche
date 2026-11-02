@@ -153,7 +153,7 @@ export function HomeTrackRecord() {
     <section className="py-24 md:py-32" aria-labelledby="record-title">
       <div className={container}>
         <div className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+          <div className="lg:sticky lg:top-32 lg:col-span-4 lg:self-start">
             <p className="eyebrow">Track record</p>
             <h2 id="record-title" className="mt-6 font-serif text-[2.75rem] font-medium leading-[1.05] md:text-[3.75rem]">
               Built and shipped
@@ -240,21 +240,41 @@ export function HomeWriting() {
             All writing
           </ActionLink>
         </div>
-        <ul className="mt-14 grid gap-x-12 md:grid-cols-3">
-          {posts.map((post) => (
-            <li key={post.slug} className="border-t border-hairline py-8">
-              <Link href={`/writing/${post.slug}`} className="group block">
-                <p className="text-[0.85rem] text-smoke">
-                  <time dateTime={post.date}>{formatDate(post.date)}</time>, {readingMinutes(post)} min read
-                </p>
-                <h3 className="mt-4 font-serif text-[1.9rem] font-medium leading-[1.1] text-ivory transition-colors duration-300 group-hover:text-champagne">
-                  {post.title}
-                </h3>
-                {post.summary && <p className="mt-4 leading-[1.75] text-mist">{post.summary}</p>}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {posts.length === 1 ? (
+          <Link href={`/writing/${posts[0].slug}`} className="group mt-14 grid gap-8 border-y border-hairline py-12 md:grid-cols-12 md:gap-12">
+            <div className="md:col-span-7">
+              <p className="text-[0.85rem] text-smoke">
+                <time dateTime={posts[0].date}>{formatDate(posts[0].date)}</time>, {readingMinutes(posts[0])} min read
+              </p>
+              <h3 className="mt-5 font-serif text-[2.4rem] font-medium leading-[1.05] text-ivory transition-colors duration-300 group-hover:text-champagne md:text-[3.25rem]">
+                {posts[0].title}
+              </h3>
+            </div>
+            <div className="md:col-span-5 md:self-end">
+              {posts[0].summary && <p className="text-[1.0625rem] leading-[1.8] text-mist">{posts[0].summary}</p>}
+              <span className="mt-6 inline-flex items-center gap-2 text-[0.875rem] font-semibold text-champagne">
+                Read the essay
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+              </span>
+            </div>
+          </Link>
+        ) : (
+          <ul className={`mt-14 grid gap-x-12 ${posts.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
+            {posts.map((post) => (
+              <li key={post.slug} className="border-t border-hairline py-8">
+                <Link href={`/writing/${post.slug}`} className="group block">
+                  <p className="text-[0.85rem] text-smoke">
+                    <time dateTime={post.date}>{formatDate(post.date)}</time>, {readingMinutes(post)} min read
+                  </p>
+                  <h3 className="mt-4 font-serif text-[1.9rem] font-medium leading-[1.1] text-ivory transition-colors duration-300 group-hover:text-champagne">
+                    {post.title}
+                  </h3>
+                  {post.summary && <p className="mt-4 leading-[1.75] text-mist">{post.summary}</p>}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   )

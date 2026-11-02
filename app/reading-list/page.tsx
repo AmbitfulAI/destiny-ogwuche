@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { PageHeader } from "@/components/page-header"
 import { Footer } from "@/components/footer"
 import { JsonLd } from "@/components/json-ld"
+import { ActionLink, container } from "@/components/site/action-link"
 import { author, book, SITE_URL } from "@/lib/book/content"
 import { readingList } from "@/lib/book/press"
 import { breadcrumbSchema } from "@/lib/book/schema"
@@ -43,57 +43,57 @@ export default function ReadingListPage() {
       <Navigation />
       <PageHeader
         eyebrow="Reading list"
-        title={
-          <>
-            Books on innovation, deep tech <span className="text-primary italic">and Africa</span>
-          </>
-        }
+        title="Books on innovation, deep tech and Africa"
         description="The books that shaped how the world thinks about innovation and development, what each one argues, and where Towards Deep Tech in Africa picks up the thread."
       />
 
-      <section className="py-20">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-5xl mx-auto">
-            <ol className="space-y-6">
-              {readingList.map((item, i) => (
-                <li key={item.title} className="grid md:grid-cols-12 gap-6 p-8 border border-border bg-card">
-                  <span className="md:col-span-1 font-serif text-primary text-2xl">{i + 1}</span>
-                  <div className="md:col-span-11">
-                    <h2 className="font-serif text-2xl font-medium">
-                      <em>{item.title}</em>
-                    </h2>
-                    <p className="text-sm text-muted-foreground mb-4">{item.authors}</p>
-                    <dl className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <dt className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">What it argues</dt>
-                        <dd className="text-foreground leading-relaxed">{item.argues}</dd>
-                      </div>
-                      <div>
-                        <dt className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Where {book.title} goes next</dt>
-                        <dd className="text-foreground leading-relaxed">{item.relation}</dd>
-                      </div>
-                    </dl>
+      <section className="py-16 md:py-24">
+        <div className={container}>
+          <ol className="divide-y divide-border border-b border-border">
+            {readingList.map((item) => (
+              <li key={item.title} className="grid gap-6 py-12 md:grid-cols-12 md:gap-10">
+                <div className="md:col-span-4">
+                  <h2 className="font-serif text-3xl leading-tight">
+                    <em>{item.title}</em>
+                  </h2>
+                  <p className="mt-2 text-muted-foreground">{item.authors}</p>
+                </div>
+                <dl className="grid gap-8 sm:grid-cols-2 md:col-span-8">
+                  <div>
+                    <dt className="text-sm text-accent">What it argues</dt>
+                    <dd className="mt-2 leading-relaxed text-foreground/90">{item.argues}</dd>
                   </div>
-                </li>
-              ))}
-            </ol>
+                  <div>
+                    <dt className="text-sm text-accent">Where this book goes next</dt>
+                    <dd className="mt-2 leading-relaxed text-foreground/90">{item.relation}</dd>
+                  </div>
+                </dl>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
-            <div className="mt-16 grid sm:grid-cols-12 gap-8 items-center p-8 border-2 border-primary/30 bg-primary/5">
-              <Link href={book.path} className="sm:col-span-3 block w-32 shadow-xl ring-1 ring-border">
-                <Image src={book.coverPath} alt={`Cover of ${book.fullTitle}`} width={1200} height={1800} className="w-full h-auto" />
-              </Link>
-              <div className="sm:col-span-9">
-                <h2 className="font-serif text-3xl font-medium mb-2">
-                  <em>{book.title}</em>
-                </h2>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {author.coverName} · {book.launchLabel}
-                </p>
-                <p className="text-foreground leading-relaxed mb-6">{book.pitch}</p>
-                <Link href={book.path} className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:translate-x-1 transition-transform">
-                  About the book <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                </Link>
-              </div>
+      <section className="bg-[#0B2E23] py-20 text-[#F1EFE6] md:py-28" aria-labelledby="book-band-title">
+        <div className={`${container} grid items-center gap-12 md:grid-cols-12`}>
+          <Link href={book.path} className="mx-auto block w-44 shadow-[0_30px_60px_-24px_rgba(0,0,0,0.7)] ring-1 ring-white/10 md:col-span-3 md:mx-0 md:w-full md:max-w-[220px]">
+            <Image src={book.coverPath} alt={`Cover of ${book.fullTitle}`} width={1200} height={1800} sizes="220px" className="h-auto w-full" />
+          </Link>
+          <div className="md:col-span-8 md:col-start-5">
+            <p className="text-[0.95rem] text-[#E2B35A]">
+              {author.coverName}, {book.launchLabel.replace("Coming", "coming")}
+            </p>
+            <h2 id="book-band-title" className="mt-4 font-serif text-4xl leading-[1.1] md:text-5xl">
+              <em>{book.title}</em>
+            </h2>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#C9D3CC]">{book.pitch}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ActionLink href={book.path} variant="solid-on-dark">
+                About the book
+              </ActionLink>
+              <ActionLink href="/book/sample" variant="outline-on-dark">
+                Read the opening free
+              </ActionLink>
             </div>
           </div>
         </div>

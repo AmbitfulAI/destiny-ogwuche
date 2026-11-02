@@ -1,15 +1,18 @@
 import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { HomeHero } from "@/components/home-hero"
-import { HomeStats } from "@/components/home-stats"
-import { PersonaCards } from "@/components/persona-cards"
-import { HomeHighlights } from "@/components/home-highlights"
+import { HomeWork, HomeIdeas, HomeContact } from "@/components/home-sections"
 import { Featured } from "@/components/featured"
 import { Footer } from "@/components/footer"
 import { BookFeature } from "@/components/book/book-feature"
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
+  openGraph: {
+    title: "Destiny Ogwuche: deep tech engineer, founder and author",
+    description: "Why does deep technology grow in some places and not in others? Engineer at ASML and Vitestro, founder of Ambitful AI, and author of Towards Deep Tech in Africa.",
+    url: "/",
+  },
 }
 
 export default function HomePage() {
@@ -18,10 +21,10 @@ export default function HomePage() {
       <Navigation />
       <HomeHero />
       <BookFeature />
-      <HomeStats />
+      <HomeWork />
+      <HomeIdeas />
       <Featured />
-      <PersonaCards />
-      <HomeHighlights />
+      <HomeContact />
       <Footer />
     </main>
   )

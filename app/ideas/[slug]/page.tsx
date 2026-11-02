@@ -7,6 +7,8 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { JsonLd } from "@/components/json-ld"
 import { SignupForm } from "@/components/book/signup-form"
+import { CopyButton } from "@/components/site/copy-button"
+import { container } from "@/components/site/action-link"
 import { author, book } from "@/lib/book/content"
 import { ideas, ideaBySlug } from "@/lib/book/ideas"
 import { ideaSchema, breadcrumbSchema } from "@/lib/book/schema"
@@ -32,7 +34,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${idea.term}: a definition`,
       description: idea.definition,
       url: `/ideas/${idea.slug}`,
-      images: [{ url: book.shareImagePath, width: 1200, height: 630, alt: `Cover of ${book.fullTitle}` }],
     },
   }
 }
@@ -61,43 +62,44 @@ export default async function IdeaPage({ params }: Props) {
       <Navigation />
 
       <article className="pt-40 pb-20">
-        <div className="container mx-auto px-6 lg:px-12">
+        <div className={container}>
           <div className="max-w-3xl mx-auto">
-            <Link href="/ideas" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary mb-10">
+            <Link href="/ideas" className="mb-10 inline-flex items-center gap-2 text-[0.95rem] text-muted-foreground hover:text-foreground">
               <ArrowLeft className="w-4 h-4" aria-hidden="true" /> All ideas
             </Link>
-            <p className="text-primary font-medium tracking-wide uppercase text-sm mb-4">{idea.chapter}</p>
-            <h1 className="font-serif text-4xl md:text-6xl font-medium leading-[1.1] tracking-tight mb-8">{idea.term}</h1>
+            <p className="text-[0.95rem] text-accent mb-4">{idea.chapter}</p>
+            <h1 className="font-serif text-4xl md:text-6xl leading-[1.1] mb-8">{idea.term}</h1>
             {idea.alternateNames && (
               <p className="text-sm text-muted-foreground mb-8">Also called: {idea.alternateNames.join(", ")}</p>
             )}
 
-            <p className="text-2xl text-foreground leading-relaxed font-light mb-12">{idea.definition}</p>
+            <p className="mb-12 font-serif text-2xl leading-snug text-foreground md:text-[1.75rem]">{idea.definition}</p>
 
-            <h2 className="font-serif text-2xl font-medium mb-4">In the book&apos;s words</h2>
-            <blockquote className="border-l-2 border-primary pl-6 text-lg text-muted-foreground leading-relaxed italic mb-12">
+            <h2 className="font-serif text-2xl mb-4">In the book&apos;s words</h2>
+            <blockquote className="mb-12 border-l-2 border-accent pl-6 font-serif text-xl italic leading-relaxed text-foreground/85">
               {idea.fromTheBook}
-              <footer className="mt-4 not-italic text-sm">
+              <footer className="mt-4 font-sans text-sm not-italic text-muted-foreground">
                 {author.name},{" "}
                 <cite>
-                  <Link href={book.path} className="text-primary underline underline-offset-4">
+                  <Link href={book.path} className="text-foreground text-link">
                     {book.fullTitle}
                   </Link>
                 </cite>
               </footer>
             </blockquote>
 
-            <h2 className="font-serif text-2xl font-medium mb-4">Why it matters</h2>
+            <h2 className="font-serif text-2xl mb-4">Why it matters</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-12">{idea.whyItMatters}</p>
 
             {related.length > 0 && (
               <>
-                <h2 className="font-serif text-2xl font-medium mb-4">Related ideas</h2>
-                <ul className="grid sm:grid-cols-2 gap-4 mb-12">
+                <h2 className="font-serif text-2xl mb-4">Related ideas</h2>
+                <ul className="mb-12 divide-y divide-border border-y border-border">
                   {related.map((r) => (
                     <li key={r.slug}>
-                      <Link href={`/ideas/${r.slug}`} className="block h-full p-5 border border-border bg-card hover:border-primary/50 transition-colors">
-                        <span className="font-serif text-lg text-foreground">{r.term}</span>
+                      <Link href={`/ideas/${r.slug}`} className="group flex items-center justify-between gap-6 py-4">
+                        <span className="font-serif text-xl text-foreground transition-colors group-hover:text-accent">{r.term}</span>
+                        <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-accent" aria-hidden="true" />
                       </Link>
                     </li>
                   ))}
@@ -105,15 +107,20 @@ export default async function IdeaPage({ params }: Props) {
               </>
             )}
 
-            <p className="text-sm text-muted-foreground mb-4">How to cite this idea</p>
-            <p className="text-sm text-foreground bg-secondary/50 border border-border p-4 mb-16">
-              {author.name}. &ldquo;{idea.term}.&rdquo; In <em>{book.fullTitle}</em>. destinyogwuche.com/ideas/{idea.slug}
-            </p>
+            <div className="mb-16 border-y border-border py-6">
+              <div className="flex items-center justify-between gap-6">
+                <p className="text-sm text-accent">How to cite this idea</p>
+                <CopyButton text={`${author.name}. “${idea.term}.” In ${book.fullTitle}. destinyogwuche.com/ideas/${idea.slug}`} />
+              </div>
+              <p className="mt-3 text-[0.95rem] leading-relaxed text-foreground/90">
+                {author.name}. &ldquo;{idea.term}.&rdquo; In <em>{book.fullTitle}</em>. destinyogwuche.com/ideas/{idea.slug}
+              </p>
+            </div>
 
             <Link href={`/ideas/${next.slug}`} className="group flex items-center justify-between gap-6 py-6 border-y border-border">
               <span>
-                <span className="block text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Next idea</span>
-                <span className="font-serif text-2xl text-foreground group-hover:text-primary transition-colors">{next.term}</span>
+                <span className="block text-sm text-muted-foreground mb-1">Next idea</span>
+                <span className="font-serif text-2xl text-foreground group-hover:text-accent transition-colors">{next.term}</span>
               </span>
               <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </Link>
@@ -121,11 +128,11 @@ export default async function IdeaPage({ params }: Props) {
         </div>
       </article>
 
-      <section className="py-20 bg-secondary/40 border-t border-border">
-        <div className="container mx-auto px-6 lg:px-12">
+      <section className="border-t border-border bg-secondary/50 py-20">
+        <div className={container}>
           <div className="max-w-3xl mx-auto grid sm:grid-cols-12 gap-8 items-center">
-            <Link href={book.path} className="sm:col-span-3 block w-32 shadow-xl ring-1 ring-border">
-              <Image src={book.coverPath} alt={`Cover of ${book.fullTitle}`} width={1200} height={1800} className="w-full h-auto" />
+            <Link href={book.path} className="block w-32 shadow-[0_24px_48px_-20px_rgba(11,46,35,0.55)] sm:col-span-3">
+              <Image src={book.coverPath} alt={`Cover of ${book.fullTitle}`} width={1200} height={1800} sizes="128px" className="h-auto w-full" />
             </Link>
             <div className="sm:col-span-9">
               <p className="font-serif text-2xl mb-2">{book.title}</p>

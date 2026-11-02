@@ -1,13 +1,7 @@
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { ArrowUpRight } from "lucide-react"
+import { container } from "./site/action-link"
 
+// Press, papers and appearances, as a plain list: each line says where and what.
 export function Featured() {
   const features = [
     {
@@ -17,7 +11,7 @@ export function Featured() {
       linkText: "Read Feature"
     },
     {
-      outlet: "The Sun Nigeria · Ambitful AI",
+      outlet: "The Sun Nigeria, on Ambitful AI",
       summary: "The Sun covered the launch of Ambitful AI and its mission to fix Africa's hidden opportunity crisis by helping ambitious people find and win the opportunities meant for them.",
       link: "https://thesun.ng/ambitful-ai-launches-to-fix-africas-hidden-opportunity-crisis-shows-how-to-win/",
       linkText: "Read Feature"
@@ -29,7 +23,7 @@ export function Featured() {
       linkText: "Read Feature"
     },
     {
-      outlet: "Best of LinkedIn · Venture Capital",
+      outlet: "Best of LinkedIn: Venture Capital",
       summary: "Destiny's argument that human relationships still outperform algorithms in venture capital was curated by Thomas Allgeyer and read by thousands of investors globally.",
       link: "#",
       linkText: "Read Feature"
@@ -67,50 +61,36 @@ export function Featured() {
   ];
 
   return (
-    <section className="bg-[#060f1e] py-[60px] px-6 md:px-16 border-y border-blue-400/10">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-        <div className="text-[0.72rem] font-bold tracking-[3px] uppercase text-white/35 text-center mb-9">
-          As Featured In
-        </div>
-
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4 md:-ml-6">
-            {features.map((feature, index) => (
-              <CarouselItem key={index} className="pl-4 md:pl-6 basis-[88%] md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                <div
-                  className="bg-linear-to-br from-[#0a1e3d] to-[#0d2347] border border-blue-400/20 rounded-xl p-[22px] flex flex-col gap-2.5 transition-colors duration-200 hover:border-blue-400/45 group h-full"
-                >
-                  <div className="text-[0.9rem] font-extrabold text-white tracking-[0.3px]">
-                    {feature.outlet}
-                  </div>
-                  <div className="text-[0.83rem] text-[#b8cde8] leading-[1.7] flex-1">
-                    {feature.summary}
-                  </div>
-                  {feature.link !== "#" ? (
-                    <Link
-                      href={feature.link}
-                      target="_blank"
-                      rel="noopener"
-                      className="inline-flex items-center text-[0.78rem] font-bold text-blue-400 tracking-[0.3px] mt-1 hover:text-white transition-colors"
-                    >
-                      {feature.linkText}
-                      <ArrowUpRight className="ml-1 items-center h-3.5 w-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
-                    </Link>
-                  ) : null}
-                </div>
-              </CarouselItem>
+    <section className="border-t border-border py-24 md:py-32" aria-labelledby="featured-title">
+      <div className={container}>
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <h2 id="featured-title" className="font-serif text-4xl leading-[1.1] md:text-5xl">
+              In the press and on stage
+            </h2>
+          </div>
+          <ul className="md:col-span-8 grid gap-x-10 sm:grid-cols-2">
+            {features.map((feature) => (
+              <li key={feature.outlet + feature.summary.slice(0, 12)} className="border-t border-border py-6">
+                <h3 className="font-sans text-base font-medium tracking-normal text-foreground">{feature.outlet}</h3>
+                <p className="mt-2 text-[0.95rem] leading-relaxed text-muted-foreground">{feature.summary}</p>
+                {feature.link !== "#" && (
+                  <a
+                    href={feature.link}
+                    target="_blank"
+                    rel="noopener"
+                    className="mt-3 inline-flex items-center gap-1 text-[0.95rem] text-foreground underline decoration-foreground/30 underline-offset-[0.3em] hover:decoration-foreground"
+                  >
+                    {feature.linkText}
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    <span className="sr-only">(opens in a new tab)</span>
+                  </a>
+                )}
+              </li>
             ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden md:flex -left-12 bg-transparent text-white border-white/20 hover:bg-white/10 hover:text-white" />
-          <CarouselNext className="hidden md:flex -right-12 bg-transparent text-white border-white/20 hover:bg-white/10 hover:text-white" />
-        </Carousel>
+          </ul>
+        </div>
       </div>
     </section>
-  );
+  )
 }

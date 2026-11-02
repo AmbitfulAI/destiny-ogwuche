@@ -12,7 +12,7 @@ export const awards: Award[] = [
   },
   {
     year: "2025",
-    title: "1752VC (formerly Pegasus) Venture Fellowship, December 2025",
+    title: "Offered a place, 1752VC (formerly Pegasus) Venture Fellowship, December 2025",
     description: "Accepted into this highly competitive venture fellowship simultaneously with VCLab in December 2025. Before getting accepted into Venture Institute Cohort 6 at VC Lab, I was accepted into this fellowship. To confirm my spot I was asked to pay a fee I simply did not have the budget for. I reached out honestly asking if a scholarship was possible. The organisation kindly offered a 16% discount — an act of goodwill I genuinely appreciated but even then it was not financially feasible. Sometimes access and not ability is the real barrier. The double acceptance confirmed my standing in the global venture capital community."
   },
   {

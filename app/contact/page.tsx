@@ -1,245 +1,192 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
-import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle, Loader2 } from "lucide-react"
+import { useState, type FormEvent } from "react"
+import { Check, Loader2 } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { PageHeader } from "@/components/page-header"
 import { Footer } from "@/components/footer"
+import { container } from "@/components/site/action-link"
 import { sendEmail } from "@/app/actions/contact"
 import { toast } from "sonner"
 
+const topics = [
+  "Speaking engagement",
+  "Podcast or interview",
+  "Venture capital or investment",
+  "Advisory or technical diligence",
+  "Research collaboration",
+  "Deep tech ventures",
+  "Mentorship",
+  "Something else",
+]
+
+const field =
+  "w-full rounded-sm border border-input bg-card px-4 py-3 text-foreground placeholder:text-muted-foreground/70 transition-colors focus:border-foreground focus:outline-none"
+const label = "mb-2 block text-sm font-medium text-foreground"
+
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: ""
-  })
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", subject: "", message: "" })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-
     try {
       const result = await sendEmail(formData)
-
       if (result.success) {
         setIsSubmitted(true)
-        toast.success("Message sent successfully!")
         setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
-
-        setTimeout(() => {
-          setIsSubmitted(false)
-        }, 5000)
       } else {
-        toast.error(result.error || "Failed to send message. Please try again.")
+        toast.error(result.error || "Your message was not sent. Please try again, or email me directly.")
       }
-    } catch (error) {
-      toast.error("An unexpected error occurred. Please try again.")
+    } catch {
+      toast.error("Your message was not sent. Please try again, or email me directly.")
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background text-foreground">
       <Navigation />
       <PageHeader
         eyebrow="Contact"
-        title="Let's Connect"
-        description="I am open to conversations on deep tech ventures, Africa's innovation ecosystem, venture capital, speaking engagements, research collaboration and more."
+        title="Get in touch"
+        description="For talks, podcasts, advisory, technical diligence, research collaboration or the book. I reply to every message personally."
       />
 
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* Contact Form */}
-              <div className="p-8 border border-border bg-card">
-                <h2 className="font-serif text-2xl font-medium mb-6 text-foreground">Send a Message</h2>
-
-                {isSubmitted ? (
-                  <div className="flex flex-col items-center justify-center py-12 text-center">
-                    <CheckCircle className="w-16 h-16 text-primary mb-4" />
-                    <p className="text-xl font-medium text-foreground">Message Sent!</p>
-                    <p className="text-muted-foreground mt-2">Thank you for reaching out. I&apos;ll get back to you as soon as possible.</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
-                        placeholder="Your full name"
-                      />
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-5">
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">
-                          Email Address *
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          required
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
-                          placeholder="your@email.com"
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium mb-2 text-foreground">
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
-                          placeholder="+31 6 1234 5678"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium mb-2 text-foreground">
-                        Subject *
-                      </label>
-                      <select
-                        id="subject"
-                        required
-                        value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        className="w-full px-4 py-3 bg-background border border-border text-foreground focus:border-primary focus:outline-none transition-colors"
-                      >
-                        <option value="">Select a topic</option>
-                        <option value="Speaking Engagement">Speaking Engagement</option>
-                        <option value="Venture Capital / Investment">Venture Capital / Investment</option>
-                        <option value="Research Collaboration">Research Collaboration</option>
-                        <option value="Deep Tech Ventures">Deep Tech Ventures</option>
-                        <option value="Mentorship">Mentorship</option>
-                        <option value="General Inquiry">General Inquiry</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">
-                        Message *
-                      </label>
-                      <textarea
-                        id="message"
-                        required
-                        rows={5}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors resize-none"
-                        placeholder="Tell me about what you have in mind..."
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          Sending...
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                        </>
-                      ) : (
-                        <>
-                          Send Message
-                          <Send className="w-4 h-4" />
-                        </>
-                      )}
-                    </button>
-                  </form>
-                )}
+      <section className="py-16 md:py-24">
+        <div className={`${container} grid gap-16 lg:grid-cols-12`}>
+          <aside className="lg:col-span-4">
+            <dl className="divide-y divide-border border-y border-border">
+              <div className="py-5">
+                <dt className="text-sm text-muted-foreground">Email</dt>
+                <dd className="mt-1">
+                  <a href="mailto:ogwuche.innosuccess@gmail.com" className="text-link break-all text-foreground">
+                    ogwuche.innosuccess@gmail.com
+                  </a>
+                </dd>
               </div>
+              <div className="py-5">
+                <dt className="text-sm text-muted-foreground">LinkedIn</dt>
+                <dd className="mt-1">
+                  <a href="https://www.linkedin.com/in/ogwuche-destiny-innosuccess/" target="_blank" rel="noopener" className="text-link text-foreground">
+                    Destiny Ogwuche
+                  </a>
+                </dd>
+              </div>
+              <div className="py-5">
+                <dt className="text-sm text-muted-foreground">Based in</dt>
+                <dd className="mt-1 text-foreground">Amsterdam, the Netherlands</dd>
+              </div>
+            </dl>
+            <p className="mt-6 text-[0.95rem] leading-relaxed text-muted-foreground">
+              Journalists and event organisers: bios, photos and interview questions are in the{" "}
+              <a href="/press" className="text-link text-foreground">
+                press kit
+              </a>
+              .
+            </p>
+          </aside>
 
-              {/* Contact Info */}
-              <div className="space-y-8">
+          <div className="lg:col-span-7 lg:col-start-6">
+            {isSubmitted ? (
+              <div className="border border-border bg-card p-10" role="status">
+                <Check className="h-8 w-8 text-primary" aria-hidden="true" />
+                <h2 className="mt-4 font-serif text-3xl">Message sent</h2>
+                <p className="mt-3 leading-relaxed text-muted-foreground">Thank you for writing. I will reply as soon as I can.</p>
+                <button type="button" onClick={() => setIsSubmitted(false)} className="text-link mt-6 text-foreground">
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <h2 className="font-serif text-2xl font-medium mb-6 text-foreground">Contact Information</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Whether you want to discuss deep tech ventures, Africa&apos;s innovation ecosystem, speaking opportunities, or just want to connect — I actually enjoy the questions.
-                  </p>
+                  <label htmlFor="name" className={label}>
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    autoComplete="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className={field}
+                  />
                 </div>
-
-                <div className="space-y-4">
-                  <Link
-                    href="mailto:ogwuche.Innosuccess@gmail.com"
-                    className="flex items-start gap-4 p-4 bg-card border border-border hover:border-primary/50 transition-colors group"
-                  >
-                    <div className="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary">
-                      <Mail className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Email</p>
-                      <p className="font-medium text-foreground group-hover:text-primary transition-colors break-all">
-                        ogwuche.Innosuccess@gmail.com
-                      </p>
-                    </div>
-                  </Link>
-
-                  {/* <Link
-                    href="tel:+31613716278"
-                    className="flex items-start gap-4 p-4 bg-card border border-border hover:border-primary/50 transition-colors group"
-                  >
-                    <div className="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary">
-                      <Phone className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Phone</p>
-                      <p className="font-medium text-foreground group-hover:text-primary transition-colors">
-                        +31 6 13 71 62 78
-                      </p>
-                    </div>
-                  </Link> */}
-
-                  <div className="flex items-start gap-4 p-4 bg-card border border-border">
-                    <div className="w-12 h-12 flex items-center justify-center bg-accent/10 text-accent">
-                      <MapPin className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Location</p>
-                      <p className="font-medium text-foreground">Amsterdam, Netherlands</p>
-                    </div>
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="email" className={label}>
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      required
+                      autoComplete="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className={field}
+                    />
                   </div>
-
-                  <Link
-                    href="https://www.linkedin.com/in/ogwuche-destiny-innosuccess"
-                    target="_blank"
-                    className="flex items-start gap-4 p-4 bg-card border border-border hover:border-primary/50 transition-colors group"
-                  >
-                    <div className="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary">
-                      <Linkedin className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">LinkedIn</p>
-                      <p className="font-medium text-foreground group-hover:text-primary transition-colors">
-                        Destiny I. Ogwuche</p>
-                    </div>
-                  </Link>
+                  <div>
+                    <label htmlFor="phone" className={label}>
+                      Phone <span className="font-normal text-muted-foreground">(optional)</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      autoComplete="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className={field}
+                    />
+                  </div>
                 </div>
-              </div>
-            </div>
+                <div>
+                  <label htmlFor="subject" className={label}>
+                    What is it about?
+                  </label>
+                  <select
+                    id="subject"
+                    required
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    className={field}
+                  >
+                    <option value="">Choose a topic</option>
+                    {topics.map((t) => (
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="message" className={label}>
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    required
+                    rows={7}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className={field}
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="inline-flex h-12 items-center gap-2 rounded-sm bg-primary px-8 font-medium text-primary-foreground transition-colors hover:bg-foreground hover:text-background disabled:opacity-60"
+                >
+                  {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                  {isSubmitting ? "Sending" : "Send message"}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>

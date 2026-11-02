@@ -45,31 +45,31 @@ export default function ReadingListPage() {
         eyebrow="Reading list"
         title={
           <>
-            Books on innovation, deep tech <span className="text-primary italic">and Africa</span>
+            Books on innovation, deep tech and Africa
           </>
         }
         description="The books that shaped how the world thinks about innovation and development, what each one argues, and where Towards Deep Tech in Africa picks up the thread."
       />
 
       <section className="py-20">
-        <div className="container mx-auto px-6 lg:px-12">
+        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
           <div className="max-w-5xl mx-auto">
             <ol className="space-y-6">
               {readingList.map((item, i) => (
                 <li key={item.title} className="grid md:grid-cols-12 gap-6 p-8 border border-border bg-card">
-                  <span className="md:col-span-1 font-serif text-primary text-2xl">{i + 1}</span>
+                  <span className="md:col-span-1 font-serif text-accent text-2xl">{i + 1}</span>
                   <div className="md:col-span-11">
-                    <h2 className="font-serif text-2xl font-medium">
+                    <h2 className="font-serif text-2xl">
                       <em>{item.title}</em>
                     </h2>
                     <p className="text-sm text-muted-foreground mb-4">{item.authors}</p>
                     <dl className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <dt className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">What it argues</dt>
+                        <dt className="text-sm text-muted-foreground mb-2">What it argues</dt>
                         <dd className="text-foreground leading-relaxed">{item.argues}</dd>
                       </div>
                       <div>
-                        <dt className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Where {book.title} goes next</dt>
+                        <dt className="text-sm text-muted-foreground mb-2">Where {book.title} goes next</dt>
                         <dd className="text-foreground leading-relaxed">{item.relation}</dd>
                       </div>
                     </dl>
@@ -78,19 +78,19 @@ export default function ReadingListPage() {
               ))}
             </ol>
 
-            <div className="mt-16 grid sm:grid-cols-12 gap-8 items-center p-8 border-2 border-primary/30 bg-primary/5">
+            <div className="mt-16 grid sm:grid-cols-12 gap-8 items-center p-8 border border-border bg-secondary/60">
               <Link href={book.path} className="sm:col-span-3 block w-32 shadow-xl ring-1 ring-border">
                 <Image src={book.coverPath} alt={`Cover of ${book.fullTitle}`} width={1200} height={1800} className="w-full h-auto" />
               </Link>
               <div className="sm:col-span-9">
-                <h2 className="font-serif text-3xl font-medium mb-2">
+                <h2 className="font-serif text-3xl mb-2">
                   <em>{book.title}</em>
                 </h2>
                 <p className="text-sm text-muted-foreground mb-4">
-                  {author.coverName} · {book.launchLabel}
+                  {author.coverName}, {book.launchLabel.replace("Coming", "coming")}
                 </p>
                 <p className="text-foreground leading-relaxed mb-6">{book.pitch}</p>
-                <Link href={book.path} className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:translate-x-1 transition-transform">
+                <Link href={book.path} className="inline-flex items-center gap-2 text-[0.95rem] text-foreground underline decoration-foreground/30 underline-offset-[0.3em] hover:decoration-foreground">
                   About the book <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
               </div>

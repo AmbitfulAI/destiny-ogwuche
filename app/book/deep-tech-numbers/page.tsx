@@ -36,16 +36,16 @@ export default function NumbersPage() {
         eyebrow="The numbers"
         title={
           <>
-            Deep tech in Nigeria and the Netherlands, <span className="text-primary italic">2020 to 2025</span>
+            Deep tech in Nigeria and the Netherlands, 2020 to 2025
           </>
         }
         description={`Headline figures from the doctoral study behind ${book.fullTitle}. Every gap was real, in the direction you would expect, and some were enormous.`}
       />
 
       <section className="py-20">
-        <div className="container mx-auto px-6 lg:px-12">
+        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
           <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl font-medium mb-10">What the study found</h2>
+            <h2 className="font-serif text-3xl mb-10">What the study found</h2>
             <div className="grid md:grid-cols-2 gap-6 mb-20">
               {studyFigures.map((figure) => (
                 <div key={figure.id} id={figure.id} className="p-8 border border-border bg-card scroll-mt-28">
@@ -55,7 +55,7 @@ export default function NumbersPage() {
               ))}
             </div>
 
-            <h2 className="font-serif text-3xl font-medium mb-4">From published sources</h2>
+            <h2 className="font-serif text-3xl mb-4">From published sources</h2>
             <p className="text-muted-foreground mb-10">Figures the book draws from national and international statistics, not from the study itself.</p>
             <div className="grid md:grid-cols-2 gap-6 mb-20">
               {publishedFigures.map((figure) => (
@@ -67,7 +67,7 @@ export default function NumbersPage() {
             </div>
 
             <div className="grid md:grid-cols-12 gap-10 border-t border-border pt-12">
-              <h2 className="md:col-span-4 font-serif text-2xl font-medium">How the study worked</h2>
+              <h2 className="md:col-span-4 font-serif text-2xl">How the study worked</h2>
               <div className="md:col-span-8 space-y-4 text-muted-foreground leading-relaxed">
                 <p>{study.method}</p>
                 <p>
@@ -75,7 +75,7 @@ export default function NumbersPage() {
                 </p>
                 <p>
                   The full analysis, the interviews and what the numbers mean are in{" "}
-                  <Link href={book.path} className="text-primary underline underline-offset-4">
+                  <Link href={book.path} className="text-foreground underline decoration-foreground/30 underline-offset-[0.25em] hover:decoration-foreground">
                     {book.fullTitle}
                   </Link>{" "}
                   by {author.name}. Journalists and researchers are welcome to cite these figures with a link to this page.

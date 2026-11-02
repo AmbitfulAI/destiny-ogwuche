@@ -11,7 +11,7 @@ export function Featured() {
       linkText: "Read Feature"
     },
     {
-      outlet: "The Sun Nigeria · Ambitful AI",
+      outlet: "The Sun Nigeria, on Ambitful AI",
       summary: "The Sun covered the launch of Ambitful AI and its mission to fix Africa's hidden opportunity crisis by helping ambitious people find and win the opportunities meant for them.",
       link: "https://thesun.ng/ambitful-ai-launches-to-fix-africas-hidden-opportunity-crisis-shows-how-to-win/",
       linkText: "Read Feature"
@@ -23,7 +23,7 @@ export function Featured() {
       linkText: "Read Feature"
     },
     {
-      outlet: "Best of LinkedIn · Venture Capital",
+      outlet: "Best of LinkedIn: Venture Capital",
       summary: "Destiny's argument that human relationships still outperform algorithms in venture capital was curated by Thomas Allgeyer and read by thousands of investors globally.",
       link: "#",
       linkText: "Read Feature"

@@ -37,24 +37,21 @@ export default function PhotosPage() {
     <main className="min-h-screen bg-background">
       <Navigation />
       <PageHeader
-        eyebrow="Media"
-        title="Visual Archive"
-        description="A comprehensive collection of moments, technical execution, and global innovation experiences."
+        eyebrow="Photos"
+        title="Photos"
+        description="Labs, stages, classrooms and the people I have worked with."
       />
 
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-16">
+          <div className="mb-14 flex flex-wrap gap-x-8 gap-y-2 border-b border-border">
             {photoCategories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-6 py-2.5 text-xs font-bold uppercase tracking-widest transition-all rounded-full border ${
-                  selectedCategory === cat
-                    ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20"
-                    : "bg-secondary/50 text-muted-foreground border-transparent hover:border-primary/20 hover:text-primary"
-                }`}
+                aria-pressed={selectedCategory === cat}
+                className={`border-b-2 px-1 py-2 text-[0.95rem] transition-colors ${selectedCategory === cat ? "border-foreground text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}
               >
                 {cat}
               </button>
@@ -62,43 +59,32 @@ export default function PhotosPage() {
           </div>
 
           {/* Masonry Grid */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+          <div className="columns-1 gap-8 space-y-10 sm:columns-2 lg:columns-3">
             {filteredPhotos.map((photo, idx) => (
-              <div 
+              <button
+                type="button"
                 key={photo.id}
-                className="relative break-inside-avoid group cursor-pointer overflow-hidden rounded-xl bg-secondary transition-all hover:shadow-2xl hover:shadow-primary/10 ring-1 ring-border border-2 border-transparent hover:border-primary/20"
+                className="group block w-full break-inside-avoid text-left"
                 onClick={() => openLightbox(idx)}
               >
-                <div className="relative overflow-hidden">
+                <span className="block overflow-hidden bg-secondary">
                   <Image
                     src={photo.src}
                     alt={photo.alt}
                     width={800}
                     height={1000}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="h-auto w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
-                  {/* Overlay Info */}
-                  <div className="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                    <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-1">
-                      {photo.category}
-                    </span>
-                    <h3 className="text-white font-serif text-lg leading-tight">
-                      {photo.alt}
-                    </h3>
-                    <div className="mt-3 flex items-center gap-2">
-                       <Maximize2 className="w-4 h-4 text-white/60" />
-                       <span className="text-white/60 text-[10px] font-bold tracking-widest uppercase">Expand</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </span>
+                <span className="mt-3 block font-serif text-lg leading-snug text-foreground">{photo.alt}</span>
+                <span className="mt-1 block text-sm text-muted-foreground">{photo.category}</span>
+              </button>
             ))}
           </div>
 
           {filteredPhotos.length === 0 && (
-            <div className="text-center py-20 bg-secondary/20 rounded-3xl border-2 border-dashed border-border">
+            <div className="text-center py-20 bg-secondary/20 border border-dashed border-border">
               <p className="text-muted-foreground font-serif text-xl italic">No photos found in this category yet.</p>
             </div>
           )}
@@ -122,7 +108,7 @@ export default function PhotosPage() {
             <div className="flex-1 relative flex items-center justify-center">
               <button
                 onClick={goToPrevImage}
-                className="absolute left-0 p-6 text-muted-foreground hover:text-primary transition-all hover:scale-110 z-10 bg-background/50 backdrop-blur-md rounded-full shadow-lg"
+                className="absolute left-0 p-6 text-muted-foreground hover:text-foreground transition-colors z-10 bg-background/50 backdrop-blur-md rounded-full shadow-lg"
                 aria-label="Previous"
               >
                 <ChevronLeft className="w-8 h-8" />
@@ -142,7 +128,7 @@ export default function PhotosPage() {
 
               <button
                 onClick={goToNextImage}
-                className="absolute right-0 p-6 text-muted-foreground hover:text-primary transition-all hover:scale-110 z-10 bg-background/50 backdrop-blur-md rounded-full shadow-lg"
+                className="absolute right-0 p-6 text-muted-foreground hover:text-foreground transition-colors z-10 bg-background/50 backdrop-blur-md rounded-full shadow-lg"
                 aria-label="Next"
               >
                 <ChevronRight className="w-8 h-8" />
@@ -151,13 +137,13 @@ export default function PhotosPage() {
 
             {/* Bottom Caption */}
             <div className="py-10 text-center animate-in slide-in-from-bottom-4 duration-500">
-              <span className="text-xs font-black text-primary uppercase tracking-[0.4em] mb-3 block">
+              <span className="mb-2 block text-sm text-accent">
                 {filteredPhotos[lightboxIndex].category}
               </span>
               <h3 className="font-serif text-3xl md:text-5xl text-foreground mb-2">
                 {filteredPhotos[lightboxIndex].alt}
               </h3>
-              <p className="text-muted-foreground text-sm font-medium tracking-widest uppercase">
+              <p className="text-sm text-muted-foreground">
                 {filteredPhotos[lightboxIndex].date}
               </p>
             </div>

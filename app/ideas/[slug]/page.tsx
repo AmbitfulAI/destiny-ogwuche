@@ -32,7 +32,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${idea.term}: a definition`,
       description: idea.definition,
       url: `/ideas/${idea.slug}`,
-      images: [{ url: book.shareImagePath, width: 1200, height: 630, alt: `Cover of ${book.fullTitle}` }],
     },
   }
 }

@@ -8,6 +8,11 @@ import { BookFeature } from "@/components/book/book-feature"
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
+  openGraph: {
+    title: "Destiny Ogwuche: deep tech engineer, founder and author",
+    description: "Why does deep technology grow in some places and not in others? Engineer at ASML and Vitestro, founder of Ambitful AI, and author of Towards Deep Tech in Africa.",
+    url: "/",
+  },
 }
 
 export default function HomePage() {

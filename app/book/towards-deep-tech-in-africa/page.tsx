@@ -26,13 +26,11 @@ export const metadata: Metadata = {
     tags: book.keywords,
     ...(book.isbn ? { isbn: book.isbn } : {}),
     ...(book.datePublished ? { releaseDate: book.datePublished } : {}),
-    images: [{ url: book.shareImagePath, width: 1200, height: 630, alt: `Cover of ${book.fullTitle}` }],
   },
   twitter: {
     card: "summary_large_image",
     title: book.fullTitle,
     description: book.pitch,
-    images: [book.shareImagePath],
   },
 }
 

@@ -35,50 +35,20 @@ export const metadata: Metadata = {
     // Google Search Console ownership check for https://www.destinyogwuche.com/
     google: 'JZqLlTRN33e5dAGpNWqcXVXHCgnhFshfT3H2bodX02o',
   },
-  icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
+  // Only site-wide values here: each page sets its own share title, description and address.
   openGraph: {
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    url: '/',
     siteName: 'Destiny Ogwuche',
-    images: [
-      {
-        url: '/images/platform/professional_portrait.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Destiny Ogwuche, deep tech engineer and author',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    images: ['/images/platform/professional_portrait.jpg'],
   },
 }
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
+import Script from "next/script"
 import { JsonLd } from "@/components/json-ld"
 import { personSchema, websiteSchema } from "@/lib/book/schema"
 
@@ -99,6 +69,10 @@ export default function RootLayout({
           <JsonLd data={[personSchema(), websiteSchema()]} />
           {children}
           <Toaster position="top-right" richColors />
+          {/* Vercel Web Analytics and Speed Insights: cookie-free visitor and performance statistics.
+              Switch them on in the Vercel project under Analytics and Speed Insights. */}
+          <Script src="/_vercel/insights/script.js" strategy="afterInteractive" />
+          <Script src="/_vercel/speed-insights/script.js" strategy="afterInteractive" />
         </ThemeProvider>
       </body>
     </html>

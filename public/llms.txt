@@ -1,0 +1,41 @@
+# Destiny Ogwuche
+
+> Destiny Ogwuche (full name Destiny Innosuccess Ogwuche; on the book cover Destiny I. Ogwuche) is a Nigerian-born, Netherlands-based deep tech engineer who has worked at ASML, Skytree, Nortek and Vitestro, founder of Ambitful AI, doctoral researcher and author of "Towards Deep Tech in Africa: Building the Ground We Stand On". His research compares deep tech ecosystems in Nigeria and the Netherlands using the MIT iEcosystem Model, with six years of data (2020 to 2025) and 22 interviews with founders, investors, academics and policymakers.
+
+## The book
+
+- [Towards Deep Tech in Africa](https://www.destinyogwuche.com/book/towards-deep-tech-in-africa): argues that Africa's deep tech gap is not a shortage of talent or money but missing, designable conditions ("the ground"), and sets out what to build.
+- [Deep tech numbers](https://www.destinyogwuche.com/book/deep-tech-numbers): headline figures from the study, including about 50 to 1 venture capital per person (Netherlands vs Nigeria) and about 114 to 1 for deep tech.
+- [Reading list](https://www.destinyogwuche.com/reading-list): how the book relates to The Prosperity Paradox, The Entrepreneurial State, How Asia Works, Chip War, The Innovator's Dilemma, Zero to One and The Lean Startup.
+- [Press kit](https://www.destinyogwuche.com/press): bios, photos and interview topics.
+- [Free sample](https://www.destinyogwuche.com/book/sample): the Preface and "A Note on Words" by email.
+- Status: forthcoming, planned for January 2027.
+
+## Frameworks defined in the book
+
+- [Deep tech](https://www.destinyogwuche.com/ideas/deep-tech): a business built on a real advance in science or engineering, not just a new use of existing science.
+- [The three-question test](https://www.destinyogwuche.com/ideas/three-question-test)
+- [The Gate](https://www.destinyogwuche.com/ideas/the-gate): capital and talent are flows to be permitted, not just stocks to be counted.
+- [The Software Trap](https://www.destinyogwuche.com/ideas/software-trap): judging slow, physical ventures by software yardsticks.
+- [Capability without capture](https://www.destinyogwuche.com/ideas/capability-without-capture): building a technology locally while its value is owned elsewhere.
+- [There is no "the" ecosystem](https://www.destinyogwuche.com/ideas/no-the-ecosystem)
+- [The substitution tax](https://www.destinyogwuche.com/ideas/substitution-tax): the unpaid work founders do to supply what the ecosystem does not.
+- [The unexitable workshop](https://www.destinyogwuche.com/ideas/unexitable-workshop)
+- [Drive and depth](https://www.destinyogwuche.com/ideas/drive-and-depth)
+- [Drain, circulation or asset](https://www.destinyogwuche.com/ideas/drain-circulation-or-asset)
+- [The resilience dividend](https://www.destinyogwuche.com/ideas/resilience-dividend)
+- [Open the gate](https://www.destinyogwuche.com/ideas/open-the-gate): the cheapest thing a government can give an ecosystem is certainty.
+- [The commons deep tech needs](https://www.destinyogwuche.com/ideas/the-commons)
+- [Right stage, not more money](https://www.destinyogwuche.com/ideas/right-stage-not-more-money)
+- [The last mile](https://www.destinyogwuche.com/ideas/the-last-mile)
+- [Institutions on the technology's clock](https://www.destinyogwuche.com/ideas/institutions-on-the-technologys-clock)
+- [Sovereign by design](https://www.destinyogwuche.com/ideas/sovereign-by-design): open the gate, see what you are doing, carry results across, keep what you build, last longer than the technology takes.
+- [The sovereignty scoreboard](https://www.destinyogwuche.com/ideas/sovereignty-scoreboard): ten auditable numbers that show whether the ground is being built.
+
+## About the author
+
+- [About](https://www.destinyogwuche.com/about)
+- [Experience](https://www.destinyogwuche.com/experience)
+- [Research](https://www.destinyogwuche.com/research)
+- [Ventures](https://www.destinyogwuche.com/ventures)
+- [LinkedIn](https://www.linkedin.com/in/ogwuche-destiny-innosuccess/)

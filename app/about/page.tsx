@@ -1,4 +1,6 @@
+import type { Metadata } from "next"
 import Image from "next/image"
+import Link from "next/link"
 import { Navigation } from "@/components/navigation"
 import { PageHeader } from "@/components/page-header"
 import { Footer } from "@/components/footer"
@@ -6,6 +8,14 @@ import { Thinking } from "@/components/thinking"
 import { Education } from "@/components/education"
 import professionalPortrait from "@/lib/images/professional_portrait.jpg"
 import goldenGateBridge from "@/lib/images/golden_gate_bridge.jpg"
+import { BookFeature } from "@/components/book/book-feature"
+
+export const metadata: Metadata = {
+  title: "About Destiny Ogwuche",
+  description:
+    "Destiny Ogwuche (Destiny Innosuccess Ogwuche) is a Nigerian-born deep tech engineer in the Netherlands who has worked at ASML, Skytree, Nortek and Vitestro, founder of Ambitful AI and author of Towards Deep Tech in Africa.",
+  alternates: { canonical: "/about" },
+}
 
 export default function AboutPage() {
   return (
@@ -28,7 +38,7 @@ export default function AboutPage() {
                 <div className="relative aspect-3/4 bg-linear-to-br from-primary/10 to-accent/10 border border-border overflow-hidden">
                   <Image
                     src={professionalPortrait}
-                    alt="Destiny Innosuccess Ogwuche"
+                    alt="Destiny Ogwuche (Destiny Innosuccess Ogwuche)"
                     fill
                     className="object-cover"
                   />
@@ -44,11 +54,19 @@ export default function AboutPage() {
                   </p>
 
                   <p>
-                    My engineering career spans highly complex systems across semiconductors, ocean sensing infrastructure, clean energy, and medical robotics. I have operated as a verification engineer at Skytree, a spinout of the European Space Agency, where I helped validate core carbon capture technology. I also led the verification and validation of the world&apos;s first Autonomous Robotic Phlebotomy Device in the world, which is an advanced clinical system designed to automate blood collection with precision and reliability.
+                    My engineering career spans highly complex systems across semiconductors, ocean sensing infrastructure, clean energy, and medical robotics. At ASML I worked as a systems engineer on extreme ultraviolet lithography systems, doing metrology and wafer alignment to nanometre accuracy. I have operated as a verification engineer at Skytree, a spinout of the European Space Agency, where I helped validate core carbon capture technology. I also led the verification and validation of the world&apos;s first Autonomous Robotic Phlebotomy Device in the world, which is an advanced clinical system designed to automate blood collection with precision and reliability.
                   </p>
 
                   <p>
                     Alongside my work in the industry, I am pursuing a Doctorate in Business Administration at Golden Gate University in San Francisco. Using the MIT iEcosystem framework, my research compares deep tech ecosystems in Nigeria and the Netherlands, exploring how capital, policy, universities, and industry interact to turn scientific breakthroughs into scalable companies.
+                  </p>
+
+                  <p>
+                    That research became my book,{" "}
+                    <Link href="/book/towards-deep-tech-in-africa" className="text-primary underline underline-offset-4">
+                      <em>Towards Deep Tech in Africa: Building the Ground We Stand On</em>
+                    </Link>
+                    . It argues that Africa&apos;s deep tech gap is not a shortage of talent or money but missing ground: conditions that can be designed and built.
                   </p>
 
                   <p>
@@ -149,6 +167,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <BookFeature />
       <Thinking />
       <Education />
       <Footer />

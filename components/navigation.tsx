@@ -24,21 +24,24 @@ export function Navigation() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/experience", label: "Experience" },
+    { href: "/book/towards-deep-tech-in-africa", label: "Book" },
   ]
 
   const impactLinks = [
     { href: "/ventures", label: "Ventures" },
     { href: "/research", label: "Research" },
+    { href: "/ideas", label: "Ideas" },
     { href: "/speaking", label: "Speaking" },
   ]
 
   const mediaLinks = [
-    { href: "/gallery", label: "Journal" },
-    { href: "/gallery/photos", label: "Photos" },
+    { href: "/journal", label: "Journal" },
+    { href: "/journal/photos", label: "Photos" },
     { href: "/awards", label: "Awards" },
+    { href: "/press", label: "Press" },
   ]
 
-  const isImpactActive = impactLinks.some(link => pathname === link.href)
+  const isImpactActive = impactLinks.some(link => pathname === link.href || pathname.startsWith(`${link.href}/`))
   const isMediaActive = mediaLinks.some(link => pathname === link.href)
 
   return (

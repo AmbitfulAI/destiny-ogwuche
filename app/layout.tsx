@@ -12,11 +12,19 @@ const playfair = Playfair_Display({
   variable: '--font-playfair'
 });
 
+const SITE_TITLE = 'Destiny Ogwuche | Deep Tech Engineer and Author of Towards Deep Tech in Africa'
+const SITE_DESCRIPTION = 'Destiny Ogwuche (Destiny Innosuccess Ogwuche) is a Nigerian-born, Netherlands-based deep tech engineer, founder of Ambitful AI and author of Towards Deep Tech in Africa: Building the Ground We Stand On.'
+
 export const metadata: Metadata = {
-  title: 'Destiny Innosuccess Ogwuche | Deep Tech Engineer, Entrepreneur & Venture Capital Fellow',
-  description: 'Nigerian-born, Netherlands-based deep tech engineer, entrepreneur, venture capital fellow and doctoral researcher. Operating at the intersection of science, business and impact.',
-  keywords: ['Deep Tech', 'Entrepreneur', 'Venture Capital', 'MedTech', 'AI', 'Africa Innovation', 'Netherlands', 'Ambitful AI'],
-  authors: [{ name: 'Destiny Innosuccess Ogwuche' }],
+  metadataBase: new URL('https://www.destinyogwuche.com'),
+  title: {
+    default: SITE_TITLE,
+    template: '%s | Destiny Ogwuche',
+  },
+  description: SITE_DESCRIPTION,
+  keywords: ['Destiny Ogwuche', 'Destiny Innosuccess Ogwuche', 'Towards Deep Tech in Africa', 'Deep Tech', 'Deep tech in Africa', 'Entrepreneur', 'Venture Capital', 'MedTech', 'AI', 'Africa Innovation', 'Nigeria', 'Netherlands', 'Ambitful AI'],
+  authors: [{ name: 'Destiny Ogwuche', url: 'https://www.destinyogwuche.com' }],
+  creator: 'Destiny Ogwuche',
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -36,16 +44,16 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png',
   },
   openGraph: {
-    title: 'Destiny Innosuccess Ogwuche | Deep Tech Engineer, Entrepreneur & Venture Capital Fellow',
-    description: 'Nigerian-born, Netherlands-based deep tech engineer, entrepreneur, venture capital fellow and doctoral researcher. Operating at the intersection of science, business and impact.',
-    url: 'https://destinyogwuche.com',
-    siteName: 'Destiny Innosuccess Ogwuche',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: '/',
+    siteName: 'Destiny Ogwuche',
     images: [
       {
         url: '/images/platform/professional_portrait.jpg',
         width: 1200,
         height: 630,
-        alt: 'Destiny Innosuccess Ogwuche - Professional Portrait',
+        alt: 'Destiny Ogwuche, deep tech engineer and author',
       },
     ],
     locale: 'en_US',
@@ -53,15 +61,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Destiny Innosuccess Ogwuche | Deep Tech Engineer, Entrepreneur & Venture Capital Fellow',
-    description: 'Nigerian-born, Netherlands-based deep tech engineer, entrepreneur, venture capital fellow and doctoral researcher.',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: ['/images/platform/professional_portrait.jpg'],
   },
-
 }
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
+import { JsonLd } from "@/components/json-ld"
+import { personSchema, websiteSchema } from "@/lib/book/schema"
 
 export default function RootLayout({
   children,
@@ -77,6 +86,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <JsonLd data={[personSchema(), websiteSchema()]} />
           {children}
           <Toaster position="top-right" richColors />
         </ThemeProvider>

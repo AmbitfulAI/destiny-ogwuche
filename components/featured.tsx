@@ -17,6 +17,12 @@ export function Featured() {
       linkText: "Read Feature"
     },
     {
+      outlet: "The Sun Nigeria · Ambitful AI",
+      summary: "The Sun covered the launch of Ambitful AI and its mission to fix Africa's hidden opportunity crisis by helping ambitious people find and win the opportunities meant for them.",
+      link: "https://thesun.ng/ambitful-ai-launches-to-fix-africas-hidden-opportunity-crisis-shows-how-to-win/",
+      linkText: "Read Feature"
+    },
+    {
       outlet: "Daily Assets",
       summary: "Ambitful AI was featured on its launch day covering Destiny's vision of closing the trillion-dollar opportunity discovery gap across Africa.",
       link: "#",
@@ -90,17 +96,13 @@ export function Featured() {
                     <Link
                       href={feature.link}
                       target="_blank"
+                      rel="noopener"
                       className="inline-flex items-center text-[0.78rem] font-bold text-blue-400 tracking-[0.3px] mt-1 hover:text-white transition-colors"
                     >
                       {feature.linkText}
                       <ArrowUpRight className="ml-1 items-center h-3.5 w-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
                     </Link>
-                  ) : (
-                    <span className="inline-flex items-center text-[0.78rem] font-bold text-blue-400 tracking-[0.3px] mt-1 opacity-60 cursor-not-allowed">
-                      {feature.linkText}
-                      <ArrowUpRight className="ml-1 items-center h-3.5 w-3.5 opacity-50" />
-                    </span>
-                  )}
+                  ) : null}
                 </div>
               </CarouselItem>
             ))}

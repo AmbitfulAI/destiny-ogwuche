@@ -41,7 +41,7 @@ const personas: PersonaCard[] = [
     icon: <Mic className="w-6 h-6" />,
     links: [
       { label: "Speaking", href: "/speaking" },
-      { label: "Digital Journal", href: "/gallery" },
+      { label: "Digital Journal", href: "/journal" },
     ],
     accentColor: "primary"
   }

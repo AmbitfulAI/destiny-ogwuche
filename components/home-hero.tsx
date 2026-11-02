@@ -48,7 +48,7 @@ export function HomeHero() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
-                Deep Tech &bull; Entrepreneur &bull; VC Fellow
+                Deep Tech &bull; Author &bull; VC Fellow
               </div>
 
               <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-medium text-foreground leading-[1.1] tracking-tight">
@@ -82,6 +82,15 @@ export function HomeHero() {
                   LinkedIn
                 </Link>
               </div>
+
+              <Link
+                href="/book/towards-deep-tech-in-africa"
+                className="group inline-flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <span className="font-bold uppercase tracking-[0.2em] text-[10px] text-primary">New book</span>
+                <span className="font-serif italic text-lg text-foreground group-hover:text-primary transition-colors">Towards Deep Tech in Africa</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
 
               <div className="flex flex-wrap gap-6 pt-10">
                 <Link

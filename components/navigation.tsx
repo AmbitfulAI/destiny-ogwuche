@@ -10,13 +10,24 @@ import { container } from "./site/action-link"
 type NavLink = { href: string; label: string }
 type NavGroup = { label: string; links: NavLink[] }
 
-const primary: NavLink[] = [
-  { href: "/about", label: "About" },
-  { href: "/book/towards-deep-tech-in-africa", label: "Book" },
-  { href: "/ideas", label: "Ideas" },
+const primary: NavLink[] = [{ href: "/about", label: "About" }]
+
+const afterGroups: NavLink[] = [
+  { href: "/writing", label: "Writing" },
+  { href: "/store", label: "Store" },
 ]
 
 const groups: NavGroup[] = [
+  {
+    label: "Book",
+    links: [
+      { href: "/book/towards-deep-tech-in-africa", label: "Towards Deep Tech in Africa" },
+      { href: "/ideas", label: "Ideas from the book" },
+      { href: "/book/deep-tech-numbers", label: "The numbers" },
+      { href: "/book/sample", label: "Read the opening free" },
+      { href: "/reading-list", label: "Reading list" },
+    ],
+  },
   {
     label: "Work",
     links: [
@@ -33,6 +44,7 @@ const groups: NavGroup[] = [
       { href: "/press", label: "Press kit" },
       { href: "/journal", label: "Journal" },
       { href: "/journal/photos", label: "Photos" },
+      { href: "/contact", label: "Contact" },
     ],
   },
 ]
@@ -70,14 +82,14 @@ function Dropdown({ group, pathname }: { group: NavGroup; pathname: string }) {
         <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} aria-hidden="true" />
       </button>
       <div className={`absolute left-1/2 top-full -translate-x-1/2 pt-3 ${open ? "visible opacity-100" : "invisible opacity-0"} transition-opacity duration-150`}>
-        <ul className="min-w-48 border border-border bg-popover py-2 shadow-[0_12px_32px_-12px_rgba(16,24,31,0.25)]">
+        <ul className="min-w-56 border border-border bg-popover py-2 shadow-[0_12px_32px_-12px_rgba(16,24,31,0.25)]">
           {group.links.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 onClick={() => setOpen(false)}
                 aria-current={pathname === link.href ? "page" : undefined}
-                className={`block px-5 py-2.5 text-[0.95rem] transition-colors hover:bg-secondary ${pathname === link.href ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                className={`block whitespace-nowrap px-5 py-2.5 text-[0.95rem] transition-colors hover:bg-secondary ${pathname === link.href ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
               >
                 {link.label}
               </Link>
@@ -125,7 +137,7 @@ export function Navigation() {
           Destiny Ogwuche
         </Link>
 
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-7">
           {primary.map((link) => (
             <Link
               key={link.href}
@@ -139,13 +151,23 @@ export function Navigation() {
           {groups.map((group) => (
             <Dropdown key={group.label} group={group} pathname={pathname} />
           ))}
+          {afterGroups.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              aria-current={isActive(pathname, link.href) ? "page" : undefined}
+              className={`py-2 text-[0.95rem] transition-colors hover:text-foreground ${isActive(pathname, link.href) ? "text-foreground" : "text-muted-foreground"} group-data-[hero=true]/nav:text-[#C9D3CC] group-data-[hero=true]/nav:hover:text-[#F1EFE6]`}
+            >
+              {link.label}
+            </Link>
+          ))}
           <div className="flex items-center gap-3 pl-2">
             <ThemeToggle />
             <Link
-              href="/contact"
+              href="/book-a-call"
               className="inline-flex h-10 items-center rounded-sm bg-primary px-5 text-[0.9rem] font-medium text-primary-foreground transition-colors hover:bg-foreground hover:text-background group-data-[hero=true]/nav:bg-[#F1EFE6] group-data-[hero=true]/nav:text-[#0B2E23] group-data-[hero=true]/nav:hover:bg-white"
             >
-              Contact
+              Book a call
             </Link>
           </div>
         </div>
@@ -169,7 +191,7 @@ export function Navigation() {
         <div id="mobile-menu" className="lg:hidden max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-border bg-background">
           <div className={`${container} py-8 space-y-8`}>
             <ul className="space-y-1">
-              {[{ href: "/", label: "Home" }, ...primary].map((link) => (
+              {[{ href: "/", label: "Home" }, ...primary, ...afterGroups].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="block py-2 font-serif text-2xl text-foreground">
                     {link.label}
@@ -192,10 +214,10 @@ export function Navigation() {
               </div>
             ))}
             <Link
-              href="/contact"
+              href="/book-a-call"
               className="flex h-12 items-center justify-center rounded-sm bg-primary text-primary-foreground font-medium"
             >
-              Contact
+              Book a call
             </Link>
           </div>
         </div>

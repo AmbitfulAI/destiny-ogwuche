@@ -13,6 +13,16 @@ const columns = [
     ],
   },
   {
+    title: "Work with me",
+    links: [
+      { label: "Book a call", href: "/book-a-call" },
+      { label: "Store", href: "/store" },
+      { label: "Writing", href: "/writing" },
+      { label: "Speaking", href: "/speaking" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
     title: "Work",
     links: [
       { label: "About", href: "/about" },
@@ -25,10 +35,9 @@ const columns = [
   {
     title: "Media",
     links: [
-      { label: "Speaking", href: "/speaking" },
       { label: "Press kit", href: "/press" },
       { label: "Journal", href: "/journal" },
-      { label: "Contact", href: "/contact" },
+      { label: "Photos", href: "/journal/photos" },
     ],
   },
 ]
@@ -38,7 +47,7 @@ export function Footer() {
     <footer className="border-t border-border bg-background">
       <div className={`${container} py-20`}>
         <div className="grid gap-14 md:grid-cols-12">
-          <div className="md:col-span-5">
+          <div className="md:col-span-4">
             <Link href="/" className="font-serif text-3xl text-foreground">
               Destiny Ogwuche
             </Link>
@@ -63,7 +72,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:col-span-7">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-4 md:col-span-8">
             {columns.map((column) => (
               <div key={column.title}>
                 <h2 className="mb-4 font-sans text-sm font-medium tracking-normal text-foreground">{column.title}</h2>

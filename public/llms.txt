@@ -11,6 +11,12 @@
 - [Free sample](https://www.destinyogwuche.com/book/sample): the Preface and "A Note on Words" by email.
 - Status: forthcoming, planned for January 2027.
 
+## Writing and work
+
+- [Writing](https://www.destinyogwuche.com/writing): essays on deep tech, innovation ecosystems in Africa and Europe, and venture capital. RSS: https://www.destinyogwuche.com/writing/feed.xml
+- [Store](https://www.destinyogwuche.com/store): books, courses, materials and advisory, including technical diligence for hardware and deep tech ventures.
+- [Book a call](https://www.destinyogwuche.com/book-a-call): advisory sessions, speaking and podcast enquiries.
+
 ## Frameworks defined in the book
 
 - [Deep tech](https://www.destinyogwuche.com/ideas/deep-tech): a business built on a real advance in science or engineering, not just a new use of existing science.

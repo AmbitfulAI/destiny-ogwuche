@@ -15,6 +15,9 @@ const nextConfig = {
       // Short addresses for the book.
       { source: "/book", destination: "/book/towards-deep-tech-in-africa", permanent: false },
       { source: "/sample", destination: "/book/sample", permanent: false },
+      // The site editor.
+      { source: "/admin", destination: "/admin/index.html", permanent: false },
+      { source: "/booking", destination: "/book-a-call", permanent: false },
     ]
   },
 }

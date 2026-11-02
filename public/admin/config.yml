@@ -1,0 +1,99 @@
+# Site editor (Decap CMS). Sign in with GitHub at https://www.destinyogwuche.com/admin
+# Publishing saves a file in the repository's main branch, and Vercel puts it live in about a minute.
+
+backend:
+  name: github
+  repo: AmbitfulAI/destiny-ogwuche
+  branch: main
+  base_url: https://www.destinyogwuche.com
+  auth_endpoint: api/decap/auth
+  commit_messages:
+    create: "Publish {{collection}}: {{slug}}"
+    update: "Update {{collection}}: {{slug}}"
+    delete: "Delete {{collection}}: {{slug}}"
+    uploadMedia: "Upload {{path}}"
+    deleteMedia: "Delete {{path}}"
+
+site_url: https://www.destinyogwuche.com
+display_url: https://www.destinyogwuche.com
+publish_mode: simple
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: writing
+    label: Writing
+    label_singular: Essay
+    description: Essays and notes. They appear at destinyogwuche.com/writing when published.
+    folder: content/writing
+    create: true
+    format: json
+    extension: json
+    slug: "{{slug}}"
+    summary: "{{title}}  ({{date}})"
+    sortable_fields: ["date", "title"]
+    view_filters:
+      - label: Drafts
+        field: draft
+        pattern: true
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Publish date, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "D MMMM YYYY", time_format: false }
+      - { label: Summary, name: summary, widget: text, hint: "One or two sentences. Shown in the list of essays, in search results and when the link is shared." }
+      - { label: Cover image, name: cover, widget: image, required: false, hint: "Optional. A wide image works best." }
+      - { label: Topics, name: tags, widget: list, required: false, hint: "Optional, separated by commas. For example: deep tech, Africa, venture capital" }
+      - { label: Draft, name: draft, widget: boolean, default: false, required: false, hint: "Switch on to save without showing it on the site." }
+      - { label: Essay, name: body, widget: markdown, editor_components: ["image"] }
+
+  - name: store
+    label: Store
+    label_singular: Product
+    description: Books, courses, videos, materials, consulting and events. They appear at destinyogwuche.com/store.
+    folder: content/store
+    create: true
+    format: json
+    extension: json
+    slug: "{{slug}}"
+    summary: "{{title}}  ({{type}}, {{status}})"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Type, name: type, widget: select, options: ["Book", "Course", "Video", "Materials", "Consulting", "Event"] }
+      - { label: Short description, name: summary, widget: text }
+      - { label: Price, name: price, widget: string, required: false, hint: "Write it as buyers should see it, for example €49, Free or Price on request." }
+      - { label: Button text, name: ctaLabel, widget: string, required: false, hint: "For example Buy now, Enrol, Pre-order or Book a call." }
+      - label: Button link
+        name: ctaUrl
+        widget: string
+        required: false
+        hint: "Where the button goes: a checkout link from Stripe, Gumroad, Selar or Paystack, or a page on this site such as /book-a-call."
+      - { label: Image, name: image, widget: image, required: false }
+      - { label: Status, name: status, widget: select, options: ["Available", "Coming soon", "Hidden"], default: "Coming soon" }
+      - { label: Order, name: order, widget: number, value_type: int, required: false, hint: "Lower numbers appear first." }
+      - { label: Details, name: body, widget: markdown, required: false, hint: "Optional longer description." }
+
+  - name: settings
+    label: Settings
+    format: json
+    editor:
+      preview: false
+    files:
+      - label: Booking
+        name: booking
+        file: content/settings/site.json
+        fields:
+          - label: Booking link
+            name: bookingUrl
+            widget: string
+            required: false
+            hint: "Your scheduling page from Cal.com or Calendly, for example https://cal.com/destiny-ogwuche. Leave empty to show the contact form instead."
+          - { label: Introduction, name: bookingIntro, widget: text, required: false }
+          - label: Session types
+            name: sessions
+            widget: list
+            required: false
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Length, name: duration, widget: string, required: false }
+              - { label: Price, name: price, widget: string, required: false }
+              - { label: Description, name: description, widget: text }

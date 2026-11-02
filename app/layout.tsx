@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   keywords: ['Destiny Ogwuche', 'Destiny Innosuccess Ogwuche', 'Towards Deep Tech in Africa', 'Deep Tech', 'Deep tech in Africa', 'Entrepreneur', 'Venture Capital', 'MedTech', 'AI', 'Africa Innovation', 'Nigeria', 'Netherlands', 'Ambitful AI'],
   authors: [{ name: 'Destiny Ogwuche', url: 'https://www.destinyogwuche.com' }],
   creator: 'Destiny Ogwuche',
+  verification: {
+    // Google Search Console ownership check for https://www.destinyogwuche.com/
+    google: 'JZqLlTRN33e5dAGpNWqcXVXHCgnhFshfT3H2bodX02o',
+  },
   icons: {
     icon: [
       { url: '/favicon.ico' },

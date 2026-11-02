@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next"
 import { SITE_URL, book } from "@/lib/book/content"
 import { ideas } from "@/lib/book/ideas"
+import { getPosts } from "@/lib/content"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -18,6 +19,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/book/sample", 0.7),
     page("/ideas", 0.8),
     ...ideas.map((idea) => page(`/ideas/${idea.slug}`, 0.7)),
+    page("/writing", 0.8, "weekly"),
+    ...getPosts().map((post) => ({ url: `${SITE_URL}/writing/${post.slug}`, lastModified: new Date(post.date), changeFrequency: "monthly" as const, priority: 0.7 })),
+    page("/store", 0.6, "weekly"),
+    page("/book-a-call", 0.6),
     page("/reading-list", 0.6),
     page("/press", 0.6),
     page("/about", 0.9),

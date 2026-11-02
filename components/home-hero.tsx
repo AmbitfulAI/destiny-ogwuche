@@ -1,126 +1,70 @@
-"use client"
-
-import Link from "next/link"
 import Image from "next/image"
-import { Linkedin, Mail, MapPin, ArrowRight, MousePointer2 } from "lucide-react"
-import goldenGateSeminar from "@/lib/images/golden_gate_seminar.png"
-import mobileBgImage from "@/lib/images/mobile_bg_image.jpeg"
+import portrait from "@/lib/images/portrait_hero_mono.jpg"
+import { ActionLink, container } from "./site/action-link"
+
+// Numbers from the work itself: each one is in the Experience and Ventures pages.
+const proof = [
+  { figure: "3", label: "ventures founded, from bioenergy to AI" },
+  { figure: "$155K", label: "non-dilutive funding secured from Innovate UK and C40 Cities" },
+  { figure: "€38M", label: "Series B medical robot co-led to commercialisation" },
+  { figure: "22+", label: "clients led in defence, marine robotics and energy" },
+]
 
 export function HomeHero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center relative bg-background overflow-hidden">
-      {/* Background Cinematic Image */}
-      <div className="absolute inset-0 z-0">
-        {/* Desktop Image */}
-        <div className="hidden md:block absolute inset-0">
+    <section className="relative overflow-hidden bg-ink" aria-labelledby="hero-title">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_74%_38%,#1E2126_0%,#14171B_38%,#0B0D10_72%)]"
+        aria-hidden="true"
+      />
+      <div className={`${container} relative grid lg:grid-cols-12 lg:gap-10`}>
+        <div className="relative order-1 -mx-6 h-[min(60vh,500px)] md:-mx-10 lg:order-2 lg:col-span-5 lg:mx-0 lg:h-auto lg:min-h-[760px]">
           <Image
-            src={goldenGateSeminar}
-            alt="Engineering Background"
+            src={portrait}
+            alt="Destiny Ogwuche"
             fill
-            className="object-cover object-right opacity-40 grayscale"
             priority
+            placeholder="blur"
+            sizes="(min-width: 1024px) 500px, 100vw"
+            className="portrait-fade object-cover object-[50%_18%]"
           />
         </div>
-        {/* Mobile Image */}
-        <div className="md:hidden absolute inset-0">
-          <Image
-            src={mobileBgImage}
-            alt="Engineering Background Mobile"
-            fill
-            className="object-cover object-center opacity-40 grayscale"
-            priority
-          />
-        </div>
-        <div className="absolute inset-0 bg-linear-to-b from-background/60 via-transparent to-background/60" />
-      </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-24 pointer-events-none z-1" />
-      <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none z-1" />
-
-      <div className="container mx-auto px-6 lg:px-12 py-16 relative z-10 mt-8">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-          {/* Text Content - Statement Typography */}
-          <div className="w-full lg:w-3/5 order-2 lg:order-1">
-            <div className="space-y-12">
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-bold uppercase tracking-[0.2em]">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                </span>
-                Deep Tech &bull; Author &bull; VC Fellow
-              </div>
-
-              <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-medium text-foreground leading-[1.1] tracking-tight">
-                Destiny<br />
-                <span className="text-primary italic">Innosuccess</span><br />
-                Ogwuche
-              </h1>
-
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl font-sans font-light">
-                Nigerian-born, Netherlands-based <span className="text-foreground font-medium underline decoration-primary/30 underline-offset-4">deep tech entrepreneur</span> and researcher dedicated to translating ambitious scientific concepts into scalable products.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-8 text-sm font-semibold tracking-wider text-muted-foreground/80 pt-6">
-                <span className="flex items-center gap-2 group cursor-default">
-                  <MapPin className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
-                  Amsterdam, NL
-                </span>
-                <Link
-                  href="mailto:ogwuche.Innosuccess@gmail.com"
-                  className="flex items-center gap-2 hover:text-primary transition-all hover:translate-x-1"
-                >
-                  <Mail className="w-4 h-4" />
-                  Email
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/in/ogwuche-destiny-innosuccess"
-                  target="_blank"
-                  className="flex items-center gap-2 hover:text-primary transition-all hover:translate-x-1"
-                >
-                  <Linkedin className="w-4 h-4" />
-                  LinkedIn
-                </Link>
-              </div>
-
-              <Link
-                href="/book/towards-deep-tech-in-africa"
-                className="group inline-flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                <span className="font-bold uppercase tracking-[0.2em] text-[10px] text-primary">New book</span>
-                <span className="font-serif italic text-lg text-foreground group-hover:text-primary transition-colors">Towards Deep Tech in Africa</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-
-              <div className="flex flex-wrap gap-6 pt-10">
-                <Link
-                  href="/about"
-                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background font-bold tracking-widest uppercase text-[10px] hover:bg-primary transition-colors overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Inquire More
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                  </span>
-                </Link>
-                <Link
-                  href="https://ambitful.ai"
-                  target="_blank"
-                  className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-primary text-primary font-bold tracking-widest uppercase text-[10px] hover:bg-primary hover:text-primary-foreground transition-all"
-                >
-                  Ambitful.ai
-                </Link>
-              </div>
-            </div>
+        <div className="relative order-2 -mt-12 pb-14 lg:order-1 lg:col-span-7 lg:mt-0 lg:flex lg:flex-col lg:justify-center lg:pt-40 lg:pb-16">
+          <p className="settle eyebrow">Founder, engineer and author</p>
+          <h1 id="hero-title" className="settle settle-delay-1 mt-7 font-serif text-[3.9rem] font-medium leading-[0.9] tracking-[-0.015em] text-ivory sm:text-[5.25rem] lg:text-[7.25rem]">
+            Deep tech,
+            <br />
+            executed<span className="text-champagne">.</span>
+          </h1>
+          <p className="settle settle-delay-2 mt-9 max-w-[36rem] text-[1.125rem] leading-[1.75] text-mist">
+            I&apos;m Destiny Ogwuche. I take hard technology from the lab to the market. I founded Ambitful AI, tested and qualified extreme
+            ultraviolet lithography systems at ASML, and led validation of the world&apos;s first autonomous blood-drawing robot at Vitestro.
+          </p>
+          <p className="settle settle-delay-2 mt-4 max-w-[36rem] text-[1.125rem] leading-[1.75] text-ivory">
+            Now I help founders, investors and governments build what is hard to build.
+          </p>
+          <div className="settle settle-delay-3 mt-11 flex flex-wrap gap-3">
+            <ActionLink href="/book-a-call">Work with me</ActionLink>
+            <ActionLink href="/ventures" variant="outline">
+              See the ventures
+            </ActionLink>
           </div>
-
-
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground/40 animate-bounce">
-        <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Scroll</span>
-        <div className="w-px h-12 bg-linear-to-b from-primary/40 to-transparent" />
+      <div className="relative border-t border-hairline">
+        <dl className={`${container} grid grid-cols-2 lg:grid-cols-4`}>
+          {proof.map((item, i) => (
+            <div
+              key={item.figure}
+              className={`py-8 pr-6 lg:py-10 ${i % 2 === 1 ? "border-l border-hairline pl-6" : ""} ${i > 1 ? "border-t border-hairline lg:border-t-0" : ""} ${i === 2 ? "lg:border-l lg:pl-6" : ""}`}
+            >
+              <dt className="font-serif text-[2.6rem] font-medium leading-none text-champagne [font-variant-numeric:lining-nums] md:text-[3.25rem]">{item.figure}</dt>
+              <dd className="mt-3 max-w-[15rem] text-[0.875rem] leading-snug text-mist">{item.label}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   )

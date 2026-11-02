@@ -3,90 +3,116 @@
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  /* Surface & Ink - Light Theme (Default) */
-  --background: oklch(0.99 0.005 90);
-  --foreground: oklch(0.18 0.02 210);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 210);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 210);
-  
-  /* Brand Colors */
-  --primary: oklch(0.52 0.12 210); /* Deep Tech Blue-Teal */
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.96 0.01 210);
-  --secondary-foreground: oklch(0.18 0.02 210);
-  --muted: oklch(0.94 0.01 210);
-  --muted-foreground: oklch(0.48 0.02 210);
-  --accent: oklch(0.68 0.15 45); /* Warm Innovation Terracotta */
-  --accent-foreground: oklch(1 0 0);
-  
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(1 0 0);
-  
-  --border: oklch(0.88 0.01 210);
-  --input: oklch(0.92 0.01 210);
-  --ring: oklch(0.52 0.12 210);
-  
-  /* System Radii */
-  --radius: 0.6rem;
-  
-  /* Sidebar */
-  --sidebar: oklch(0.99 0.005 90);
-  --sidebar-foreground: oklch(0.18 0.02 210);
-  --sidebar-primary: oklch(0.52 0.12 210);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.96 0.01 210);
-  --sidebar-accent-foreground: oklch(0.18 0.02 210);
-  --sidebar-border: oklch(0.88 0.01 210);
-  --sidebar-ring: oklch(0.52 0.12 210);
+/*
+  Fonts, self-hosted (SIL Open Font License), Latin subset, one variable file each.
+  Cormorant Garamond for display, Manrope for text. The fallback faces are system
+  fonts resized to the same metrics, so nothing jumps when the real fonts arrive.
+*/
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/cormorant-garamond-latin.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/cormorant-garamond-italic-latin.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/manrope-latin.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Cormorant Fallback';
+  src: local('Times New Roman'), local('Times'), local('Liberation Serif');
+  size-adjust: 96.4%;
+  ascent-override: 95.4%;
+  descent-override: 30.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Manrope Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 102.4%;
+  ascent-override: 104.5%;
+  descent-override: 29.3%;
+  line-gap-override: 0%;
 }
 
-.dark {
-  --background: oklch(0.12 0.015 210); /* Deep Tech Midnight */
-  --foreground: oklch(0.98 0.01 210);
-  --card: oklch(0.15 0.02 210);
-  --card-foreground: oklch(0.98 0.01 210);
-  --popover: oklch(0.14 0.02 210);
-  --popover-foreground: oklch(0.98 0.01 210);
-  
-  --primary: oklch(0.72 0.12 210); /* Brighter Teal for Dark Mode */
-  --primary-foreground: oklch(0.12 0.015 210);
-  --secondary: oklch(0.24 0.03 210);
-  --secondary-foreground: oklch(0.98 0.01 210);
-  --muted: oklch(0.22 0.02 210);
-  --muted-foreground: oklch(0.65 0.02 210);
-  --accent: oklch(0.74 0.14 45); /* Warm Copper/Terracotta for Dark Mode */
-  --accent-foreground: oklch(0.12 0.015 210);
-  
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(1 0 0);
-  
-  --border: oklch(0.28 0.03 210);
-  --input: oklch(0.26 0.03 210);
-  --ring: oklch(0.72 0.12 210);
-  
-  --chart-1: oklch(0.52 0.12 210);
-  --chart-2: oklch(0.74 0.14 45);
-  --chart-3: oklch(0.45 0.18 240);
-  --chart-4: oklch(0.85 0.12 90);
-  --chart-5: oklch(0.65 0.2 30);
-  
-  --sidebar: oklch(0.11 0.02 210);
-  --sidebar-foreground: oklch(0.98 0.01 210);
-  --sidebar-primary: oklch(0.72 0.12 210);
-  --sidebar-primary-foreground: oklch(0.12 0.015 210);
-  --sidebar-accent: oklch(0.24 0.03 210);
-  --sidebar-accent-foreground: oklch(0.98 0.01 210);
-  --sidebar-border: oklch(0.28 0.03 210);
-  --sidebar-ring: oklch(0.72 0.12 210);
+/*
+  Design tokens: "ink and champagne".
+  A cool near-black ground, warm ivory text and a single champagne accent,
+  with the portraits in monochrome. The site is dark by design.
+*/
+:root {
+  --ink: #0B0D10;
+  --ink-raised: #111419;
+  --ink-panel: #171B21;
+  --ivory: #EEE9DF;
+  --mist: #A7ADB5;
+  --smoke: #80878F;
+  --champagne: #D2B583;
+  --champagne-bright: #E6D1A8;
+  --bronze: #8F7448;
+  --hairline: #262A31;
+
+  --background: var(--ink);
+  --foreground: var(--ivory);
+  --card: var(--ink-raised);
+  --card-foreground: var(--ivory);
+  --popover: var(--ink-panel);
+  --popover-foreground: var(--ivory);
+
+  --primary: var(--champagne);
+  --primary-foreground: var(--ink);
+  --secondary: var(--ink-raised);
+  --secondary-foreground: var(--ivory);
+  --muted: var(--ink-panel);
+  --muted-foreground: var(--mist);
+  --accent: var(--champagne);
+  --accent-foreground: var(--ink);
+
+  --destructive: #E07A5F;
+  --destructive-foreground: var(--ink);
+
+  --border: var(--hairline);
+  --input: #30353D;
+  --ring: var(--champagne);
+
+  --radius: 0.125rem;
+
+  --chart-1: var(--champagne);
+  --chart-2: #7FA6C4;
+  --chart-3: #A7ADB5;
+  --chart-4: #8F7448;
+  --chart-5: #E07A5F;
+
+  --sidebar: var(--ink);
+  --sidebar-foreground: var(--ivory);
+  --sidebar-primary: var(--champagne);
+  --sidebar-primary-foreground: var(--ink);
+  --sidebar-accent: var(--ink-panel);
+  --sidebar-accent-foreground: var(--ivory);
+  --sidebar-border: var(--hairline);
+  --sidebar-ring: var(--champagne);
+
+  color-scheme: dark;
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
-  --font-serif: var(--font-playfair), 'Playfair Display', Georgia, serif;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: 'Manrope', 'Manrope Fallback', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Cormorant Fallback', 'Times New Roman', serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -111,9 +137,19 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
+  --color-ink: var(--ink);
+  --color-ink-raised: var(--ink-raised);
+  --color-ink-panel: var(--ink-panel);
+  --color-ivory: var(--ivory);
+  --color-mist: var(--mist);
+  --color-smoke: var(--smoke);
+  --color-champagne: var(--champagne);
+  --color-champagne-bright: var(--champagne-bright);
+  --color-bronze: var(--bronze);
+  --color-hairline: var(--hairline);
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
   --radius-xl: calc(var(--radius) + 4px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
@@ -129,30 +165,190 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* Anchor links land below the fixed navigation bar. */
+    scroll-padding-top: 6rem;
+    background: var(--ink);
+  }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: 'ss01' 1, 'ss02' 1, 'cv01' 1, 'cv11' 1;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-tight;
+    @apply font-serif;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  /* Cormorant is delicate at regular weight; medium holds up on the dark ground. */
+  .font-serif {
+    font-weight: 500;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--champagne) 40%, transparent);
+    color: var(--ivory);
+  }
+  :focus-visible {
+    outline: 1px solid var(--ring);
+    outline-offset: 3px;
   }
 }
 
+/* A small label above a heading: a champagne hairline, then the words. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--champagne);
+}
+.eyebrow::before {
+  content: '';
+  width: 2.25rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+/* Hairline frame offset behind a photograph. */
+.frame-offset {
+  position: relative;
+}
+.frame-offset::before {
+  content: '';
+  position: absolute;
+  inset: 1.25rem -1.25rem -1.25rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--champagne) 45%, transparent);
+  pointer-events: none;
+}
+
+/* A link that reads as a link in running text. */
+.text-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  transition: text-decoration-color 150ms ease;
+}
+.text-link:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Long-form text: essays and store details written in the site editor. */
+.prose-article {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--foreground) 88%, transparent);
+}
+.prose-article > * + * { margin-top: 1.4em; }
+.prose-article h2, .prose-article h3, .prose-article h4 {
+  font-family: var(--font-serif);
+  color: var(--foreground);
+  line-height: 1.2;
+  margin-top: 2.2em;
+}
+.prose-article h2 { font-size: 2.4rem; }
+.prose-article h3 { font-size: 1.8rem; }
+.prose-article h4 { font-size: 1.45rem; }
+.prose-article h2 + *, .prose-article h3 + *, .prose-article h4 + * { margin-top: 0.8em; }
+.prose-article a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+}
+.prose-article a:hover { text-decoration-color: currentColor; }
+.prose-article strong { color: var(--foreground); font-weight: 600; }
+.prose-article blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.5rem;
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--foreground);
+}
+.prose-article ul, .prose-article ol { padding-left: 1.4em; }
+.prose-article ul { list-style: disc; }
+.prose-article ol { list-style: decimal; }
+.prose-article li + li { margin-top: 0.4em; }
+.prose-article li > ul, .prose-article li > ol { margin-top: 0.4em; }
+.prose-article li::marker { color: var(--accent); }
+.prose-article hr { border: 0; border-top: 1px solid var(--border); margin: 3em 0; }
+.prose-article img { width: 100%; height: auto; }
+.prose-article figure img { width: 100%; }
+.prose-article figcaption { margin-top: 0.75rem; font-size: 0.9rem; color: var(--muted-foreground); }
+.prose-article code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--secondary);
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+}
+.prose-article pre {
+  background: var(--secondary);
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.prose-article pre code { background: none; padding: 0; }
+.prose-compact { font-size: 1rem; }
+.prose-compact > * + * { margin-top: 1em; }
+
+/* Kept for older pages that still use it. */
 .glass-panel {
-  @apply bg-background/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)];
+  @apply bg-card border border-border;
 }
 
 .text-balance {
   text-wrap: balance;
 }
 
-/* Custom Scrollbar for a premium look */
-::-webkit-scrollbar {
-  width: 10px;
+/* Hero portrait: fades into the dark ground so the photo has no visible edge. */
+.portrait-fade {
+  -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent);
+  mask-image: linear-gradient(to bottom, #000 68%, transparent);
 }
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
+@media (min-width: 1024px) {
+  .portrait-fade {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 18%, #000 84%, transparent), linear-gradient(to bottom, #000 80%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent, #000 18%, #000 84%, transparent), linear-gradient(to bottom, #000 80%, transparent);
+    mask-composite: intersect;
+  }
 }
-::-webkit-scrollbar-thumb {
-  @apply bg-muted/50 rounded-full border-4 border-solid border-background hover:bg-muted transition-colors;
+
+/* The one orchestrated motion: the hero settles in on first load. */
+@keyframes settle {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.settle {
+  animation: settle 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.settle-delay-1 { animation-delay: 120ms; }
+.settle-delay-2 { animation-delay: 240ms; }
+.settle-delay-3 { animation-delay: 360ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,19 +1,16 @@
-import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: '--font-inter'
-});
+// Fonts are self-hosted from public/fonts and declared in globals.css:
+// Cormorant Garamond for display, Manrope for text.
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: '--font-playfair'
-});
+const SITE_TITLE = 'Destiny Ogwuche | Deep Tech Founder, Engineer and Author'
+const SITE_DESCRIPTION = 'Destiny Ogwuche (Destiny Innosuccess Ogwuche) is a Nigerian-born, Netherlands-based deep tech founder and engineer. Founder of Ambitful AI, engineer at ASML and Vitestro, and author of Towards Deep Tech in Africa: Building the Ground We Stand On.'
 
-const SITE_TITLE = 'Destiny Ogwuche | Deep Tech Engineer and Author of Towards Deep Tech in Africa'
-const SITE_DESCRIPTION = 'Destiny Ogwuche (Destiny Innosuccess Ogwuche) is a Nigerian-born, Netherlands-based deep tech engineer, founder of Ambitful AI and author of Towards Deep Tech in Africa: Building the Ground We Stand On.'
+export const viewport: Viewport = {
+  themeColor: '#0B0D10',
+  colorScheme: 'dark',
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.destinyogwuche.com'),
@@ -29,50 +26,20 @@ export const metadata: Metadata = {
     // Google Search Console ownership check for https://www.destinyogwuche.com/
     google: 'JZqLlTRN33e5dAGpNWqcXVXHCgnhFshfT3H2bodX02o',
   },
-  icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
+  // Only site-wide values here: each page sets its own share title, description and address.
   openGraph: {
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    url: '/',
     siteName: 'Destiny Ogwuche',
-    images: [
-      {
-        url: '/images/platform/professional_portrait.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Destiny Ogwuche, deep tech engineer and author',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    images: ['/images/platform/professional_portrait.jpg'],
   },
 }
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
+import Script from "next/script"
 import { JsonLd } from "@/components/json-ld"
 import { personSchema, websiteSchema } from "@/lib/book/schema"
 
@@ -82,17 +49,25 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased transition-colors duration-300`}>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <link rel="preload" href="/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+      </head>
+      <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          forcedTheme="dark"
+          defaultTheme="dark"
           disableTransitionOnChange
         >
           <JsonLd data={[personSchema(), websiteSchema()]} />
           {children}
           <Toaster position="top-right" richColors />
+          {/* Vercel Web Analytics and Speed Insights: cookie-free visitor and performance statistics.
+              Switch them on in the Vercel project under Analytics and Speed Insights. */}
+          <Script src="/_vercel/insights/script.js" strategy="afterInteractive" />
+          <Script src="/_vercel/speed-insights/script.js" strategy="afterInteractive" />
         </ThemeProvider>
       </body>
     </html>

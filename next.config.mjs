@@ -4,7 +4,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    // Serve resized, modern-format images instead of the original multi-megabyte files.
+    formats: ['image/avif', 'image/webp'],
   },
   async redirects() {
     return [
@@ -14,6 +15,9 @@ const nextConfig = {
       // Short addresses for the book.
       { source: "/book", destination: "/book/towards-deep-tech-in-africa", permanent: false },
       { source: "/sample", destination: "/book/sample", permanent: false },
+      // The site editor.
+      { source: "/admin", destination: "/admin/index.html", permanent: false },
+      { source: "/booking", destination: "/book-a-call", permanent: false },
     ]
   },
 }

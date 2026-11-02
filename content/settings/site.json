@@ -1,0 +1,24 @@
+{
+  "bookingUrl": "",
+  "bookingIntro": "",
+  "sessions": [
+    {
+      "title": "First conversation",
+      "duration": "20 minutes",
+      "price": "",
+      "description": "For founders, investors, organisers and researchers to see whether and how we could work together."
+    },
+    {
+      "title": "Advisory session",
+      "duration": "60 minutes",
+      "price": "",
+      "description": "A working session on verification and validation, funding strategy or building in Africa's deep tech ecosystems."
+    },
+    {
+      "title": "Speaking or podcast enquiry",
+      "duration": "20 minutes",
+      "price": "",
+      "description": "Tell me about your event or show, the audience and the date."
+    }
+  ]
+}

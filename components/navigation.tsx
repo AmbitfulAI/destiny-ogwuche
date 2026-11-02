@@ -1,229 +1,211 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, ChevronDown, ArrowRight } from "lucide-react"
-import { ThemeToggle } from "./theme-toggle"
-import Image from "next/image"
+import { Menu, X, ChevronDown } from "lucide-react"
+import { container } from "./site/action-link"
 
-export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [impactOpen, setImpactOpen] = useState(false)
-  const [mediaOpen, setMediaOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const pathname = usePathname()
+type NavLink = { href: string; label: string }
+type NavGroup = { label: string; links: NavLink[] }
+
+const primary: NavLink[] = [{ href: "/about", label: "About" }]
+
+const afterGroups: NavLink[] = [
+  { href: "/writing", label: "Writing" },
+  { href: "/store", label: "Store" },
+]
+
+const groups: NavGroup[] = [
+  {
+    label: "Work",
+    links: [
+      { href: "/experience", label: "Experience" },
+      { href: "/ventures", label: "Ventures" },
+      { href: "/research", label: "Research" },
+      { href: "/awards", label: "Awards" },
+    ],
+  },
+  {
+    label: "Book",
+    links: [
+      { href: "/book/towards-deep-tech-in-africa", label: "Towards Deep Tech in Africa" },
+      { href: "/ideas", label: "Ideas from the book" },
+      { href: "/book/deep-tech-numbers", label: "The numbers" },
+      { href: "/book/sample", label: "Read the opening free" },
+      { href: "/reading-list", label: "Reading list" },
+    ],
+  },
+  {
+    label: "Media",
+    links: [
+      { href: "/speaking", label: "Speaking" },
+      { href: "/press", label: "Press kit" },
+      { href: "/journal", label: "Journal" },
+      { href: "/journal/photos", label: "Photos" },
+      { href: "/contact", label: "Contact" },
+    ],
+  },
+]
+
+const isActive = (pathname: string, href: string) => pathname === href || pathname.startsWith(`${href}/`)
+
+const linkBase = "relative py-2 text-[0.875rem] tracking-[0.01em] transition-colors duration-200"
+
+function Dropdown({ group, pathname }: { group: NavGroup; pathname: string }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+  const active = group.links.some((l) => isActive(pathname, l.href))
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const mainLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/experience", label: "Experience" },
-    { href: "/book/towards-deep-tech-in-africa", label: "Book" },
-  ]
-
-  const impactLinks = [
-    { href: "/ventures", label: "Ventures" },
-    { href: "/research", label: "Research" },
-    { href: "/ideas", label: "Ideas" },
-    { href: "/speaking", label: "Speaking" },
-  ]
-
-  const mediaLinks = [
-    { href: "/journal", label: "Journal" },
-    { href: "/journal/photos", label: "Photos" },
-    { href: "/awards", label: "Awards" },
-    { href: "/press", label: "Press" },
-  ]
-
-  const isImpactActive = impactLinks.some(link => pathname === link.href || pathname.startsWith(`${link.href}/`))
-  const isMediaActive = mediaLinks.some(link => pathname === link.href)
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false)
+    const onClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+    }
+    document.addEventListener("keydown", onKey)
+    document.addEventListener("mousedown", onClick)
+    return () => {
+      document.removeEventListener("keydown", onKey)
+      document.removeEventListener("mousedown", onClick)
+    }
+  }, [open])
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-100 transition-all duration-500 ${scrolled
-        ? "py-3 bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
-        : "py-6 bg-transparent"
-        }`}
-    >
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="group flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary transition-all duration-500">
-              <Image src="/favicon.ico" alt="Destiny Logo" width={24} height={24} className="rounded-sm" />
-            </div>
-            <span className="font-serif text-xl font-medium text-foreground tracking-widest hidden sm:block group-hover:translate-x-1 transition-transform duration-500">
-              OGWUCHE
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-10">
-            {mainLinks.map((link) => (
+    <div ref={ref} className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+      <button
+        type="button"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+        className={`${linkBase} flex items-center gap-1.5 ${active ? "text-ivory" : "text-mist hover:text-ivory"}`}
+      >
+        {group.label}
+        <ChevronDown className={`h-3.5 w-3.5 text-champagne/80 transition-transform duration-200 ${open ? "rotate-180" : ""}`} aria-hidden="true" />
+      </button>
+      <div className={`absolute left-1/2 top-full -translate-x-1/2 pt-4 ${open ? "visible opacity-100" : "invisible opacity-0"} transition-opacity duration-200`}>
+        <ul className="min-w-60 border border-hairline bg-ink-panel/95 py-3 shadow-[0_24px_48px_-16px_rgba(0,0,0,0.6)] backdrop-blur-md">
+          {group.links.map((link) => (
+            <li key={link.href}>
               <Link
-                key={link.href}
                 href={link.href}
-                className={`text-[11px] font-bold tracking-[0.2em] uppercase transition-all hover:text-primary ${pathname === link.href
-                  ? "text-primary px-2"
-                  : "text-muted-foreground"
-                  }`}
+                onClick={() => setOpen(false)}
+                aria-current={pathname === link.href ? "page" : undefined}
+                className={`block whitespace-nowrap px-6 py-2.5 text-[0.9rem] transition-colors ${pathname === link.href ? "text-champagne" : "text-mist hover:text-ivory"}`}
               >
                 {link.label}
               </Link>
-            ))}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
 
-            {/* Impact Dropdown */}
-            <div className="relative group/impact">
-              <button
-                onMouseEnter={() => setImpactOpen(true)}
-                className={`flex items-center gap-1 text-[11px] font-bold tracking-[0.2em] uppercase transition-all hover:text-primary ${isImpactActive ? "text-primary" : "text-muted-foreground"
-                  }`}
-              >
-                Impact
-                <ChevronDown className={`h-3 w-3 transition-transform duration-300 group-hover/impact:rotate-180`} />
-              </button>
+function NavItem({ link, pathname }: { link: NavLink; pathname: string }) {
+  const active = isActive(pathname, link.href)
+  return (
+    <Link
+      href={link.href}
+      aria-current={active ? "page" : undefined}
+      className={`${linkBase} ${active ? "text-ivory after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:bg-champagne" : "text-mist hover:text-ivory"}`}
+    >
+      {link.label}
+    </Link>
+  )
+}
 
-              <div
-                onMouseLeave={() => setImpactOpen(false)}
-                className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 ${impactOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"
-                  }`}
-              >
-                <div className="w-56 bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl p-3 overflow-hidden">
-                  {impactLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={`flex items-center justify-between group/item px-4 py-3 rounded-lg text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-primary hover:text-primary-foreground ${pathname === link.href ? "bg-primary/5 text-primary" : "text-muted-foreground"
-                        }`}
-                      onClick={() => setImpactOpen(false)}
-                    >
-                      {link.label}
-                      <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all" />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
+export function Navigation() {
+  const pathname = usePathname()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
-            {/* Media Dropdown */}
-            <div className="relative group/media">
-              <button
-                onMouseEnter={() => setMediaOpen(true)}
-                className={`flex items-center gap-1 text-[11px] font-bold tracking-[0.2em] uppercase transition-all hover:text-primary ${isMediaActive ? "text-primary" : "text-muted-foreground"
-                  }`}
-              >
-                Media
-                <ChevronDown className={`h-3 w-3 transition-transform duration-300 group-hover/media:rotate-180`} />
-              </button>
+  // The bar is transparent at the top of every page and turns solid once you scroll.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [pathname])
 
-              <div
-                onMouseLeave={() => setMediaOpen(false)}
-                className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 ${mediaOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"
-                  }`}
-              >
-                <div className="w-56 bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl p-3 overflow-hidden">
-                  {mediaLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={`flex items-center justify-between group/item px-4 py-3 rounded-lg text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-primary hover:text-primary-foreground ${pathname === link.href ? "bg-primary/5 text-primary" : "text-muted-foreground"
-                        }`}
-                      onClick={() => setMediaOpen(false)}
-                    >
-                      {link.label}
-                      <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all" />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
+  useEffect(() => setMenuOpen(false), [pathname])
 
-            <div className="flex items-center gap-4">
-              <ThemeToggle />
-              <Link
-                href="/contact"
-                className="inline-flex items-center h-10 px-6 bg-primary text-primary-foreground text-[10px] font-bold tracking-[0.2em] uppercase rounded-full hover:bg-foreground hover:text-background transition-all"
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
+  const solid = scrolled || menuOpen
 
-          {/* Mobile Actions */}
-          <div className="flex lg:hidden items-center gap-3">
-            <ThemeToggle />
-            <button
-              className="p-3 bg-secondary/50 rounded-xl text-foreground"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-            >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+  return (
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color] duration-300 ${solid ? "border-hairline bg-ink/85 backdrop-blur-xl" : "border-transparent bg-transparent"}`}
+    >
+      <nav className={`${container} flex h-[78px] items-center justify-between`} aria-label="Main">
+        <Link href="/" className="group flex items-baseline gap-3 text-ivory">
+          <span className="font-serif text-[1.55rem] font-medium leading-none tracking-[0.005em]">Destiny Ogwuche</span>
+        </Link>
+
+        <div className="hidden items-center gap-8 lg:flex">
+          {primary.map((link) => (
+            <NavItem key={link.href} link={link} pathname={pathname} />
+          ))}
+          {groups.map((group) => (
+            <Dropdown key={group.label} group={group} pathname={pathname} />
+          ))}
+          {afterGroups.map((link) => (
+            <NavItem key={link.href} link={link} pathname={pathname} />
+          ))}
+          <Link
+            href="/book-a-call"
+            className="ml-2 inline-flex h-10 items-center border border-champagne/60 px-5 text-[0.85rem] font-semibold tracking-[0.01em] text-champagne transition-colors duration-200 hover:bg-champagne hover:text-ink"
+          >
+            Book a call
+          </Link>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-[72px] bg-background/95 backdrop-blur-xl border-b border-border py-8 px-6 animate-in slide-in-from-top-4 duration-300">
-            <div className="flex flex-col gap-6">
-              {mainLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm font-bold tracking-widest uppercase transition-colors ${pathname === link.href ? "text-primary" : "text-muted-foreground"
-                    }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                </Link>
+        <button
+          type="button"
+          className="flex h-11 w-11 items-center justify-center text-ivory lg:hidden"
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+        >
+          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </nav>
+
+      {menuOpen && (
+        <div id="mobile-menu" className="max-h-[calc(100dvh-78px)] overflow-y-auto border-t border-hairline bg-ink lg:hidden">
+          <div className={`${container} space-y-10 py-10`}>
+            <ul className="space-y-1">
+              {[{ href: "/", label: "Home" }, ...primary, ...afterGroups].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="block py-1.5 font-serif text-[2rem] leading-tight text-ivory">
+                    {link.label}
+                  </Link>
+                </li>
               ))}
-
-              <div className="pt-6 border-t border-border space-y-4">
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">Impact</span>
-                {impactLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`block text-sm font-bold tracking-widest uppercase transition-colors ${pathname === link.href ? "text-primary" : "text-muted-foreground"
-                      }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+            </ul>
+            {groups.map((group) => (
+              <div key={group.label}>
+                <p className="eyebrow mb-3">{group.label}</p>
+                <ul className="grid grid-cols-2 gap-x-6">
+                  {group.links.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="block py-2 text-[1rem] text-mist">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              <div className="pt-6 border-t border-border space-y-4">
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">Media</span>
-                {mediaLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`block text-sm font-bold tracking-widest uppercase transition-colors ${pathname === link.href ? "text-primary" : "text-muted-foreground"
-                      }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-
-              <Link
-                href="/contact"
-                className="mt-4 flex items-center justify-center h-14 bg-primary text-primary-foreground text-xs font-bold tracking-[0.2em] uppercase rounded-full"
-                onClick={() => setIsOpen(false)}
-              >
-                Get In Touch
-              </Link>
-            </div>
+            ))}
+            <Link
+              href="/book-a-call"
+              className="flex h-[3.25rem] items-center justify-center bg-champagne font-semibold text-ink"
+            >
+              Book a call
+            </Link>
           </div>
-        )}
-      </div>
-    </nav>
+        </div>
+      )}
+    </header>
   )
 }

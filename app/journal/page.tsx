@@ -39,25 +39,22 @@ export default function GalleryPage() {
     <main className="min-h-screen bg-background">
       <Navigation />
       <PageHeader
-        eyebrow="Digital Journal"
-        title="Moments & Milestones"
-        description="A chronological journey through speaking engagements, venture experiences, and personal growth."
+        eyebrow="Journal"
+        title="Moments and milestones"
+        description="Talks, ventures, research and the people along the way, in pictures."
       />
 
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Category Filter - Refined Style */}
-            <div className="flex flex-wrap justify-center gap-4 mb-20">
+            <div className="mb-20 flex flex-wrap gap-x-8 gap-y-2 border-b border-border">
               {galleryCategories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-8 py-3 text-sm font-medium transition-all rounded-full ${
-                    selectedCategory === cat
-                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                      : "bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-primary border border-transparent"
-                  }`}
+                  aria-pressed={selectedCategory === cat}
+                  className={`border-b-2 px-1 py-2 text-[0.95rem] transition-colors ${selectedCategory === cat ? "border-foreground text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}
                 >
                   {cat}
                 </button>
@@ -65,7 +62,7 @@ export default function GalleryPage() {
             </div>
 
             {/* Journal Entries - Linear Staggered Layout */}
-            <div className="space-y-32">
+            <div className="space-y-24 md:space-y-32">
               {filteredImages.map((image, idx) => (
                 <div 
                   key={image.id}
@@ -76,44 +73,38 @@ export default function GalleryPage() {
                   {/* Image Part */}
                   <div className="w-full lg:w-1/2 group">
                     <div 
-                      className="relative aspect-4/3 overflow-hidden bg-muted cursor-pointer ring-1 ring-border group-hover:ring-primary/30 transition-all duration-500 shadow-xl"
+                      className="relative aspect-4/3 cursor-zoom-in overflow-hidden bg-muted"
                       onClick={() => openLightbox(idx)}
                     >
                       <Image
                         src={image.src}
                         alt={image.alt}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        sizes="(min-width: 1024px) 560px, 100vw"
+                        className="object-cover"
                       />
-                      <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
                     </div>
                   </div>
 
                   {/* Narrative Part */}
                   <div className="w-full lg:w-1/2 space-y-6">
-                    <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-bold uppercase tracking-widest">
-                      <Calendar className="w-3.5 h-3.5" />
-                      {image.date}
-                    </div>
+                    <p className="text-[0.95rem] text-accent">{image.date}</p>
                     
-                    <h2 className="font-serif text-3xl md:text-4xl font-medium text-foreground leading-tight text-balance">
+                    <h2 className="font-serif text-[2.15rem] leading-tight md:text-[2.6rem]">
                       {image.alt}
                     </h2>
 
-                    <p className="text-lg text-muted-foreground leading-relaxed italic">
-                      &ldquo;{image.description}&rdquo;
-                    </p>
+                    <p className="text-lg leading-relaxed text-muted-foreground">{image.description}</p>
 
                     <div className="pt-4 flex items-center gap-6">
-                      <span className="text-xs font-bold text-muted-foreground/60 uppercase tracking-widest border-l-2 border-primary/30 pl-3">
+                      <span className="text-sm text-muted-foreground">
                         {image.category}
                       </span>
                       <button 
                          onClick={() => openLightbox(idx)}
-                         className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+                         className="text-link text-[0.95rem] text-foreground"
                       >
-                        View Full Image
-                        <ArrowRight className="w-4 h-4" />
+                        View larger
                       </button>
                     </div>
                   </div>
@@ -139,7 +130,7 @@ export default function GalleryPage() {
             <div className="flex-1 relative flex items-center justify-center">
               <button
                 onClick={goToPrevImage}
-                className="absolute left-0 p-4 text-muted-foreground hover:text-primary transition-all hover:scale-110 z-10 bg-background/50 rounded-full"
+                className="absolute left-0 p-4 text-muted-foreground hover:text-foreground transition-colors z-10 bg-background/50 rounded-full"
                 aria-label="Previous"
               >
                 <ChevronLeft className="w-8 h-8" />
@@ -151,6 +142,7 @@ export default function GalleryPage() {
                       src={filteredImages[lightboxIndex].src}
                       alt={filteredImages[lightboxIndex].alt}
                       fill
+                      sizes="100vw"
                       className="object-contain"
                       priority
                     />
@@ -159,7 +151,7 @@ export default function GalleryPage() {
 
               <button
                 onClick={goToNextImage}
-                className="absolute right-0 p-4 text-muted-foreground hover:text-primary transition-all hover:scale-110 z-10 bg-background/50 rounded-full"
+                className="absolute right-0 p-4 text-muted-foreground hover:text-foreground transition-colors z-10 bg-background/50 rounded-full"
                 aria-label="Next"
               >
                 <ChevronRight className="w-8 h-8" />
@@ -167,8 +159,8 @@ export default function GalleryPage() {
             </div>
 
             <div className="py-8 text-center space-y-2">
-              <h3 className="font-serif text-2xl text-foreground">{filteredImages[lightboxIndex].alt}</h3>
-              <p className="text-muted-foreground">{filteredImages[lightboxIndex].date} &bull; {filteredImages[lightboxIndex].category}</p>
+              <h3 className="font-serif text-[1.75rem] text-foreground">{filteredImages[lightboxIndex].alt}</h3>
+              <p className="text-muted-foreground">{filteredImages[lightboxIndex].date}, {filteredImages[lightboxIndex].category}</p>
             </div>
           </div>
         </div>

@@ -1,186 +1,103 @@
-"use client"
-
-import Link from "next/link"
-import { Mic, Users, ArrowRight, Video, Calendar, MapPin, Award, Zap, Globe, Cpu, TrendingUp } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { PageHeader } from "@/components/page-header"
 import { Footer } from "@/components/footer"
+import { ActionLink, container } from "@/components/site/action-link"
 import { speakingEngagements } from "@/lib/data/speaking"
 import { boardRoles } from "@/lib/data/board-roles"
 import impactImg from "@/lib/images/impact.jpeg"
 
+const topics = [
+  {
+    title: "Building deep tech in Africa",
+    description:
+      "Why the gap is not a shortage of talent or money, and what to build instead: the argument of my book, with the data and stories behind it.",
+  },
+  {
+    title: "From the lab to the market",
+    description:
+      "What it takes to turn science into industry, from semiconductors and carbon capture to medical robotics, told by someone who has validated all three.",
+  },
+  {
+    title: "Venture capital and hard technology",
+    description:
+      "How investors misread slow, physical ventures, how to fund the right stage, and why trust still outperforms algorithms.",
+  },
+]
+
 export default function SpeakingPage() {
-  const topics = [
-    {
-      title: "Deep Tech Innovation",
-      description: "From semiconductors to MedTech robotics — translating science into industry.",
-      icon: <Cpu className="w-8 h-8 text-primary" />,
-      tag: "Technical Keynote"
-    },
-    {
-      title: "Africa's Tech Ecosystem",
-      description: "Building the infrastructure required to polish creative energy into R&D.",
-      icon: <Globe className="w-8 h-8 text-primary" />,
-      tag: "Strategy & Policy"
-    },
-    {
-      title: "Venture Capital Dynamics",
-      description: "Investment thesis, ecosystem mapping, and why trust still outperforms algorithms.",
-      icon: <TrendingUp className="w-8 h-8 text-primary" />,
-      tag: "Venture Insights"
-    }
-  ]
-
   return (
-    <main className="min-h-screen bg-background text-foreground transition-colors duration-500">
+    <main className="min-h-screen bg-background text-foreground">
       <Navigation />
-
       <PageHeader
-        eyebrow="Global Speaking & Advisory"
-        title={
-          <>
-            Sharing <span className="text-primary italic">Knowledge</span> & Shaping Impact
-          </>
-        }
-        description={
-          <>
-            Facilitating masterclasses, keynotes, and strategic dialogues on <span className="text-foreground font-medium underline decoration-primary/30 underline-offset-4">deep tech</span> and emerging market innovation.
-          </>
-        }
+        eyebrow="Speaking"
+        title="Talks, panels and advisory"
+        description="Keynotes, masterclasses and conversations on deep tech, Africa's innovation ecosystems and venture capital, in person or remote."
         imageSrc={impactImg}
+        imageAlt="Destiny Ogwuche speaking"
       />
 
-      {/* Speaking Topics - High Impact Cards */}
-      <section className="py-24 bg-secondary/30 relative">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid md:grid-cols-3 gap-8">
-            {topics.map((topic, index) => (
-              <div
-                key={index}
-                className="glass-panel p-10 rounded-3xl group hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
-              >
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
-                  {topic.icon}
-                </div>
-                <span className="text-primary font-bold text-[10px] tracking-[0.3em] uppercase block mb-4 italic opacity-70">
-                  {topic.tag}
-                </span>
-                <h3 className="font-serif text-2xl font-medium mb-4 group-hover:text-primary transition-colors">
-                  {topic.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {topic.description}
-                </p>
+      <section className="py-16 md:py-24" aria-labelledby="topics-title">
+        <div className={container}>
+          <h2 id="topics-title" className="font-serif text-[2.6rem] leading-[1.1] md:text-[3.5rem]">
+            What I speak about
+          </h2>
+          <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-0 md:divide-x md:divide-border">
+            {topics.map((topic, i) => (
+              <div key={topic.title} className={`md:px-10 ${i === 0 ? "md:pl-0" : ""} ${i === topics.length - 1 ? "md:pr-0" : ""}`}>
+                <h3 className="font-serif text-[1.75rem] leading-snug">{topic.title}</h3>
+                <p className="mt-4 leading-relaxed text-muted-foreground">{topic.description}</p>
               </div>
             ))}
           </div>
-
-          <div className="mt-16 text-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-4 px-10 py-5 bg-primary text-primary-foreground text-xs font-bold tracking-[0.3em] uppercase rounded-full hover:bg-foreground transition-all group"
-            >
-              Inquire for Bookings
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-            </Link>
+          <div className="mt-14 flex flex-wrap gap-3">
+            <ActionLink href="/contact">Invite me to speak</ActionLink>
+            <ActionLink href="/press" variant="outline">
+              Bios, photos and interview questions
+            </ActionLink>
           </div>
         </div>
       </section>
 
-      {/* Professional Timeline & Advisory */}
-      <section className="py-24 relative overflow-hidden">
-        {/* Mirroring Home Hero Vertical Line */}
-        <div className="absolute left-[calc(50%-1px)] top-0 h-full w-px bg-linear-to-b from-primary/20 via-primary/5 to-transparent hidden lg:block" />
-
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-24">
-
-            {/* Timeline Column */}
-            <div>
-              <div className="flex items-center gap-4 mb-12">
-                <div className="p-3 bg-primary/10 rounded-xl">
-                  <Video className="w-6 h-6 text-primary" />
+      <section className="border-t border-border py-16 md:py-24" aria-labelledby="past-title">
+        <div className={`${container} grid gap-12 md:grid-cols-12`}>
+          <h2 id="past-title" className="font-serif text-[2.6rem] leading-[1.1] md:col-span-4 md:text-[3.5rem]">
+            Past talks
+          </h2>
+          <ol className="md:col-span-8 divide-y divide-border border-y border-border">
+            {speakingEngagements.map((talk) => (
+              <li key={talk.title} className="grid gap-3 py-8 sm:grid-cols-[10rem_1fr] sm:gap-8">
+                <p className="text-[0.95rem] text-accent">{talk.date}</p>
+                <div>
+                  <h3 className="font-serif text-[1.75rem] leading-snug">{talk.title}</h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{talk.description}</p>
                 </div>
-                <h2 className="font-serif text-4xl font-medium">Past Engagements</h2>
-              </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
-              <div className="space-y-12 relative">
-                {speakingEngagements.map((engagement, index) => (
-                  <div key={index} className="relative pl-10 group">
-                    <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-primary/20 border border-primary/50 group-hover:bg-primary group-hover:scale-125 transition-all duration-500 z-10" />
-                    <div className="absolute left-[5px] top-5 bottom-[-48px] w-px bg-primary/10 group-last:hidden" />
-
-                    <div className="glass-panel p-6 rounded-2xl group-hover:border-primary/20 transition-all duration-500">
-                      <div className="flex flex-wrap items-center justify-between gap-4 mb-3">
-                        <h3 className="font-serif text-xl font-medium text-foreground">{engagement.title}</h3>
-                        <div className="flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full text-[10px] font-bold text-primary tracking-widest">
-                          <Calendar className="w-3 h-3" />
-                          {engagement.date.includes(',') ? engagement.date.split(',')[1].trim() : 'Ongoing'}
-                        </div>
-                      </div>
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                        {engagement.description}
-                      </p>
-                      <div className="flex items-center gap-2 text-primary text-[10px] font-bold uppercase tracking-widest opacity-60">
-                        <MapPin className="w-3 h-3" />
-                        Global / Digital Facilitation
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Advisory Column */}
-            <div>
-              <div className="flex items-center gap-4 mb-12">
-                <div className="p-3 bg-accent/10 rounded-xl">
-                  <Award className="w-6 h-6 text-accent" />
-                </div>
-                <h2 className="font-serif text-4xl font-medium">Board & Advisory</h2>
-              </div>
-
-              <div className="grid gap-6">
-                {boardRoles.map((role, index) => (
-                  <div
-                    key={index}
-                    className="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-accent/40 transition-all duration-500"
-                  >
-                    <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                      <Users className="w-20 h-20 text-accent" />
-                    </div>
-
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-2 text-accent font-bold text-[10px] tracking-[0.3em] uppercase mb-2">
-                        <Zap className="w-3 h-3 fill-current" />
-                        {role.position}
-                      </div>
-                      <h3 className="font-serif text-2xl font-medium text-foreground mb-4">{role.title}</h3>
-                      {role.period && (
-                        <p className="text-muted-foreground/60 text-xs tracking-widest uppercase mb-4">{role.period}</p>
-                      )}
-                      <p className="text-muted-foreground leading-relaxed text-sm">
-                        {role.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-12 glass-panel p-10 rounded-3xl border-dashed border-primary/20 bg-primary/5 text-center">
-                <h3 className="font-serif text-2xl font-medium mb-4">Looking for Advisory?</h3>
-                <p className="text-muted-foreground text-sm mb-8">
-                  Providing strategic guidance for deep tech startups, venture capital funds, and public sector innovation initiatives.
+      <section className="border-t border-border bg-secondary/50 py-16 md:py-24" aria-labelledby="advisory-title">
+        <div className={`${container} grid gap-12 md:grid-cols-12`}>
+          <div className="md:col-span-4">
+            <h2 id="advisory-title" className="font-serif text-[2.6rem] leading-[1.1] md:text-[3.5rem]">
+              Boards and advisory
+            </h2>
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              Strategic guidance for deep tech startups, venture funds and public sector innovation programmes.
+            </p>
+          </div>
+          <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2 md:col-span-8">
+            {boardRoles.map((role) => (
+              <article key={role.title} className="border-t border-border pt-6">
+                <h3 className="font-serif text-[1.75rem] leading-snug">{role.title}</h3>
+                <p className="mt-1 text-sm text-accent">
+                  {role.position}
+                  {role.period ? `, ${role.period}` : ""}
                 </p>
-                <Link
-                  href="/contact"
-                  className="text-primary font-bold text-xs tracking-[0.2em] uppercase flex items-center justify-center gap-2 hover:translate-x-2 transition-transform"
-                >
-                  Download Corporate Bio <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-
+                <p className="mt-4 leading-relaxed text-muted-foreground">{role.description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
